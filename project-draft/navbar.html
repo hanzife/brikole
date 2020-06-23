@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/navbar.css" />
+    <title>Document</title>
+  </head>
+  <body class="container">
+    <div>
+      <nav class="nav d-flex align-items-center justify-content-between">
+        <div>
+          <img id="logo" src="images/logos/logo.svg" alt="brikoleLogo" />
+        </div>
+        <div class="main_menu d-flex align-items-center">
+          <a class="menuItem text-decoration-none" href="#">Accueil</a>
+          <a class="menuItem text-decoration-none" href="#"
+            >Comment ça marche</a
+          >
+          <a class="menuItem text-decoration-none" href="#">À propos de nous</a>
+          <a class="menuItem text-decoration-none" href="#">S’identifier</a>
+          <div class="separator"></div>
+          <a class="signUpButton text-decoration-none" href="#">
+            <input
+              class="signUp border-0"
+              type="submit"
+              value="Inscrivez-vous"
+            />
+          </a>
+          <svg
+            class="menuIcon_sm"
+            data-toggle="collapse"
+            href="#menu_sm"
+            role="button"
+            aria-expanded="false"
+            aria-controls="menu_sm"
+            width="18"
+            height="16"
+            viewBox="0 0 18 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0 1.33333C0 0.979711 0.135459 0.640573 0.376577 0.390525C0.617695 0.140476 0.944722 0 1.28571 0H16.7143C17.0553 0 17.3823 0.140476 17.6234 0.390525C17.8645 0.640573 18 0.979711 18 1.33333C18 1.68696 17.8645 2.02609 17.6234 2.27614C17.3823 2.52619 17.0553 2.66667 16.7143 2.66667H1.28571C0.944722 2.66667 0.617695 2.52619 0.376577 2.27614C0.135459 2.02609 0 1.68696 0 1.33333ZM0 8C0 7.64638 0.135459 7.30724 0.376577 7.05719C0.617695 6.80714 0.944722 6.66667 1.28571 6.66667H16.7143C17.0553 6.66667 17.3823 6.80714 17.6234 7.05719C17.8645 7.30724 18 7.64638 18 8C18 8.35362 17.8645 8.69276 17.6234 8.94281C17.3823 9.19286 17.0553 9.33333 16.7143 9.33333H1.28571C0.944722 9.33333 0.617695 9.19286 0.376577 8.94281C0.135459 8.69276 0 8.35362 0 8ZM0 14.6667C0 14.313 0.135459 13.9739 0.376577 13.7239C0.617695 13.4738 0.944722 13.3333 1.28571 13.3333H16.7143C17.0553 13.3333 17.3823 13.4738 17.6234 13.7239C17.8645 13.9739 18 14.313 18 14.6667C18 15.0203 17.8645 15.3594 17.6234 15.6095C17.3823 15.8595 17.0553 16 16.7143 16H1.28571C0.944722 16 0.617695 15.8595 0.376577 15.6095C0.135459 15.3594 0 15.0203 0 14.6667Z"
+              fill="#585863"
+            />
+          </svg>
+        </div>
+      </nav>
+      <div class="collapse" id="menu_sm">
+        <div class="d-flex flex-column menu_sm fontFam">
+          <a class="menuItem_sm text-decoration-none" href="#">Accueil</a>
+          <a class="menuItem_sm text-decoration-none" href="#"
+            >Comment ça marche</a
+          >
+          <a class="menuItem_sm text-decoration-none" href="#"
+            >À propos de nous</a
+          >
+          <div class="separator_sm"></div>
+          <a class="menuItem_sm text-decoration-none" href="#">S’identifier</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- make this in a separate file -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ------- -->
+    <script src="script/navbar.js"></script>
+  </body>
+</html>

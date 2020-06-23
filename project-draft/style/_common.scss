@@ -1,0 +1,14 @@
+@use 'colors';
+
+$fontSize1: 14px;
+$fontSize2: 16px;
+
+@mixin robotoFontFam {
+  font-family: "Roboto" !important;
+}
+.container {
+  padding: 0;
+}
+* {
+  @include robotoFontFam;
+}
