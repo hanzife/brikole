@@ -1,0 +1,545 @@
+@use 'fonts';
+@use 'colors';
+@use 'common';
+
+@mixin searchBorder {
+    width: 210px;
+    height: 58px;
+    border-radius: 8px;
+}
+@mixin scrollBar {
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: none; // for moz
+}
+@mixin ads($w, $h, $bg) {
+    width: $w;
+    height: $h;
+    margin: auto;
+    background-image: $bg;
+}
+
+.color-grey-dark {
+    color: colors.$grey-dark;
+}
+.color-black {
+    color: colors.$black;
+}
+.color-grey-500 {
+    color: colors.$grey-500;
+}
+.color-accent {
+    color: colors.$accent;
+}
+.color-accent-dark {
+    color: colors.$accent-dark;
+}
+.color-accent-100 {
+    color: colors.$accent-100;
+}
+.bg-color-grey-bg {
+    background-color: colors.$grey-bg;
+}
+.blank-51 {
+    height: 51px;
+}
+.blank-55 {
+    height: 55px;
+}
+.blank-30 {
+    width: 70px;
+}
+.blank-80 {
+    height: 80px;
+}
+.blank-73 {
+    height: 73px;
+}
+.fontFam {
+    @include common.robotoFontFam;
+}
+h1 {
+    font-size: 48px;
+    @media (max-width: 767px) {
+        font-size: 38px;
+    }
+    @media (max-width: 575px) {
+        font-size: 27px;
+    }
+}
+.fs-36 {
+    font-size: 36px;
+}
+.fs-28 {
+    font-size: 28px;
+}
+.fs-24 {
+    font-size: 24px;
+}
+.fs-20 {
+    font-size: 20px;
+}
+.fs-17 {
+    font-size: 17px;
+}
+.fs-16 {
+    font-size: 16px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.fw-500 {
+    font-weight: 500;
+}
+
+.border-accent {
+    border-bottom: 5px colors.$accent solid;
+}
+.mr-20 {
+    margin-right: 20px;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+.ml-20 {
+    margin-left: 20px;
+}
+.ml-10 {
+    margin-left: 10px;
+}
+.mt-15 {
+    margin-top: 15px;
+}
+.mt-7 {
+    margin-top: 7px;
+}
+.mb-5-c {
+    margin-bottom: 5px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.m-15 {
+    margin: 15px;
+}
+.img-s110 {
+    width: 110px;
+    height: 110px;
+    border-radius: 5px;
+}
+.img-s180 {
+    width: 180px;
+    height: 149px;
+    border-radius: 5px;
+}
+.img-s215 {
+    width: 215px;
+    height: 180px;
+    border-radius: 10px 10px 0 0;
+}
+.img-s50 {
+    width: 50px;
+    height: 50px;
+    margin: 7px 10px 7px 7px;
+}
+.img-s225 {
+    max-width: 225px;
+    max-height: 85px;
+}
+//ads
+.ad1 {
+    @include ads(970px, 250px, url("../images/ad1.png"));
+
+    @media (max-width: 1199px) {
+        @include ads(468px, 60px, url("../images/ad3.png"));
+    }
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+.ad2 {
+    @include ads(728px, 90px, url("../images/ad2.png"));
+}
+.ad3 {
+    @include ads(468px, 60px, url("../images/ad3.png"));
+}
+.ad4 {
+    @include ads(300px, 100px, url("../images/ad4.png"));
+}
+
+//
+.selectSearch {
+    // ask about bg color
+    color: colors.$grey-500;
+    font-size: 20px;
+    font-style: oblique;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    padding-left: 12px;
+    border: 1px solid colors.$grey-300;
+    background-image: url("../images/icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: 183px center;
+    @include searchBorder;
+    option {
+        color: colors.$black;
+        font-style: normal;
+    }
+
+    @media (max-width: 767px) {
+        width: 175px;
+        height: 58px;
+        background-position: 148px center;
+        margin-right: 2px;
+    }
+
+    @media (max-width: 575px) {
+        width: 155px;
+        height: 58px;
+        background-position: 128px center;
+        font-size: 18px;
+    }
+}
+.findBtn {
+    @include searchBorder;
+    border: none;
+    color: colors.$accent-dark;
+    background-color: colors.$accent;
+    background-image: url("../images/icons/searchIcon.svg");
+    background-repeat: no-repeat;
+    background-position: 142px center;
+    text-align: start;
+    padding-left: 51px;
+
+    @media (max-width: 767px) {
+        width: 175px;
+        height: 58px;
+        background-position: 122px center;
+        padding-left: 32px;
+    }
+
+    @media (max-width: 575px) {
+        width: 316px;
+        height: 58px;
+        background-position: 197px center;
+        padding-left: 100px;
+        margin-top: 7px;
+    }
+}
+.popularS-parent {
+    @media (max-width: 575px) {
+        justify-content: center;
+        margin-left: 24.5px;
+        margin-right: 24.5px;
+    }
+}
+.popularS {
+    background: colors.$accent-100;
+    border-radius: 10px;
+    color: colors.$accent-dark;
+    padding: 2px 8px;
+    margin-right: 5px;
+    @media (max-width: 575px) {
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+}
+.stats {
+    background: colors.$accent-100;
+    border-radius: 5px;
+    color: colors.$accent-dark;
+    padding: 4px 8px;
+    margin-right: 10px;
+    .dot {
+        width: 8px;
+        height: 8px;
+        margin-right: 3px;
+        background-color: colors.$accent;
+    }
+}
+.sm-container {
+    border: 1px solid colors.$grey-300;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+.sm-container-200 {
+    width: 202px;
+    height: 224px;
+    @media (max-width: 767px) {
+        width: 174px;
+        height: 210px;
+    }
+}
+.sm-container-320 {
+    width: 322px !important;
+    height: 130px;
+}
+.sm-container2 {
+    width: 217px;
+    height: 244px;
+    border: 1px solid colors.$grey-300;
+    border-radius: 10px;
+    background-color: white;
+    @media (max-width: 1199px) {
+        margin-right: 16px;
+    }
+}
+//add some blure at the bottom
+.h-80 {
+    height: 80px;
+}
+.fix-width {
+    width: fit-content;
+    // @media (max-width: 1199px) {
+    //   width: auto;
+    // }
+}
+.confiance {
+    width: 225px;
+    height: 85px;
+}
+
+// -----------------------------
+//slider 1
+.recRechSlide-parent {
+    @media (max-width: 575px) {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+.recRechSlide {
+    @include scrollBar;
+    scroll-behavior: smooth;
+}
+.recRechSlide::-webkit-scrollbar {
+    // for chrome & safari (works on edge too)
+    display: none;
+}
+.slideIndicatorT2-ctn {
+    //   width: 160px;
+    //   height: 8px;
+    //   background-color: colors.$grey-300;
+    //   border-radius: 15px;
+}
+.progress-cstm {
+    width: 160px;
+    height: 8px;
+    background-color: colors.$grey-300;
+    border-radius: 15px;
+    margin-top: 17px;
+    @media (min-width: 1200px) {
+        display: none;
+    }
+    .progress-bar-cstm {
+        background-color: colors.$grey-500;
+        border-radius: 15px;
+    }
+}
+
+//slider 2
+.explorer-grandparent {
+    @media (max-width: 1199px) {
+        display: flex;
+        justify-content: center;
+    }
+    .explorer-parent {
+        max-width: 664px;
+        @media (max-width: 767px) {
+            max-width: 540px;
+        }
+        @media (max-width: 575px) {
+            max-width: 332px;
+        }
+    }
+}
+
+.explorer {
+    @include scrollBar;
+    scroll-behavior: smooth;
+    max-width: 664px;
+    @media (max-width: 767px) {
+        max-width: 540px;
+    }
+    @media (max-width: 575px) {
+        max-width: 332px;
+    }
+}
+.explorer::-webkit-scrollbar {
+    // for chrome & safari (works on edge too)
+    display: none;
+}
+.explorer-text {
+    width: 180px;
+    height: 108px;
+}
+.slideIndicator-ctnr {
+    width: 50px;
+    height: 10px;
+    margin-right: 10px;
+    .slideIndicator {
+        width: 10px;
+        height: 10px;
+        background-color: colors.$grey-300;
+        -webkit-border-radius: 11px;
+        -moz-border-radius: 11px;
+        border-radius: 11px;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+}
+//pourqoi brikole
+.whyBrikole-ctnr {
+    @media (max-width: 575px) {
+        flex-direction: column;
+    }
+    .whyBrikole-item {
+        width: 200px;
+        height: 138px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 10px;
+        .whyBrikole-circule {
+            background-color: colors.$accent-100;
+            padding: 7px;
+            margin-bottom: 5px;
+            width: 75px;
+            height: 75px;
+        }
+    }
+}
+// search section
+.searchSection {
+    @media (max-width: 1199px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+//blank
+.blank-55-hide {
+    display: none;
+}
+.whyBrikole3 {
+    display: none;
+}
+.show-on-xs {
+    display: none;
+}
+
+// RESPONSIVE REORDER
+// XL
+@media (min-width: 1200px) {
+    .Brikoleurs_premium1 {
+        display: flex;
+    }
+    .Brikoleurs_premium2 {
+        display: none;
+    }
+    .whyBrikole2 {
+        display: none;
+    }
+    .blank-73 {
+        display: none;
+    }
+}
+//MD
+@media (max-width: 1199px) {
+    .Brikoleurs_premium1 {
+        display: none;
+    }
+    .blank-30 {
+        display: none;
+    }
+    .Brikoleurs_premium2 {
+        display: flex;
+        justify-content: center;
+    }
+    .whyBrikole1 {
+        display: none;
+    }
+    .whyBrikole2 {
+        display: flex;
+    }
+    .textCenter {
+        text-align: center;
+    }
+    .blank-80 {
+        height: 55px;
+    }
+}
+@media (max-width: 1199px) and (min-width: 992px) {
+    .Brikoleurs_premium2 {
+        width: 720px;
+    }
+}
+//SM
+@media (max-width: 767px) {
+    .fs-34-r {
+        font-size: 34px;
+    }
+    .fs-17-r {
+        font-size: 16px;
+    }
+    .img-s152-r {
+        width: 152px;
+        height: 135px;
+    }
+    .mr-10-r {
+        margin-right: 3px;
+    }
+    .ml-10-r {
+        margin-left: 3px;
+    }
+    .mb-20-r {
+        margin-bottom: 6px;
+    }
+    .blank-55-hide {
+        display: block;
+    }
+    .whyBrikole2 {
+        display: none;
+    }
+    .hide-on-sm {
+        display: none;
+    }
+    .whyBrikole3 {
+        display: flex;
+    }
+}
+//XS
+@media (max-width: 575px) {
+    .fs-22-r {
+        font-size: 22px;
+    }
+    .fs-20-r {
+        font-size: 20px;
+    }
+    .fs-14-r {
+        font-size: 14px;
+    }
+    .fs-17-r {
+        font-size: 13px;
+    }
+    .mr-10-r {
+        margin-right: 5px;
+    }
+    .ml-10-r {
+        margin-left: 5px;
+    }
+    .mb-20-r {
+        margin-bottom: 10px;
+    }
+    .hide-on-xs {
+        display: none;
+    }
+    .show-on-xs {
+        display: block;
+    }
+}
