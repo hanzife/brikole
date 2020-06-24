@@ -1,8 +1,9 @@
-
-<link rel="stylesheet" href="../sass/home.css" />
 <title>welcome</title>
-<!-- Included header -->
-@extends('layout')
+
+
+<!-- Master Header/Footer -->
+@extends('layouts.master')
+
 @section('content')
 <div class="blank-51"></div>
     <!-- top section -->
@@ -88,7 +89,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -99,7 +100,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -110,7 +111,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -121,7 +122,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -132,7 +133,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -143,7 +144,7 @@
           >
             <img
               class="img-s180 mb-10 img-s152-r"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt="name of bk1"
             />
             <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
@@ -186,7 +187,7 @@
             <h3 class="fs-24 color-black textCenter">Explorer</h3>
             <div class="d-flex fs-14 explorer">
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Programmation robotique :
@@ -198,7 +199,7 @@
                 </div>
               </div>
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Sculpture sur bois :
@@ -210,7 +211,7 @@
                 </div>
               </div>
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Programmation robotique :
@@ -222,7 +223,7 @@
                 </div>
               </div>
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Programmation robotique :
@@ -234,7 +235,7 @@
                 </div>
               </div>
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Programmation robotique :
@@ -246,7 +247,7 @@
                 </div>
               </div>
               <div class="d-flex sm-container sm-container-320 mr-10">
-                <img class="img-s110 mr-10" src="../images/testimg.jpg" alt="" />
+                <img class="img-s110 mr-10" src="images/testimg.jpg" alt="" />
                 <div class="explorer-text">
                   <div class="color-grey-dark font-weight-bold mb-5-c">
                     Programmation robotique :
@@ -273,7 +274,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -282,7 +283,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -291,7 +292,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -300,7 +301,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -309,7 +310,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -318,7 +319,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="../images/testimg.jpg"
+            src="images/testimg.jpg"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
@@ -370,11 +371,11 @@
       <h3 class="fs-24 color-black textCenter">Recherches récentes</h3>
       <div class="d-flex justify-content-between recRechSlide">
         <div class="sm-container2">
-          <img class="img-s215" src="../images/bk1.png" alt="" />
+          <img class="img-s215" src="images/bk1.png" alt="" />
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt=""
             />
             <div>
@@ -384,11 +385,11 @@
           </div>
         </div>
         <div class="sm-container2">
-          <img class="img-s215" src="../images/bk2.png" alt="" />
+          <img class="img-s215" src="images/bk2.png" alt="" />
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt=""
             />
             <div>
@@ -398,11 +399,11 @@
           </div>
         </div>
         <div class="sm-container2">
-          <img class="img-s215" src="../images/bk3.png" alt="" />
+          <img class="img-s215" src="images/bk3.png" alt="" />
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt=""
             />
             <div>
@@ -412,11 +413,11 @@
           </div>
         </div>
         <div class="sm-container2">
-          <img class="img-s215" src="../images/bk4.png" alt="" />
+          <img class="img-s215" src="images/bk4.png" alt="" />
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt=""
             />
             <div>
@@ -426,11 +427,11 @@
           </div>
         </div>
         <div class="sm-container2">
-          <img class="img-s215" src="../images/bk5.png" alt="" />
+          <img class="img-s215" src="images/bk5.png" alt="" />
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="../images/testimg.jpg"
+              src="images/testimg.jpg"
               alt=""
             />
             <div>
@@ -494,16 +495,16 @@
       <h3 class="fs-24 color-black">Qui nous fait confiance</h3>
       <div class="d-flex justify-content-center flex-wrap">
         <div class="confiance m-15">
-          <img class="img-s225" src="../images/company-card1.png" alt="" />
+          <img class="img-s225" src="images/company-card1.png" alt="" />
         </div>
         <div class="confiance m-15">
-          <img class="img-s225" src="../images/company-card1.png" alt="" />
+          <img class="img-s225" src="images/company-card1.png" alt="" />
         </div>
         <div class="confiance m-15">
-          <img class="img-s225" src="../images/company-card1.png" alt="" />
+          <img class="img-s225" src="images/company-card1.png" alt="" />
         </div>
         <div class="confiance m-15">
-          <img class="img-s225" src="../images/company-card1.png" alt="" />
+          <img class="img-s225" src="images/company-card1.png" alt="" />
         </div>
       </div>
     </div>
@@ -516,7 +517,7 @@
     <!-- end ad2 -->
     <!-- end bottom section -->
     <div class="blank-51"></div>
+
     
-    <script src="script/home.js"></script>
-<!-- try not to code under the endsection -->
+
 @endsection

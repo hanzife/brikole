@@ -182,7 +182,8 @@ h1 {
   width: 970px;
   height: 250px;
   margin: auto;
-  background-image: url("../images/ad1.png");
+  background-image: url("{{asset('/images/ad1.jpg')}}");
+  background-color: #f1f1f2;
 }
 @media (max-width: 1199px) {
   .ad1 {
@@ -190,6 +191,7 @@ h1 {
     height: 60px;
     margin: auto;
     background-image: url("../images/ad3.png");
+    background-color: #f1f1f2;
   }
 }
 @media (max-width: 767px) {
@@ -203,6 +205,7 @@ h1 {
   height: 90px;
   margin: auto;
   background-image: url("../images/ad2.png");
+  background-color: #f1f1f2;
 }
 
 .ad3 {
@@ -210,6 +213,7 @@ h1 {
   height: 60px;
   margin: auto;
   background-image: url("../images/ad3.png");
+  background-color: #f1f1f2;
 }
 
 .ad4 {
@@ -217,6 +221,7 @@ h1 {
   height: 100px;
   margin: auto;
   background-image: url("../images/ad4.png");
+  background-color: #f1f1f2;
 }
 
 .selectSearch {
@@ -265,7 +270,7 @@ h1 {
   border: none;
   color: #723b14;
   background-color: #ffc000;
-  background-image: url("..//images/icons/searchIcon.svg");
+  background-image: url("../images/icons/searchIcon.svg");
   background-repeat: no-repeat;
   background-position: 142px center;
   text-align: start;

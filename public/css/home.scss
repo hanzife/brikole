@@ -151,10 +151,14 @@ h1 {
 }
 //ads
 .ad1 {
-    @include ads(970px, 250px, url("../images/ad1.png"));
-
+    @include ads(970px, 250px, url("{{asset('/images/ad1.jpg')}}"));
+background-color: colors.$grey-200;
+//   background-image: url("../images/icons/arrow-down.svg");
+// {{asset("/images/background.jpg")}};
     @media (max-width: 1199px) {
         @include ads(468px, 60px, url("../images/ad3.png"));
+background-color: colors.$grey-200;
+
     }
     @media (max-width: 767px) {
         display: none;
@@ -162,12 +166,18 @@ h1 {
 }
 .ad2 {
     @include ads(728px, 90px, url("../images/ad2.png"));
+background-color: colors.$grey-200;
+
 }
 .ad3 {
     @include ads(468px, 60px, url("../images/ad3.png"));
+background-color: colors.$grey-200;
+
 }
 .ad4 {
     @include ads(300px, 100px, url("../images/ad4.png"));
+background-color: colors.$grey-200;
+
 }
 
 //

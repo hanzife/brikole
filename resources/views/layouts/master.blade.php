@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="../sass/navbar.css" />
-    <link rel="stylesheet" href="../sass/footer.css" />
-    
-    <!-- <title>welcome</title> -->
-  </head>
-  <body class="container">        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-    <!-- your header here -->
-    <div>
-      <nav class="nav d-flex align-items-center justify-content-between">
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+<!-- <link ref="stylesheet" href="{{asset('css/bootstrap.min.css') }}"> -->
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}" />
+<link rel="stylesheet" href="{{asset('css/footer.css')}}" />
+<link rel="stylesheet" href="{{asset('css/home.css')}}" />
+
+
+<body class="container">
+    
+<!--  -->
+<!-- your header here -->
+<div>
+    <nav class="nav d-flex align-items-center justify-content-between">
         <div>
-          <img id="logo" src="../images/logos/logo.svg" alt="brikoleLogo" />
+          <img id="logo" src="images/logos/logo.svg" alt="brikoleLogo" />
         </div>
         <div class="main_menu d-flex align-items-center">
-          <a class="menuItem text-decoration-none" href="#">Accueil</a>
+          <a class="menuItem text-decoration-none" href="{{url('/')}}">Accueil</a>
           <a class="menuItem text-decoration-none" href="#"
             >Comment ça marche</a
           >
-          <a class="menuItem text-decoration-none" href="#">À propos de nous</a>
-          <a class="menuItem text-decoration-none" href="#">S’identifier</a>
+          <a class="menuItem text-decoration-none" href="{{url('')}}">À propos de nous</a>
+          <a class="menuItem text-decoration-none" href="{{url('')}}">S’identifier</a>
           <div class="separator"></div>
-          <a class="signUpButton text-decoration-none" href="#">
+          <a class="signUpButton text-decoration-none" href="{{url('')}}">
             <input
               class="signUp border-0"
               type="submit"
@@ -72,13 +73,15 @@
           <a class="menuItem_sm text-decoration-none" href="#">S’identifier</a>
         </div>
       </div>
-    </div>
-    <!-- end header -->
+</div>
+<!-- end header -->
 
-    @yield('content')
+<!-- your Division here -->
+@yield('content')
+<!-- end Division -->
 
-    <!-- your footer here -->
-    <div class="textColor fontSize fontWeight sm-size">
+<!-- your footer here -->
+<div class="textColor fontSize fontWeight sm-size">
       <div class="space"></div>
       <div class="footerTop">
         <img id="logo" src="../images/logos/logo.svg" alt="brikoleLogo" />
@@ -168,26 +171,27 @@
       </div>
       <div class="space"></div>
     </div>
-    <!-- end footer -->
+<!-- end footer -->
 
-        <!-- links for scripts -->
-        <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
-        ></script>
+<!-- 
+<!-- links for scripts -->
+<!-- <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script> -->
+<!-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script> -->
+<!-- <script src="{{asset('js/navbar.js')}}"></script> -->
+<!-- make this in a separate file -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="{{asset('js/home.js')}}"></script>
 
-        <script src="script/navbar.js"></script>
 
-    </body>
+</body>
 </html>
