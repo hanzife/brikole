@@ -46,8 +46,9 @@
                 <option class="placeHolder" value="" disabled selected hidden
                   >Profession...</option
                 >
-                <option value="">Proffession 1</option>
-                <option value="">Proffession 2</option>
+                @foreach($dataprofession as $row)
+                <option value="">{{$row->libelle_P}}</option>
+                @endforeach
               </select>
               <select name="" id="" class="selectSearch mr-10">
                 <option value="" disabled selected hidden>Ville...</option>
@@ -84,72 +85,19 @@
 
         <!-- Brikoleurs premium P2 -->
         <div class="flex-wrap fix-width Brikoleurs_premium2">
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
-          <div
-            class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r"
-          >
-            <img
-              class="img-s180 mb-10 img-s152-r"
-              src="images/testimg.jpg"
-              alt="name of bk1"
-            />
-            <div class="fs-17 color-black fw-500 fs-17-r">Hicham BOUNOIR</div>
-            <div class="fs-17 color-grey-dark fw-500 fs-17-r">Plâtrier</div>
-          </div>
+
+          @foreach($data as $row)
+        <div class="sm-container sm-container-200 ml-20 mb-20">
+          <img
+            class="img-s180 mb-10"
+            src="images/{{$row->reference}}"
+            alt="name of bk1"
+          />
+          <div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div>
+          <div class="fs-17 color-grey-dark fw-500">{{$row->libelle_P}}</div>
+        </div>
+        @endforeach
+          
         </div>
         <!-- end Brikoleurs premium p2 -->
         <!-- ---------- -->
@@ -271,7 +219,22 @@
       <div class="blank-30"></div>
       <!-- Brikoleurs premium P1 -->
       <div class="flex-wrap fix-width Brikoleurs_premium1">
+      <!-- get data from HomeController.php -->
+      <!-- SELECT 'images.reference','brikoleurs.nom','brikoleurs.prenom','professions.libelle_P' -->
+      <!-- randomly -->
+        @foreach($data as $row)
         <div class="sm-container sm-container-200 ml-20 mb-20">
+          <img
+            class="img-s180 mb-10"
+            src="images/{{$row->reference}}"
+            alt="name of bk1"
+          />
+          <div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div>
+          <div class="fs-17 color-grey-dark fw-500">{{$row->libelle_P}}</div>
+        </div>
+        @endforeach
+
+        <!-- <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
             src="images/testimg.jpg"
@@ -315,16 +278,7 @@
           />
           <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
           <div class="fs-17 color-grey-dark fw-500">Plâtrier</div>
-        </div>
-        <div class="sm-container sm-container-200 ml-20 mb-20">
-          <img
-            class="img-s180 mb-10"
-            src="images/testimg.jpg"
-            alt="name of bk1"
-          />
-          <div class="fs-17 color-black fw-500">Hicham BOUNOIR</div>
-          <div class="fs-17 color-grey-dark fw-500">Plâtrier</div>
-        </div>
+        </div> -->
       </div>
       <!-- end Brikoleurs premium p1 -->
     </div>
