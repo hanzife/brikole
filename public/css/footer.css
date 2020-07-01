@@ -89,8 +89,10 @@
   }
 }
 
-.centerSelectLng {
-  justify-content: center;
+@media (max-width: 767px) {
+  .centerSelectLng {
+    justify-content: center;
+  }
 }
 
 .space {

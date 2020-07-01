@@ -87,14 +87,14 @@
         <div class="flex-wrap fix-width Brikoleurs_premium2">
 
           @foreach($data as $row)
-        <div class="sm-container sm-container-200 ml-20 mb-20">
+        <div class="sm-container sm-container-200 mr-10 ml-10 mb-20 mr-10-r ml-10-r mb-20-r">
           <img
-            class="img-s180 mb-10"
-            src="images/{{$row->reference}}"
-            alt="name of bk1"
+            class="img-s180 mb-10 img-s152-r"
+            src="images/Uploads/Profile/{{$row->reference}}"
+            alt="Image de {{$row->prenom}} {{$row->nom}}"
           />
-          <div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div>
-          <div class="fs-17 color-grey-dark fw-500">{{$row->libelle_P}}</div>
+          <div class="fs-17 color-black fw-500 fs-17-r">{{$row->prenom}} {{$row->nom}}</div>
+          <div class="fs-17 color-grey-dark fw-500 fs-17-r">{{$row->libelle_P}}</div>
         </div>
         @endforeach
           
@@ -226,7 +226,7 @@
         <div class="sm-container sm-container-200 ml-20 mb-20">
           <img
             class="img-s180 mb-10"
-            src="images/{{$row->reference}}"
+             src="images/Uploads/Profile/{{$row->reference}}"
             alt="name of bk1"
           />
           <div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div>

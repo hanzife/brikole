@@ -76,7 +76,9 @@
   }
 }
 .centerSelectLng {
-  justify-content: center;
+  @media (max-width: 767px) {
+    justify-content: center;
+}
 }
 .space {
   height: 34px;
