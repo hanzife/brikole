@@ -1,0 +1,113 @@
+@use 'fonts';
+@use 'colors';
+@use 'common';
+
+@mixin padding($tb: 9.5px, $lr: 10px) {
+    padding: $tb $lr;
+}
+@mixin fontWeight($fw: 500) {
+    font-weight: $fw;
+}
+@mixin max-md {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+@mixin min-md {
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+@mixin menusItems {
+    color: colors.$grey-dark;
+    border-radius: 10px;
+    background-color: initial;
+    transition: 0.7s;
+}
+@mixin menusItemsHover {
+    background-color: colors.$grey-200;
+    color: colors.$grey-dark;
+}
+
+.nav {
+    padding-top: 17px;
+    padding-bottom: 18px;
+    font-size: 14px;
+    @include fontWeight();
+}
+
+.menuItem {
+    @include padding();
+    margin-right: 15px;
+    @include menusItems;
+    @media (max-width: 991px) {
+        @include padding(6px, 5px);
+    }
+
+    @include max-md;
+}
+.menuItem:hover {
+    @include menusItemsHover;
+}
+
+.signUp {
+    @include padding();
+    background-color: #f1f1f2;
+    border-radius: 5px;
+    color: colors.$black;
+    @include fontWeight();
+
+    @media (max-width: 767px) {
+        @include padding(3.5px, 8px);
+    }
+}
+
+.separator {
+    width: 1px;
+    height: 30px;
+    background-color: #f1f1f2;
+    margin-right: 15px;
+
+    @include max-md;
+}
+
+// .fontFam {
+//   @include common.robotoFontFam;
+// }
+
+.menuIcon_sm {
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 6px 5px;
+    box-sizing: initial;
+    border-radius: 5px;
+    //   background-color: colors.$grey-200;
+
+    @include min-md;
+}
+.menu_sm {
+    @include fontWeight();
+    font-size: 16px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+.menuItem_sm {
+    padding: 2.5px 5px;
+    margin-bottom: 5px;
+    @include menusItems;
+
+    @include min-md;
+}
+.menuItem_sm:hover {
+    @include menusItemsHover;
+}
+.separator_sm {
+    margin-bottom: 5px;
+    height: 1px;
+    background-color: colors.$grey-200;
+
+    @include min-md;
+}
+.test {
+    display: flex;
+}
