@@ -7,77 +7,79 @@
 @use 'common';
 
 .textColor {
-  color: colors.$grey-dark;
-  //   font-family: "Roboto";
+    color: colors.$grey-dark;
+    //   font-family: "Roboto";
 }
 .fontSize {
-  font-size: common.$fontSize1;
+    font-size: 14px;
 }
 .colorBlack {
-  color: colors.$black;
+    color: colors.$black;
 }
 // .fontWeight {
 //   font-weight: normal;
 // }
 .mtb-15 {
-  margin-bottom: 15px;
-  margin-top: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 .BGColor {
-  background-color: colors.$grey-50;
+    background-color: colors.$grey-50;
 }
 .mr-9 {
-  margin-right: 9px;
+    margin-right: 9px;
 }
 .mtb-30 {
-  margin-bottom: 30px;
-  margin-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 .mb-15-sm {
-  @media (max-width: 767px) {
-    margin-bottom: 15px;
-  }
+    @media (max-width: 767px) {
+        margin-bottom: 15px;
+    }
 }
 
 #selectLanguage {
-  background-image: url("../images/icons/selectBG.svg");
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  padding: 2.5px 32px;
-  border: 1px solid #585863;
-  border-radius: 5px;
-  height: 28px;
-  margin-left: 10px;
+    background-image: url("../images/icons/selectBG.svg");
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    padding: 2.5px 32px;
+    border: 1px solid #585863;
+    border-radius: 5px;
+    height: 28px;
+    margin-left: 10px;
 }
 .footerTop {
-  width: 348px;
-  @media (max-width: 767px) {
-    margin: auto;
-  }
+    width: 348px;
+    @media (max-width: 767px) {
+        margin: auto;
+    }
 
-  //   color: colors.$black;
+    //   color: colors.$black;
 }
 .footerSeparator {
-  height: 1px;
-  background-color: colors.$grey-200;
-  margin-top: 40px;
-  margin-bottom: 44px;
-  @media (max-width: 767px) {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
+    height: 1px;
+    background-color: colors.$grey-200;
+    margin-top: 40px;
+    margin-bottom: 44px;
+    @media (max-width: 767px) {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
 }
 .sm-size {
-  @media (max-width: 767px) {
-    text-align: center;
-  }
+    @media (max-width: 767px) {
+        text-align: center;
+    }
 }
 .centerSelectLng {
-  justify-content: center;
+    @media (max-width: 767px) {
+        justify-content: center;
+    }
 }
 .space {
-  height: 34px;
+    height: 34px;
 }
