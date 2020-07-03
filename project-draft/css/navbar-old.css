@@ -37,6 +37,22 @@
   }
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 .nav {
   padding-top: 17px;
   padding-bottom: 18px;
@@ -147,4 +163,4 @@
   display: flex;
 }
 
-/*# sourceMappingURL=navbar.css.map */
+/*# sourceMappingURL=navbar-old.css.map */

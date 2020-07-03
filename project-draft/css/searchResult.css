@@ -37,6 +37,22 @@
   }
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 .blank-15 {
   height: 15px;
 }
@@ -101,24 +117,8 @@
   }
 }
 
-a {
+.sr-links a {
   color: #0d0c22;
-}
-
-a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  text-decoration: none;
 }
 
 .sr-all {

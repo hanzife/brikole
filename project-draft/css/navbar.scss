@@ -1,0 +1,145 @@
+@use 'fonts';
+@use 'colors';
+@use 'common';
+
+@mixin nv-style {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: colors.$grey-600;
+}
+
+body {
+    margin: 0;
+}
+.nv-links {
+    a {
+        color: colors.$grey-600;
+    }
+}
+.nv-nav {
+    @include nv-style;
+    font-size: 14px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    height: 75px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    //SM
+    @media (max-width: 767px) {
+        height: 60px;
+        padding-top: 10px;
+        padding-bottom: 9px;
+    }
+    //XXS
+    @media (max-width: 320px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.nv-main_menu {
+    display: flex;
+    align-items: center;
+}
+.nv-menuItem {
+    padding: 12px 10px;
+    margin-right: 15px;
+
+    //SM
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+.nv-separator {
+    height: 30px;
+    width: 1px;
+    background-color: colors.$grey-200;
+    margin-right: 16px;
+
+    //SM
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+.nv-signUp {
+    width: 113px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: colors.$accent;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+
+    //SM
+    @media (max-width: 767px) {
+        width: 109px;
+        height: 28px;
+    }
+}
+
+//MENU SM
+.nv-menuIcon_xs {
+    padding: 6px 5px;
+    margin-left: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    //SM
+    @media (max-width: 767px) {
+        display: block;
+    }
+}
+.nv-menuIcon_xs:hover {
+    background-color: colors.$grey-200;
+}
+.nv-menu-xs {
+    @include nv-style;
+    font-size: 16px;
+    line-height: 19px;
+    padding-top: 11px;
+    padding-bottom: 6px;
+    width: auto;
+    display: none;
+
+    @media (min-width: 768px) {
+        display: none !important;
+    }
+    //XXS
+    @media (max-width: 320px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.nv-menu-sub-xs {
+    display: flex;
+    flex-direction: column;
+}
+.nv-menuItem-xs {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.nv-separator-xs {
+    height: 1px;
+    background-color: colors.$grey-200;
+    margin-bottom: 5px;
+}
+
+//RESPONSIVE
+
+//LG
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+//MD
+@media (min-width: 768px) and (max-width: 991px) {
+}
+//SM
+@media (min-width: 576px) and (max-width: 767px) {
+}
+//XS
+@media (max-width: 575px) {
+}
