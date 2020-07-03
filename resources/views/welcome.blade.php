@@ -1,5 +1,6 @@
 <title>welcome</title>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
 
 <!-- Master Header/Footer -->
 @extends('layouts.master')
@@ -42,23 +43,28 @@
             </h2>
             <!-- search (put this in different folder) -->
             <div class="text-center">
-              <select name="" id="" class="selectSearch mr-10">
+              <!-- Bring me All Professions -->
+              <select name="" id="Select_profession" class="selectSearch mr-10">
                 <option class="placeHolder" value="" disabled selected hidden
                   >Profession...</option
                 >
                 @foreach($dataprofession as $row)
-                <option value="">{{$row->libelle_P}}</option>
+                <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
                 @endforeach
               </select>
-              <select name="" id="" class="selectSearch mr-10">
+              <!-- Bring me All Cities -->
+              <select name="" id="Select_Ville" class="selectSearch mr-10">
                 <option value="" disabled selected hidden>Ville...</option>
-                <option value="">ville 1</option>
-                <option value="">ville 2</option>
+                @foreach($datacity as $row)
+                <option value="{{$row->lieu}}">{{$row->lieu}}</option>
+                @endforeach
               </select>
+              <!-- Search Button -->
               <input
                 type="submit"
                 value="Trouver"
                 class="findBtn fs-24 font-weight-bold"
+                id="btn_searchBrikoluer"
               />
             </div>
             <!-- end search -->

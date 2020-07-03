@@ -29,9 +29,10 @@ class HomeController extends Controller
         ->get();
 
         //all professions
-        $dataprofession = Profession::all();
-        return view('welcome',compact('data','dataprofession'));
-
+        $dataprofession = Profession::distinct()->get(['libelle_P']);
+        //Cities
+        $datacity = Brikoleur::distinct()->get(['lieu']);
+        return view('welcome',compact('data','dataprofession','datacity'));
 
         // return view('welcome',[
         //     'brikoleurs' => Brikoleur::all()
@@ -49,9 +50,17 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function Search($profession,$ville)
     {
-        //
+        $results = DB::table('brikoleurs')
+        ->where('brikoleurs.lieu','=',$ville)
+        ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
+        ->where('images.type','=','profile')
+        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->where('professions.libelle_P','=',$profession)
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference')
+        ->get();
+        return view('searchresults',compact('results','profession','ville'));
     }
 
 }
