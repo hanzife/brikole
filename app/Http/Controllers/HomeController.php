@@ -50,9 +50,17 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function Search($profession)
+    public function Search($profession,$ville)
     {
-        return view('searchresults');
+        $results = DB::table('brikoleurs')
+        ->where('brikoleurs.lieu','=',$ville)
+        ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
+        ->where('images.type','=','profile')
+        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->where('professions.libelle_P','=',$profession)
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference')
+        ->get();
+        return view('searchresults',compact('results','profession','ville'));
     }
 
 }

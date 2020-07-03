@@ -24,6 +24,6 @@ Route::get('/Search', function () {
   return view('searchresults');
      });
 
-Route::get('/Search/{profession}','HomeController@Search');    
+Route::get('/Search/{profession}/{ville}','HomeController@Search');    
 //Redirect To a Page if exsits
 //Route::get('/page','ControllerName@method');
