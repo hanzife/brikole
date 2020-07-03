@@ -18,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //rederect to home page
-Route::resource('/','HomeController')->only(['show','index']);
+Route::resource('/','HomeController')->only(['index']);
+//Search Result
+Route::get('/Search', function () {
+  return view('searchresults');
+     });
 
+Route::get('/Search/{profession}','HomeController@Search');    
 //Redirect To a Page if exsits
 //Route::get('/page','ControllerName@method');

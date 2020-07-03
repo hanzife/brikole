@@ -6,12 +6,14 @@
     <title>Document</title>
 
 </head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" /> -->
 <!-- <link ref="stylesheet" href="{{asset('css/bootstrap.min.css') }}"> -->
 <link rel="stylesheet" href="{{asset('css/navbar.css')}}" />
 <link rel="stylesheet" href="{{asset('css/footer.css')}}" />
 <link rel="stylesheet" href="{{asset('css/home.css')}}" />
+<link rel="stylesheet" href="{{asset('css/searchResult.css')}}" />
+
 
 
 <body class="container">
@@ -192,6 +194,7 @@
     crossorigin="anonymous"></script>
   <script src="{{asset('js/home.js')}}"></script>
   <script src="{{asset('js/navbar.js')}}"></script>
+  <script src="{{asset('js/searchResult.js')}}"></script>
 
 
 </body>

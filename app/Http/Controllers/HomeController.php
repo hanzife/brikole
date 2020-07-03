@@ -29,9 +29,10 @@ class HomeController extends Controller
         ->get();
 
         //all professions
-        $dataprofession = Profession::all();
-        return view('welcome',compact('data','dataprofession'));
-
+        $dataprofession = Profession::distinct()->get(['libelle_P']);
+        //Cities
+        $datacity = Brikoleur::distinct()->get(['lieu']);
+        return view('welcome',compact('data','dataprofession','datacity'));
 
         // return view('welcome',[
         //     'brikoleurs' => Brikoleur::all()
@@ -49,9 +50,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function Search($profession)
     {
-        //
+        return view('searchresults');
     }
 
 }
