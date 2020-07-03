@@ -68,7 +68,20 @@
 }
 
 //--------------------------------
-
+.sr-centerSearch {
+    display: flex;
+    justify-content: center;
+}
+.sr-search-fit {
+    width: fit-content;
+    //XS
+    @media (max-width: 575px) {
+        width: 320px;
+    }
+}
+.sr-searchbtn {
+    font-weight: bold;
+}
 .sr-all {
     display: flex;
     justify-content: space-between;
