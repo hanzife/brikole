@@ -49,8 +49,15 @@
                 <option class="placeHolder" value="" disabled selected hidden
                   >Profession...</option
                 >
-                @foreach($dataprofession as $row)
-                <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                <!-- Call Professions -->
+                @foreach($dataprofession as $row)                
+                <option name="profession" value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                <!-- call for sub professions -->
+                <!-- @foreach($suprofession as $res)
+                @if($row->id_profession == $res->id_profession)
+                <option name="sousprofession" value="{{$res->libelle_SP}}">{{$res->libelle_SP}}</option>
+                @endif
+                @endforeach -->
                 @endforeach
               </select>
               <!-- Bring me All Cities -->
