@@ -1,20 +1,71 @@
 <title>Search Result</title>
+
 <!-- Master Header/Footer -->
 @extends('layouts.master')
 
 @section('content')
-<div class="container-custom">
-            <!-- header -->
-        </div>
         <!-- main -->
         <div class="blank-50"></div>
 
         <!-- search -->
+        
+<div class="text-center container-custom">
+              <!-- Bring me All Professions -->
+              <!-- <select name="" id="Select_profession" class="selectSearch mr-10">
+                <option class="placeHolder" value="" disabled selected hidden
+                  >Profession...</option
+                >
+                @foreach($dataprofession as $row)
+                <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                @endforeach
+              </select>
+              <!-- Bring me All Cities -->
+              <!-- <select name="" id="Select_Ville" class="selectSearch mr-10">
+                <option value="" disabled selected hidden>Ville...</option>
+              </select> -->
+              <!-- Search Button -->
+              <!-- <input
+                type="submit"
+                value="Trouver"
+                class="findBtn fs-24 font-weight-bold"
+                id="btn_searchBrikoluer"
+              />
+            </div> -->
 
+
+            <div class="sr-centerSearch">
+            <div class="container-custom sr-search-fit">
+                <select name="" id="Select_profession" class="selectSearch mr-10">
+                    <option
+                        class="placeHolder"
+                        value=""
+                        disabled
+                        selected
+                        hidden
+                        >Profession...</option
+                    >
+                    @foreach($dataprofession as $row)
+                <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                @endforeach
+                </select>
+                <select name="" id="Select_Ville" class="selectSearch mr-10">
+                    <option value="" disabled selected hidden>Ville...</option>
+                    @foreach($datacity as $row)
+                <option value="{{$row->lieu}}">{{$row->lieu}}</option>
+                @endforeach
+                </select>
+                <input
+                    type="submit"
+                    value="Trouver"
+                    class="findBtn fs-24 sr-searchbtn"
+                    id="btn_searchBrikoluer"
+                />
+            </div>
+        </div>
         <!-- ------ -->
 
         <div class="blank-50"></div>
-        <div class="container-custom">
+        <div class="container-custom sr-links">
             <div class="sr-ProfessionVille sr-ProfessionVille-resp1">
             {{$profession}}, {{$ville}}
             </div>
@@ -99,13 +150,13 @@
                         <div class="sr-portfolio">
                             <div class="sr-portfolio-img">
                                 <a href=""
-                                    ><img src="images/testimg2.jpg" alt=""
+                                    ><img src="/images/testimg2.jpg" alt=""
                                 /></a>
                                 <a href=""
-                                    ><img src="images/bkX.png" alt=""
+                                    ><img src="/images/bkX.png" alt=""
                                 /></a>
                                 <a href=""
-                                    ><img src="images/testimg.jpg" alt=""
+                                    ><img src="/images/testimg.jpg" alt=""
                                 /></a>
                             </div>
                             <div class="sr-arrows-container">
@@ -191,12 +242,13 @@
                                             >
                                         </div>
                                         <div class="sr-SousProf-all">
+                                            @foreach($reslibelle_SP as $res)
+                                            @if($resultsrow->Id_brikoleur == $res->Id_brikoleur)                    
                                             <div class="sr-SousProf">
-                                                Sousprofession
+                                              {{$res->libelle_SP}}
                                             </div>
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
+                                            @endif
+                                           @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -204,10 +256,6 @@
                                     class="sr-SousProf-all sr-SousProf-all-resp"
                                 >
                                     <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                    <div class="sr-SousProf">
-                                        Sousprofession
                                     </div>
                                 </div>
                                 <div class="sr-description">
@@ -237,377 +285,7 @@
                     <div class="blank-15"></div>
                     <!-- ------------- -->
 
-                    <!-- Biokoleur profile -->
-                    <div class="sr-profile">
-                        <div class="sr-portfolio">
-                            <div class="sr-portfolio-img">
-                                <!-- <img src="images/testimg2.jpg" alt="" /> -->
-                                <img src="/images/bkX.png" alt="" />
-                                <img src="images/testimg.jpg" alt="" />
-                            </div>
-                            <div class="sr-arrows-container">
-                                <div class="sr-arrows">
-                                    <svg
-                                        class="sr-arrowLeft"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M18.707 8.29303C18.8945 8.48056 18.9998 8.73487 18.9998 9.00003C18.9998 9.26519 18.8945 9.5195 18.707 9.70703L15.414 13L18.707 16.293C18.8892 16.4816 18.99 16.7342 18.9877 16.9964C18.9854 17.2586 18.8803 17.5094 18.6948 17.6948C18.5094 17.8803 18.2586 17.9854 17.9964 17.9877C17.7342 17.99 17.4816 17.8892 17.293 17.707L13.293 13.707C13.1056 13.5195 13.0002 13.2652 13.0002 13C13.0002 12.7349 13.1056 12.4806 13.293 12.293L17.293 8.29303C17.4806 8.10556 17.7349 8.00024 18 8.00024C18.2652 8.00024 18.5195 8.10556 18.707 8.29303Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="sr-arrowRight"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M13.293 17.7069C13.1056 17.5194 13.0002 17.2651 13.0002 16.9999C13.0002 16.7348 13.1056 16.4804 13.293 16.2929L16.586 12.9999L13.293 9.70692C13.1109 9.51832 13.0101 9.26571 13.0124 9.00352C13.0146 8.74132 13.1198 8.49051 13.3052 8.3051C13.4906 8.11969 13.7414 8.01452 14.0036 8.01224C14.2658 8.00997 14.5184 8.11076 14.707 8.29292L18.707 12.2929C18.8945 12.4804 18.9998 12.7348 18.9998 12.9999C18.9998 13.2651 18.8945 13.5194 18.707 13.7069L14.707 17.7069C14.5195 17.8944 14.2652 17.9997 14 17.9997C13.7349 17.9997 13.4806 17.8944 13.293 17.7069Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sr-infos">
-                            <div class="sr-infos-sub">
-                                <div class="sr-imgName">
-                                    <div class="sr-profilePhoto">
-                                        <img src="images/bk1.png" alt="" />
-                                    </div>
-                                    <div class="sr-profileInfo">
-                                        <div class="sr-NomPRENOM">
-                                            Nom PRENOM Nom PRENOM Nom PRENOM
-                                        </div>
-                                        <div class="sr-SousProf-all">
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="sr-SousProf-all sr-SousProf-all-resp"
-                                >
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                </div>
-                                <div class="sr-description">
-                                    <div class="sr-desc">
-                                        Description Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Sed in quam
-                                        lacinia est, placerat pretium aliquam
-                                        sem. Mi a vitae cursus in in arcu.
-                                    </div>
-                                    <div class="sr-address">
-                                        <span class="fw-500">Adresse : </span>
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blank-15"></div>
-                    <div class="sr-profile">
-                        <div class="sr-portfolio">
-                            <div class="sr-portfolio-img">
-                                <!-- <img src="images/testimg2.jpg" alt="" /> -->
-                                <img src="images/bkX.png" alt="" />
-                                <img src="images/testimg.jpg" alt="" />
-                            </div>
-                            <div class="sr-arrows-container">
-                                <div class="sr-arrows">
-                                    <svg
-                                        class="sr-arrowLeft"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M18.707 8.29303C18.8945 8.48056 18.9998 8.73487 18.9998 9.00003C18.9998 9.26519 18.8945 9.5195 18.707 9.70703L15.414 13L18.707 16.293C18.8892 16.4816 18.99 16.7342 18.9877 16.9964C18.9854 17.2586 18.8803 17.5094 18.6948 17.6948C18.5094 17.8803 18.2586 17.9854 17.9964 17.9877C17.7342 17.99 17.4816 17.8892 17.293 17.707L13.293 13.707C13.1056 13.5195 13.0002 13.2652 13.0002 13C13.0002 12.7349 13.1056 12.4806 13.293 12.293L17.293 8.29303C17.4806 8.10556 17.7349 8.00024 18 8.00024C18.2652 8.00024 18.5195 8.10556 18.707 8.29303Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="sr-arrowRight"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M13.293 17.7069C13.1056 17.5194 13.0002 17.2651 13.0002 16.9999C13.0002 16.7348 13.1056 16.4804 13.293 16.2929L16.586 12.9999L13.293 9.70692C13.1109 9.51832 13.0101 9.26571 13.0124 9.00352C13.0146 8.74132 13.1198 8.49051 13.3052 8.3051C13.4906 8.11969 13.7414 8.01452 14.0036 8.01224C14.2658 8.00997 14.5184 8.11076 14.707 8.29292L18.707 12.2929C18.8945 12.4804 18.9998 12.7348 18.9998 12.9999C18.9998 13.2651 18.8945 13.5194 18.707 13.7069L14.707 17.7069C14.5195 17.8944 14.2652 17.9997 14 17.9997C13.7349 17.9997 13.4806 17.8944 13.293 17.7069Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sr-infos">
-                            <div class="sr-infos-sub">
-                                <div class="sr-imgName">
-                                    <div class="sr-profilePhoto">
-                                        <img src="images/bk1.png" alt="" />
-                                    </div>
-                                    <div class="sr-profileInfo">
-                                        <div class="sr-NomPRENOM">
-                                            Nom PRENOM Nom PRENOM Nom PRENOM
-                                        </div>
-                                        <div class="sr-SousProf-all">
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="sr-SousProf-all sr-SousProf-all-resp"
-                                >
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                </div>
-                                <div class="sr-description">
-                                    <div class="sr-desc">
-                                        Description Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Sed in quam
-                                        lacinia est, placerat pretium aliquam
-                                        sem. Mi a vitae cursus in in arcu.
-                                    </div>
-                                    <div class="sr-address">
-                                        <span class="fw-500">Adresse : </span>
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blank-15"></div>
-                    <div class="sr-profile">
-                        <div class="sr-portfolio">
-                            <div class="sr-portfolio-img">
-                                <!-- <img src="images/testimg2.jpg" alt="" /> -->
-                                <img src="images/bkX.png" alt="" />
-                                <img src="images/testimg.jpg" alt="" />
-                            </div>
-                            <div class="sr-arrows-container">
-                                <div class="sr-arrows">
-                                    <svg
-                                        class="sr-arrowLeft"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M18.707 8.29303C18.8945 8.48056 18.9998 8.73487 18.9998 9.00003C18.9998 9.26519 18.8945 9.5195 18.707 9.70703L15.414 13L18.707 16.293C18.8892 16.4816 18.99 16.7342 18.9877 16.9964C18.9854 17.2586 18.8803 17.5094 18.6948 17.6948C18.5094 17.8803 18.2586 17.9854 17.9964 17.9877C17.7342 17.99 17.4816 17.8892 17.293 17.707L13.293 13.707C13.1056 13.5195 13.0002 13.2652 13.0002 13C13.0002 12.7349 13.1056 12.4806 13.293 12.293L17.293 8.29303C17.4806 8.10556 17.7349 8.00024 18 8.00024C18.2652 8.00024 18.5195 8.10556 18.707 8.29303Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                    <svg
-                                        class="sr-arrowRight"
-                                        width="32"
-                                        height="26"
-                                        viewBox="0 0 32 26"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            fill="white"
-                                        />
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M13.293 17.7069C13.1056 17.5194 13.0002 17.2651 13.0002 16.9999C13.0002 16.7348 13.1056 16.4804 13.293 16.2929L16.586 12.9999L13.293 9.70692C13.1109 9.51832 13.0101 9.26571 13.0124 9.00352C13.0146 8.74132 13.1198 8.49051 13.3052 8.3051C13.4906 8.11969 13.7414 8.01452 14.0036 8.01224C14.2658 8.00997 14.5184 8.11076 14.707 8.29292L18.707 12.2929C18.8945 12.4804 18.9998 12.7348 18.9998 12.9999C18.9998 13.2651 18.8945 13.5194 18.707 13.7069L14.707 17.7069C14.5195 17.8944 14.2652 17.9997 14 17.9997C13.7349 17.9997 13.4806 17.8944 13.293 17.7069Z"
-                                            fill="#0D0C22"
-                                        />
-                                        <rect
-                                            x="0.5"
-                                            y="0.5"
-                                            width="31"
-                                            height="25"
-                                            rx="4.5"
-                                            stroke="#D2D6DB"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sr-infos">
-                            <div class="sr-infos-sub">
-                                <div class="sr-imgName">
-                                    <div class="sr-profilePhoto">
-                                        <img src="images/bk1.png" alt="" />
-                                    </div>
-                                    <div class="sr-profileInfo">
-                                        <div class="sr-NomPRENOM">
-                                            Nom PRENOM Nom PRENOM Nom PRENOM
-                                        </div>
-                                        <div class="sr-SousProf-all">
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                            <div class="sr-SousProf">
-                                                Sousprofession
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="sr-SousProf-all sr-SousProf-all-resp"
-                                >
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                    <div class="sr-SousProf">
-                                        Sousprofession
-                                    </div>
-                                </div>
-                                <div class="sr-description">
-                                    <div class="sr-desc">
-                                        Description Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Sed in quam
-                                        lacinia est, placerat pretium aliquam
-                                        sem. Mi a vitae cursus in in arcu.
-                                    </div>
-                                    <div class="sr-address">
-                                        <span class="fw-500">Adresse : </span>
-                                        <span>
-                                            Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="blank-15"></div>
-
+                    
                     <!-- ads -->
                     <div class="sr-ad1"></div>
                     <!-- --- -->
@@ -652,14 +330,14 @@
                             <a href="">
                                 <img
                                     class="sr-AgencyImgBg"
-                                    src="images/testimg.jpg"
+                                    src="/images/testimg.jpg"
                                     alt="Agency name"
                                 />
                             </a>
                             <div class="sr-AgencyDetails">
                                 <img
                                     class="sr-AgencyImgSm"
-                                    src="images/testimg2.jpg"
+                                    src="/images/testimg2.jpg"
                                     alt=""
                                 />
                                 <div class="sr-AgencyDetailsSub">
@@ -679,13 +357,13 @@
                         <div class="sr-Agency">
                             <img
                                 class="sr-AgencyImgBg"
-                                src="images/testimg.jpg"
+                                src="/images/testimg.jpg"
                                 alt="Agency name"
                             />
                             <div class="sr-AgencyDetails">
                                 <img
                                     class="sr-AgencyImgSm"
-                                    src="images/testimg2.jpg"
+                                    src="/images/testimg2.jpg"
                                     alt=""
                                 />
                                 <div class="sr-AgencyDetailsSub">
@@ -702,13 +380,13 @@
                         <div class="sr-Agency">
                             <img
                                 class="sr-AgencyImgBg"
-                                src="images/testimg.jpg"
+                                src="/images/testimg.jpg"
                                 alt="Agency name"
                             />
                             <div class="sr-AgencyDetails">
                                 <img
                                     class="sr-AgencyImgSm"
-                                    src="images/testimg2.jpg"
+                                    src="/images/testimg2.jpg"
                                     alt=""
                                 />
                                 <div class="sr-AgencyDetailsSub">
@@ -725,13 +403,13 @@
                         <div class="sr-Agency">
                             <img
                                 class="sr-AgencyImgBg"
-                                src="images/testimg.jpg"
+                                src="/images/testimg.jpg"
                                 alt="Agency name"
                             />
                             <div class="sr-AgencyDetails">
                                 <img
                                     class="sr-AgencyImgSm"
-                                    src="images/testimg2.jpg"
+                                    src="/images/testimg2.jpg"
                                     alt=""
                                 />
                                 <div class="sr-AgencyDetailsSub">

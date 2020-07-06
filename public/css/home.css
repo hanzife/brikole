@@ -295,7 +295,7 @@ h1 {
   border: none;
   color: #723b14;
   background-color: #ffc000;
-  background-image: url("..//images/icons/searchIcon.svg");
+  background-image: url("/images/icons/searchIcon.svg");
   background-repeat: no-repeat;
   background-position: 142px center;
   text-align: start;

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Brikoleur;
 use App\Image;
 use App\Profession;
+use App\SousProfession;
+use App\SpBrikoluer;
+
 use DB;
 class HomeController extends Controller
 {
@@ -52,15 +55,36 @@ class HomeController extends Controller
      */
     public function Search($profession,$ville)
     {
+        $dataprofession = Profession::distinct()->get(['libelle_P']);
+        //Cities
+        $datacity = Brikoleur::distinct()->get(['lieu']);
         $results = DB::table('brikoleurs')
         ->where('brikoleurs.lieu','=',$ville)
         ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
         ->where('images.type','=','profile')
         ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
         ->where('professions.libelle_P','=',$profession)
-        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference')
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference','brikoleurs.Id_brikoleur')
         ->get();
-        return view('searchresults',compact('results','profession','ville'));
+        //All SubProfessions
+        $reslibelle_SP = DB::table('brikoleurs')
+        ->where('brikoleurs.lieu','=',$ville)
+        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->where('professions.libelle_P','=',$profession)
+        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','brikoleurs.id_Brikoleur')
+        ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+        ->select('sous_professions.libelle_SP','sp_brikoluers.Id_brikoleur')
+        ->distinct()
+        ->get();
+
+        // $dataImages = DB::table('images')
+        // ->where('images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
+        // ->where('images.type','=','Portfolio')
+        // ->select('images.reference')
+        // ->get();
+
+        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP'));
+
     }
 
 }

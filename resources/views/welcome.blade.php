@@ -6,6 +6,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="container">
 <div class="blank-51"></div>
     <!-- top section -->
     <div class="d-flex justify-content-center topSection-ctnr">
@@ -478,6 +479,5 @@
     <!-- end bottom section -->
     <div class="blank-51"></div>
 
-    
-
+</div>
 @endsection

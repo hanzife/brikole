@@ -57,8 +57,6 @@ $(".sr-arrowRight").click((e) => {
 //SEARCH BRIKOLUERS
 $('#btn_searchBrikoluer').on("click", function () {
     var profession = document.getElementById("Select_profession").value;
-    var ville = document.getElementById("Select_Ville").value
-    $.ajax({
-        url: window.location.href = "Search/" + profession + "/" + ville
-    });
+    var ville = document.getElementById("Select_Ville").value;
+    window.location.href = "Search/" + profession + "/" + ville
 });
