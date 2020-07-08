@@ -18,6 +18,8 @@ class HomeController extends Controller
     public function index()
     {
         // dd(\App\Brikoleur::all());
+        //count Brikoluers
+        $brikoluerCount = DB::table('brikoleurs')->count('brikoleurs.Id_brikoleur');
         //Show me All Brikoluers with their rrofile img 
         $data = DB::table('brikoleurs')
         ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
@@ -40,7 +42,7 @@ class HomeController extends Controller
         ->distinct()
         ->get();
         //Redirect to View welcome.php
-        return view('welcome',compact('data','dataprofession','datacity','suprofession'));
+        return view('welcome',compact('data','dataprofession','datacity','suprofession','brikoluerCount'));
         // return view('welcome',[
         //     'brikoleurs' => Brikoleur::all()
         //     // 'images' => Image::all()            
@@ -79,14 +81,17 @@ class HomeController extends Controller
         ->select('sous_professions.libelle_SP','sp_brikoluers.Id_brikoleur')
         ->distinct()
         ->get();
-        //
-        // $dataImages = DB::table('images')
-        // ->where('images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
-        // ->where('images.type','=','Portfolio')
-        // ->select('images.reference')
-        // ->get();
-        //
+        //Brikoluer Images
+        $dataimages = DB::table('images')
+        ->join('brikoleurs','images.id_brikoleur','=','brikoleurs.id_brikoleur')
+        ->where('images.type','=','Portfolio')
+        ->select('images.reference','images.id_brikoleur')
+        ->inRandomOrder()
+        // ->limit(3)
+        ->get();
+        //Count the rows retrieved
+        $resCount = count($results);
         //Redirect to a View searchresults.php
-        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP'));
+        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount'));
     }
 }

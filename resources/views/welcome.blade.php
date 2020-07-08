@@ -129,7 +129,7 @@
             <div class="d-flex align-items-center mr-20">
               <div class="d-flex align-items-center stats fw-500 mr-10">
                 <div class="dot rounded-circle"></div>
-                <div>5384</div>
+                <div>{{$brikoluerCount}}</div>
               </div>
               <div class="fs-20 color-grey-dark fw-500">Brikoleurs</div>
             </div>

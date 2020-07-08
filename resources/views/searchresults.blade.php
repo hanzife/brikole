@@ -74,7 +74,7 @@
                     <!-- found results -->
                     <div class="sr-foundResNum">
                         <div class="sr-Resultatstrouves">
-                            <b>34</b> Résultats trouvés
+                            <b>{{$resCount}}</b> Résultats trouvés
                         </div>
                         <div class="sr-seperator"></div>
                         <div class="sr-dFlex">
@@ -149,15 +149,13 @@
                     <div class="sr-profile">
                         <div class="sr-portfolio">
                             <div class="sr-portfolio-img">
-                                <a href=""
-                                    ><img src="/images/testimg2.jpg" alt=""
-                                /></a>
-                                <a href=""
-                                    ><img src="/images/bkX.png" alt=""
-                                /></a>
-                                <a href=""
-                                    ><img src="/images/testimg.jpg" alt=""
-                                /></a>
+                                @foreach($dataimages as $rowimg)
+                                @if($rowimg->id_brikoleur == $resultsrow->Id_brikoleur)
+                                <!-- <a href=""><img src="/images/testimg2.jpg" alt=""/></a> -->
+                                <!-- <a href=""><img src="/images/Uploads/Portfolio/bk2.png" alt=""/></a> -->
+                                <a href=""><img src="/images/Uploads/Portfolio/{{$rowimg->reference}}" alt="profile"/></a>
+                                @endif
+                                @endforeach
                             </div>
                             <div class="sr-arrows-container">
                                 <div class="sr-arrows">
@@ -227,9 +225,7 @@
                             </div>
                         </div>
                         <!-- Prifile Infos --> 
-                        
                         <div class="sr-infos">
-                           
                             <div class="sr-infos-sub">
                                 <div class="sr-imgName">
                                     <div class="sr-profilePhoto">
