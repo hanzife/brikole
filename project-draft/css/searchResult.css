@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  margin: 0;
+}
+
 * {
   font-family: "Roboto" !important;
 }
@@ -474,6 +478,7 @@ a:active {
   background-color: #fdf6b2;
   border-radius: 10px;
   margin-right: 5px;
+  white-space: nowrap;
 }
 @media (min-width: 575px) {
   .sr-profile .sr-SousProf-all-resp {
