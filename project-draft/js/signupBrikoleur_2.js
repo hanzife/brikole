@@ -130,6 +130,53 @@ function initializeVar() {
 
 //---------------------------
 
+//SEARCH
+
+function filterCardsInside(cardClass, searchId) {
+    $("." + cardClass)
+        .toArray()
+        .forEach((card) => {
+            if (
+                $(card)
+                    .contents()
+                    .text()
+                    .trim()
+                    .toUpperCase()
+                    .includes(
+                        $("#" + searchId)
+                            .val()
+                            .toUpperCase()
+                    )
+            ) {
+                $(card).css("display", "flex");
+            } else $(card).css("display", "none");
+        });
+}
+
+//filter profession cards
+
+function filterCards() {
+    $("#sb2-search").keyup(() => {
+        filterCardsInside("sb2-profession-card", "sb2-search");
+    });
+    if ($("#sb2-search").val()) {
+        filterCardsInside("sb2-profession-card", "sb2-search");
+    }
+}
+
+//filter sub profession cards
+
+function filterCardsSub() {
+    $("#sb3-search").keyup(() => {
+        filterCardsInside("sb3-profession-card", "sb3-search");
+    });
+    if ($("#sb3-search").val()) {
+        filterCardsInside("sb3-profession-card", "sb3-search");
+    }
+}
+
+//---------------------------
+
 //ADD HTML OF CARD
 function singleCard(selector, index, newClass, profession) {
     $("." + selector + ":eq(" + index + ")").append(`<div class="${newClass}">
@@ -237,6 +284,7 @@ function addProfessionCard() {
         listProfessions
     );
     greenOnClick();
+    filterCards();
 }
 
 //ADD SUB PROFESSION CARDS
@@ -249,6 +297,7 @@ function addSubProfessionCard() {
         listSubProfessions
     );
     greenListOnClick();
+    filterCardsSub();
 }
 
 addProfessionCard();
