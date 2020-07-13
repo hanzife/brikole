@@ -6,6 +6,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="container">
 <div class="blank-51"></div>
     <!-- top section -->
     <div class="d-flex justify-content-center topSection-ctnr">
@@ -48,8 +49,15 @@
                 <option class="placeHolder" value="" disabled selected hidden
                   >Profession...</option
                 >
-                @foreach($dataprofession as $row)
-                <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                <!-- Call Professions -->
+                @foreach($dataprofession as $row)                
+                <option name="profession" value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
+                <!-- call for sub professions -->
+                <!-- @foreach($suprofession as $res)
+                @if($row->id_profession == $res->id_profession)
+                <option name="sousprofession" value="{{$res->libelle_SP}}">{{$res->libelle_SP}}</option>
+                @endif
+                @endforeach -->
                 @endforeach
               </select>
               <!-- Bring me All Cities -->
@@ -121,7 +129,7 @@
             <div class="d-flex align-items-center mr-20">
               <div class="d-flex align-items-center stats fw-500 mr-10">
                 <div class="dot rounded-circle"></div>
-                <div>5384</div>
+                <div>{{$brikoluerCount}}</div>
               </div>
               <div class="fs-20 color-grey-dark fw-500">Brikoleurs</div>
             </div>
@@ -478,6 +486,5 @@
     <!-- end bottom section -->
     <div class="blank-51"></div>
 
-    
-
+</div>
 @endsection
