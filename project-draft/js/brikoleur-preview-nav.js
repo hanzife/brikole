@@ -4,9 +4,9 @@ let btn_right = document.getElementById('b-m-bot-portfolio-preview-nav-btn-right
 const imgsBlock = document.getElementsByClassName('b-m-bot-portfolio-catalogue-img');
 // NAV BUTTONS
 if (btn_left && btn_right) {
-    btn_left.onclick = portfolio_nav('l');
+    btn_left.onclick = () => portfolio_nav('l');
     // 
-    btn_right.onclick = portfolio_nav('r');
+    btn_right.onclick = () => portfolio_nav('r');
 }
 // NAV USING THE CATALOGUE
 Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
@@ -31,9 +31,37 @@ Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
         }
     });
 });
-// 
-function portfolio_nav(direction) {
+//  
 
+function portfolio_nav(direction) {
+    const preview_imgs = document.getElementsByClassName('b-m-bot-portfolio-preview-img');
+    let selected_img_pos = -1;
+    Array.from(imgsBlock).forEach((block, i) => {
+        if (block.classList[1].split('-').includes('active'))
+            selected_img_pos = i;
+    });
+    // 
+
+    if (selected_img_pos > -1) {
+        let target_pos = 0;
+        if (direction == 'l') {
+            if (selected_img_pos <= 0)
+                target_pos = preview_imgs.length - 1;
+            else
+                target_pos = selected_img_pos - 1;
+        } else {
+            if (selected_img_pos >= preview_imgs.length - 1)
+                target_pos = 0;
+            else
+                target_pos = selected_img_pos + 1;
+        }
+        // 
+        nav_goto(target_pos);
+        setTimeout(() => {
+            img_class_switcher(imgsBlock[selected_img_pos]);
+            img_class_switcher(imgsBlock[target_pos]);
+        }, 150);
+    }
 }
 // 
 function nav_goto(pos) {
