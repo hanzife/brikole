@@ -132,7 +132,7 @@ function initializeVar() {
 
 //---------------------------
 
-//SEARCH
+//SEARCH/FILTER
 
 function filterCardsInside(cardClass, searchId) {
     $("." + cardClass)

@@ -101,6 +101,7 @@
     }
 }
 .sb1-form {
+    position: relative;
     width: 450px;
     //XS
     @media (max-width: 575px) {
@@ -210,6 +211,9 @@
             background-color: colors.$grey-100;
         }
         .sb1-continue {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 256px;
             height: 57px;
             font-weight: bold;
@@ -223,6 +227,10 @@
             border-radius: 10px;
             background-color: colors.$accent;
             cursor: pointer;
+
+            svg {
+                margin-left: 6px;
+            }
 
             @media (max-width: 575px) {
                 width: 320px;
@@ -269,7 +277,42 @@
 
 // ------------------------
 
-#sc-continue {
+//SELECT CITY
+
+.sb1-cities-list {
+    border: 1px solid colors.$grey-400;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px 0;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    display: none;
+
+    .sb1-city-select {
+        padding: 4px 5px;
+        height: 24px;
+        font-size: 14px;
+        line-height: 16px;
+        color: colors.$grey-600;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .sb1-city-select:hover {
+        background-color: colors.$grey-100;
+    }
+    .sb1-city-select:focus {
+        outline: none !important;
+        background-color: colors.$grey-100;
+    }
+}
+.sc-cities-list {
+    @extend .sb1-cities-list;
+    .sc-city-select {
+        @extend .sb1-city-select;
+    }
 }
 
 //ERROR
