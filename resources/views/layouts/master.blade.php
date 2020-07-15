@@ -32,7 +32,7 @@
                 <div class="nv-main_menu">
                     <a class="nv-menuItem" href="{{url('/')}}">Accueil</a>
                     <a class="nv-menuItem" href="#">Comment ça marche</a>
-                    <a class="nv-menuItem" href="#">S’identifier</a>
+                    <a class="nv-menuItem" href="{{url('/signup')}}">S’identifier</a>
                     <div class="nv-separator"></div>
                     <a class="nv-signUpButton" href="#">
                         <input
@@ -68,7 +68,7 @@
                     <a class="nv-menuItem-xs" href="{{url('/')}}">Accueil</a>
                     <a class="nv-menuItem-xs" href="#">Comment ça marche</a>
                     <div class="nv-separator-xs"></div>
-                    <a class="nv-menuItem-xs" href="#">S’identifier</a>
+                    <a class="nv-menuItem-xs" href="{{url('/signup')}}">S’identifier</a>
                 </div>
             </div>
         </div>

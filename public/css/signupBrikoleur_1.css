@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
+.container {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Roboto" !important;
+}
+
+.container-custom {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  .container-custom {
+    width: 1140px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container-custom {
+    width: 960px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-custom {
+    width: 720px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .container-custom {
+    width: 540px;
+  }
+}
+@media (max-width: 575px) {
+  .container-custom {
+    width: 320px;
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.sb1-blank-53 {
+  min-width: 53px;
+}
+@media (max-width: 575px) {
+  .sb1-blank-53 {
+    min-width: 11px;
+  }
+}
+
+.sb1-blank-51 {
+  height: 51px;
+}
+@media (max-width: 575px) {
+  .sb1-blank-51 {
+    height: 50px;
+  }
+}
+
+.sb1-blank-50 {
+  height: 50px;
+}
+
+.sb1-blank-20 {
+  height: 20px;
+}
+
+@media (max-width: 575px) {
+  .sb1-blank-20-resp {
+    height: 15px;
+  }
+}
+
+.sb1-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sb1-sub-container {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+@media (max-width: 575px) {
+  .sb1-sub-container {
+    max-width: 320px;
+  }
+}
+
+.sb1-title {
+  font-weight: bold;
+  font-size: 29px;
+  letter-spacing: 0.02em;
+  line-height: 34px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  color: #0d0c22;
+}
+@media (max-width: 575px) {
+  .sb1-title {
+    font-size: 20px;
+    line-height: 23px;
+  }
+}
+
+.sb1-accountType {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sb1-accountType-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #585863;
+  cursor: pointer;
+}
+.sb1-accountType-item svg {
+  margin-bottom: 3px;
+}
+.sb1-accountType-item div {
+  max-width: 77px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.sb1-accountType-item-active {
+  color: #0d0c22 !important;
+}
+.sb1-accountType-item-active svg circle {
+  fill: #fdf6b2;
+}
+.sb1-accountType-item-active svg path {
+  fill: #723b14;
+}
+
+.sb1-form {
+  width: 450px;
+}
+@media (max-width: 575px) {
+  .sb1-form {
+    width: 320px;
+  }
+}
+.sb1-form label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  color: #0d0c22;
+  margin-bottom: 20px;
+}
+.sb1-form input,
+.sb1-form select {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d2d6db;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-top: 5px;
+}
+.sb1-form input:focus,
+.sb1-form select:focus {
+  outline: none !important;
+  border: 1px solid #676878;
+  box-shadow: 0 0 0 2px #d2d6db;
+}
+.sb1-form .sb1-phone-gender {
+  display: flex;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-phone-gender {
+    flex-direction: column;
+  }
+}
+.sb1-form .sb1-phone-gender input {
+  width: 220px;
+  margin-right: 10px;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-phone-gender input {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.sb1-form .sb1-phone-gender select {
+  width: 220px;
+  color: #585863;
+  font-size: 16px;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  padding-left: 10px;
+  background-image: url("../images/icons/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: 195px center;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-phone-gender select {
+    width: 100%;
+    background-position: 295px center;
+  }
+}
+.sb1-form .sb1-phone-gender select option {
+  font-style: normal;
+  color: #0d0c22;
+}
+.sb1-form .sb1-submit {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-submit {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+}
+.sb1-form .sb1-submit .sb1-cancel {
+  width: 176px;
+  height: 57px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #676878;
+  border: none;
+  border-radius: 10px;
+  background-color: #f7f7f8;
+  cursor: pointer;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-submit .sb1-cancel {
+    margin-top: 18px;
+    width: 320px;
+  }
+}
+.sb1-form .sb1-submit .sb1-cancel:hover {
+  background-color: #fafafb;
+}
+.sb1-form .sb1-submit .sb1-cancel:focus {
+  outline: none !important;
+  border: 1px solid #d2d6db;
+  box-shadow: 0 0 0 3px #f1f1f2;
+  background-color: #f7f7f8;
+}
+.sb1-form .sb1-submit .sb1-continue {
+  width: 256px;
+  height: 57px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: white;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffc000;
+  cursor: pointer;
+}
+@media (max-width: 575px) {
+  .sb1-form .sb1-submit .sb1-continue {
+    width: 320px;
+  }
+}
+.sb1-form .sb1-submit .sb1-continue:hover {
+  background-color: #ffce3a;
+}
+.sb1-form .sb1-submit .sb1-continue:focus {
+  background-color: #ffc000;
+  outline: none !important;
+  border: 1px solid #ecb40a;
+  box-shadow: 0 0 0 3px #fdf6b2;
+}
+
+.sp1-fancySeperator {
+  width: 450px;
+  height: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-image: url("../images/icons/seperator-fancy.svg");
+  background-position: center center;
+}
+@media (max-width: 575px) {
+  .sp1-fancySeperator {
+    width: 320px;
+  }
+}
+
+.sp1-cpmtExist {
+  font-size: 16px;
+  line-height: 19px;
+  color: #676878;
+}
+.sp1-cpmtExist a {
+  color: #ffc000;
+  font-weight: 500;
+}
+.sp1-cpmtExist a:link {
+  text-decoration: underline;
+}
+@media (max-width: 575px) {
+  .sp1-cpmtExist {
+    font-size: 14px;
+  }
+}
+
+.sb1-error {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 5px;
+  color: #d74949;
+}
+
+.sb1-error-border {
+  border: 1px solid #ff6868 !important;
+  box-shadow: 0 0 0 2px #ffb1b1 !important;
+}
+
+.sb1-error-border:focus {
+  border: 1px solid #ff6868 !important;
+  box-shadow: 0 0 0 2px #ffb1b1 !important;
+}
+
+/*# sourceMappingURL=signupBrikoleur_1.css.map */

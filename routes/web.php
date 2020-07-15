@@ -13,17 +13,43 @@ use Illuminate\Support\Facades\Route;
 |
 // */
 
+
+//Rederect to home page
+Route::resource('/','HomeController')->only(['index']);
+
+//Search Result
+Route::get('/Search/{profession}/{ville}','HomeController@Search');  
+
+//Signup Brikoleur 
+Route::get('/signup', function () {
+      return view('Auth.signupBrikoleur_1');
+});
+  
+
+
+
+  // //Search Result
+// Route::get('/Search', function () {
+//   return view('searchresults');
+//      });
+
+//signup Step 2 - Professions   
+// Route::get('/signupstep2','SignupBrikoluer@getProfessions');
+// Route::get('/signupstep2','SignupBrikoluer@index');
+
+
+//Signup Brikoleur_2 for spus-profession
+// Route::get('/signupstep2', function () {
+//   return view('signupBrikoleur_2');
+// });
+// Route::get('/signupstep2','SignupBrikoluer@index');
+// Route::get('/signupstep2/{id}','SignupBrikoluer@getProfessions');
+
+
+//Redirect To a Page if exsits
+//Route::get('/page','ControllerName@method');
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-//rederect to home page
-Route::resource('/','HomeController')->only(['index']);
-//Search Result
-Route::get('/Search', function () {
-  return view('searchresults');
-     });
-
-Route::get('/Search/{profession}/{ville}','HomeController@Search');    
-//Redirect To a Page if exsits
-//Route::get('/page','ControllerName@method');

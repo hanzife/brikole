@@ -38,18 +38,18 @@
                 <select name="" id="Select_profession" class="selectSearch mr-10">
                     <option
                         class="placeHolder"
-                        value=""
+                        value="{{$profession}}"
                         disabled
                         selected
                         hidden
-                        >Profession...</option
+                        > {{$profession}}</option
                     >
                     @foreach($dataprofession as $row)
                 <option value="{{$row->libelle_P}}">{{$row->libelle_P}}</option>
                 @endforeach
                 </select>
                 <select name="" id="Select_Ville" class="selectSearch mr-10">
-                    <option value="" disabled selected hidden>Ville...</option>
+                    <option value="{{$ville}}" disabled selected hidden>{{$ville}}</option>
                     @foreach($datacity as $row)
                 <option value="{{$row->lieu}}">{{$row->lieu}}</option>
                 @endforeach
@@ -150,12 +150,13 @@
                         <div class="sr-portfolio">
                             <div class="sr-portfolio-img">
                                 @foreach($dataimages as $rowimg)
-                                @if($rowimg->id_brikoleur == $resultsrow->Id_brikoleur)
-                                <!-- <a href=""><img src="/images/testimg2.jpg" alt=""/></a> -->
-                                <!-- <a href=""><img src="/images/Uploads/Portfolio/bk2.png" alt=""/></a> -->
-                                <a href=""><img src="/images/Uploads/Portfolio/{{$rowimg->reference}}" alt="profile"/></a>
+                                @if($resultsrow->Id_brikoleur == $rowimg->id_brikoleur)
+                                <a href=""><img src="/images/Uploads/Portfolio/{{$rowimg->reference}}" alt="Portfolio"/></a>
+                                @else
+                                <!-- <a href=""><img src="/images/bkX.png" alt=""/></a>  -->
                                 @endif
                                 @endforeach
+                                <a href=""><img src="/images/bkX.png" alt=""/></a>
                             </div>
                             <div class="sr-arrows-container">
                                 <div class="sr-arrows">

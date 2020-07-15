@@ -57,6 +57,7 @@ $(".sr-arrowRight").click((e) => {
 $('#btn_searchBrikoluer').on("click", function () {
     var profession = document.getElementById("Select_profession").value;
     // var sousprofession = document.getElementsByName().value;
+
     var ville = document.getElementById("Select_Ville").value;
     window.location.href = "../../Search/" + profession + "/" + ville
 });

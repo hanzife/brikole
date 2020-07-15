@@ -70,6 +70,8 @@ class HomeController extends Controller
         ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
         ->where('professions.libelle_P','=',$profession)
         ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference','brikoleurs.Id_brikoleur')
+        ->inRandomOrder()
+        ->limit(10)
         ->get();
         //All SubProfessions
         $reslibelle_SP = DB::table('brikoleurs')
