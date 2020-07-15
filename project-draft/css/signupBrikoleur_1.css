@@ -160,6 +160,7 @@ a:active {
 }
 
 .sb1-form {
+  position: relative;
   width: 450px;
 }
 @media (max-width: 575px) {
@@ -275,6 +276,9 @@ a:active {
   background-color: #f7f7f8;
 }
 .sb1-form .sb1-submit .sb1-continue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 256px;
   height: 57px;
   font-weight: bold;
@@ -287,6 +291,9 @@ a:active {
   border-radius: 10px;
   background-color: #ffc000;
   cursor: pointer;
+}
+.sb1-form .sb1-submit .sb1-continue svg {
+  margin-left: 6px;
 }
 @media (max-width: 575px) {
   .sb1-form .sb1-submit .sb1-continue {
@@ -333,6 +340,35 @@ a:active {
   .sp1-cpmtExist {
     font-size: 14px;
   }
+}
+
+.sb1-cities-list, .sc-cities-list {
+  border: 1px solid #d2d6db;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px 0;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  display: none;
+}
+.sb1-cities-list .sb1-city-select, .sc-cities-list .sb1-city-select, .sc-cities-list .sc-city-select {
+  padding: 4px 5px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #585863;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.sb1-cities-list .sb1-city-select:hover, .sc-cities-list .sb1-city-select:hover, .sc-cities-list .sc-city-select:hover {
+  background-color: #f7f7f8;
+}
+.sb1-cities-list .sb1-city-select:focus, .sc-cities-list .sb1-city-select:focus, .sc-cities-list .sc-city-select:focus {
+  outline: none !important;
+  background-color: #f7f7f8;
 }
 
 .sb1-error {
