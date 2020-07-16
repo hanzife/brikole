@@ -20,19 +20,7 @@ Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
             })[0];
             // 
             if (selected_block) {
-                // setTimeout(() => {
-                // Remove class from the active img
-                // img_class_switcher(selected_block);
-                // 
-                // Add class to the clicked img
-                // img_class_switcher(imgBlock);
-                // 
-
-                // }, 150);
-                // 
                 nav_goto(imgPos);
-                // last_dot_scroll_pos = imgPos;
-                // update_nav(imgPos);
             }
         }
     });
