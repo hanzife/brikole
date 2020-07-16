@@ -20,17 +20,19 @@ Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
             })[0];
             // 
             if (selected_block) {
-                setTimeout(() => {
-                    // Remove class from the active img
-                    img_class_switcher(selected_block);
-                    // 
-                    // Add class to the clicked img
-                    img_class_switcher(imgBlock);
-                    // 
-                    last_dot_scroll_pos = imgPos;
-                }, 150);
+                // setTimeout(() => {
+                // Remove class from the active img
+                // img_class_switcher(selected_block);
+                // 
+                // Add class to the clicked img
+                // img_class_switcher(imgBlock);
+                // 
+
+                // }, 150);
                 // 
                 nav_goto(imgPos);
+                // last_dot_scroll_pos = imgPos;
+                // update_nav(imgPos);
             }
         }
     });
@@ -39,19 +41,27 @@ Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
     make_dot(imgPos);
 });
 // Listen for scroll event
+var nav_timout = null;
 let last_dot_scroll_pos = 0;
 document.getElementById('b-m-bot-portfolio-preview-imgs-cont').addEventListener('scroll', (e) => {
-    let scrollData = {
-        value: e.target.scrollLeft / e.target.scrollWidth,
-        coefficient: 1 / imgsBlock.length,
-    }
-    let scroll_img_pos = Math.round(scrollData.value / scrollData.coefficient);
-    if (last_dot_scroll_pos != scroll_img_pos) {
-        img_class_switcher(imgsBlock[scroll_img_pos]);
-        img_class_switcher(imgsBlock[last_dot_scroll_pos]);
-        last_dot_scroll_pos = scroll_img_pos;
-        update_nav(scroll_img_pos);
-    }
+    if (nav_timout != null)
+        clearTimeout(nav_timout);
+    // 
+    nav_timout = setTimeout(() => {
+        let scrollData = {
+            value: e.target.scrollLeft / e.target.scrollWidth,
+            coefficient: 1 / imgsBlock.length,
+        }
+        let scroll_img_pos = Math.round(scrollData.value / scrollData.coefficient);
+        // 
+        if (last_dot_scroll_pos != scroll_img_pos) {
+            img_class_switcher(imgsBlock[scroll_img_pos]);
+            img_class_switcher(imgsBlock[last_dot_scroll_pos]);
+            last_dot_scroll_pos = scroll_img_pos;
+            update_nav(scroll_img_pos);
+        }
+
+    }, 50);
 });
 //  
 
@@ -79,11 +89,6 @@ function portfolio_nav(direction) {
         }
         // 
         nav_goto(target_pos);
-        setTimeout(() => {
-            img_class_switcher(imgsBlock[selected_img_pos]);
-            img_class_switcher(imgsBlock[target_pos]);
-            last_dot_scroll_pos = target_pos;
-        }, 150);
     }
 }
 // 
@@ -92,8 +97,6 @@ function nav_goto(pos) {
     // 
     const imgWidth = preview_img.scrollWidth;
     document.getElementById('b-m-bot-portfolio-preview-imgs-cont').scrollTo(parseInt(imgWidth * pos), 0);
-    // update nav dots
-    update_nav(pos);
 }
 // 
 function img_class_switcher(element) {
