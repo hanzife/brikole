@@ -28,6 +28,11 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
+    position: relative;
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        // width: 555px;
+    }
 
     // Image
     .b-m-top-profile {
@@ -126,6 +131,10 @@
                 font-size: 18px;
                 text-align: center;
                 color: colors.$grey-500;
+
+                @media (min-width: 576px) and (max-width: 767px) {
+                    width: 502px;
+                }
             }
         }
 
@@ -141,6 +150,7 @@
                 flex-direction: row;
                 align-items: center;
                 margin-right: 10px;
+                flex: none;
 
                 svg {
                     margin-right: 5px;
@@ -181,6 +191,95 @@
                 font-weight: normal;
                 font-size: 18px;
                 color: colors.$grey-500;
+            }
+        }
+    }
+
+    // 
+    .b-m-top-options {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        // 
+        &>* {
+            @include spacing-R(10px);
+
+            @media (min-width: 576px) and (max-width: 767px) {
+                margin-right: 0 !important;
+                @include spacing-B(10px);
+            }
+        }
+
+        // 
+        .b-m-top-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            // justify-content: center;
+            background-color: colors.$grey-100;
+            cursor: pointer;
+            transition: width 250ms ease-in;
+            padding: 8px;
+            box-sizing: border-box;
+
+
+            span {
+                display: none;
+                word-break: break-all;
+                white-space: nowrap;
+                margin-left: 10px;
+                width: 0;
+                overflow: hidden;
+                // 
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                color: colors.$grey-500
+            }
+
+            &:hover {
+                width: 210px;
+
+                &:after {
+                    // right: unset;
+                    // left: 0;
+                }
+
+                span {
+                    display: block;
+                    width: unset;
+                }
+            }
+        }
+
+        .b-m-top-option-active {
+            background-color: colors.$accent-100;
+            position: relative;
+
+            &::after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                border-radius: 9999px;
+                background-color: colors.$red;
+                top: 0;
+                right: 0;
+            }
+
+            span {
+                color: colors.$accent;
             }
         }
     }
@@ -228,12 +327,23 @@
 
     // 
     .b-m-bot-portfolio {
-        padding: 10px;
+        padding: 10px 0;
         box-sizing: border-box;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            width: 625px;
+            // width: ;
+            // padding: 0 65px;
+            // box-sizing: border-box;
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            width: 540px;
+        }
 
         .b-m-bot-portfolio-cont {
             width: 730px;
@@ -242,6 +352,22 @@
             flex-direction: row;
             align-items: flex-start;
 
+            @media (min-width: 0px) and (max-width: 991px) {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+                height: 550px;
+                // flex-direction: column;
+                // align-items: center;
+            }
+
+            @media (min-width: 576px) and (max-width: 767px) {
+                // width: ;
+                height: 430px;
+            }
+
             &>* {
                 flex: none;
             }
@@ -249,26 +375,44 @@
             .b-m-bot-portfolio-preview {
                 width: 625px;
                 height: 100%;
-                background: red;
                 border-radius: 10px;
                 overflow: hidden;
                 margin-right: 10px;
                 position: relative;
+                overflow: hidden;
+
+                @media (min-width: 0px) and (max-width: 991px) {
+                    width: 100%;
+                }
+
+                @media (min-width: 768px) and (max-width: 991px) {
+                    height: 425px;
+                }
+
+                @media (min-width: 576px) and (max-width: 767px) {
+                    height: 368px;
+                }
 
                 .b-m-bot-portfolio-preview-imgs {
                     display: flex;
                     flex-direction: row;
                     height: 100%;
                     overflow-x: hidden;
-                    // scroll-snap-type: x mandatory;
+                    // overflow-x: scroll;
+                    scroll-snap-type: x mandatory;
                     scroll-behavior: smooth;
+
+                    @media (min-width: 0px) and (max-width: 991px) {
+                        overflow-x: auto;
+                    }
 
                     .b-m-bot-portfolio-preview-img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
-                        // scroll-snap-align: center;
-                        border-radius: 10px;
+                        scroll-snap-align: center;
+                        // border-radius: 10px;
+                        user-select: none;
                     }
                 }
 
@@ -285,6 +429,11 @@
                     justify-content: space-between;
                     box-sizing: border-box;
                     padding: 0 15px;
+                    pointer-events: none;
+
+                    @media (min-width: 0px) and (max-width: 991px) {
+                        display: none;
+                    }
 
                     .b-m-bot-portfolio-preview-nav-btn {
                         background-color: rgba(0, 0, 0, 0.3);
@@ -296,13 +445,59 @@
                         align-items: center;
                         justify-content: center;
                         cursor: pointer;
+                        pointer-events: all;
+                    }
+                }
+
+                // 
+                .b-m-bot-portfolio-preview-dlt {
+                    background-color: colors.$red;
+                    border-radius: 10px 0;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                }
+
+                // 
+                #b-m-bot-portfolio-preview-nav-progress {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    display: none;
+                    padding: 10px;
+
+                    &>* {
+                        @include spacing-R(5px);
+                    }
+
+                    @media (min-width: 0px) and (max-width: 991px) {
+                        display: flex;
+                        flex-direction: row;
+                    }
+
+                    .b-m-bot-portfolio-preview-nav-progress-dot {
+                        width: 8px;
+                        height: 8px;
+                        background-color: rgba(255, 255, 255, 0.5);
+                        border-radius: 999px;
+                        // transition: background-color 150ms ease-in-out;
+                    }
+
+                    .b-m-bot-portfolio-preview-nav-progress-dot-active {
+                        background-color: colors.$accent-100;
                     }
                 }
             }
 
             .b-m-bot-portfolio-catalogue {
                 height: 100%;
-                padding: 0 10px;
+                padding: 0 16px;
                 box-sizing: border-box;
                 background: white;
                 border-radius: 10px;
@@ -310,10 +505,51 @@
                 flex-direction: column;
                 align-items: center;
                 width: 95px;
-                overflow-y: auto;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    width: 6px;
+                    height: 6px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: colors.$grey-100;
+                    border-radius: 999px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: colors.$grey-400;
+                    border-radius: 999px;
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background: colors.$grey-500;
+                }
+
+                @media (min-width: 0px) and (max-width: 991px) {
+                    flex-direction: row;
+                    height: unset;
+                    width: 100%;
+                    padding: 16px 0;
+                }
+
+                @media (min-width: 768px) and (max-width: 991px) {
+
+                    // &>* {
+                    //     margin: 0 !important;
+                    //     @include spacing-R(16px);
+                    // }
+                }
 
                 &>* {
                     @include spacing-B(16px);
+
+                    @media (min-width: 0px) and (max-width: 991px) {
+                        margin-bottom: 0 !important;
+                        @include spacing-R(16px);
+                    }
+
+                    @media (min-width: 768px) and (max-width: 991px) {}
                 }
 
                 .b-m-bot-portfolio-catalogue-img {
@@ -360,6 +596,8 @@
                     border: none;
                     cursor: pointer;
                     background-color: #F7F7F8;
+                    flex: none;
+
                 }
             }
         }

@@ -20,16 +20,48 @@ Array.from(imgsBlock).forEach((imgBlock, imgPos) => {
             })[0];
             // 
             if (selected_block) {
-                // Remove class from the active img
-                img_class_switcher(selected_block);
-                // 
-                // Add class to the clicked img
-                img_class_switcher(imgBlock);
+                setTimeout(() => {
+                    // Remove class from the active img
+                    img_class_switcher(selected_block);
+                    // 
+                    // Add class to the clicked img
+                    img_class_switcher(imgBlock);
+                    // 
+                    last_dot_scroll_pos = imgPos;
+                }, 150);
                 // 
                 nav_goto(imgPos);
             }
         }
     });
+    // NAV INDICATORS
+    // SETUP
+    make_dot(imgPos);
+});
+// Listen for scroll event
+let last_dot_scroll_pos = 0;
+document.getElementById('b-m-bot-portfolio-preview-imgs-cont').addEventListener('scroll', (e) => {
+    let scrollData = {
+        value: e.target.scrollLeft / e.target.scrollWidth,
+        coefficient: 1 / imgsBlock.length,
+    }
+    let scroll_img_pos = Math.round(scrollData.value / scrollData.coefficient);
+    if (last_dot_scroll_pos != scroll_img_pos) {
+        // console.log('BBB', {
+        //     last_dot_scroll_pos,
+        //     scroll_img_pos
+        // });
+        img_class_switcher(imgsBlock[scroll_img_pos]);
+        img_class_switcher(imgsBlock[last_dot_scroll_pos]);
+        last_dot_scroll_pos = scroll_img_pos;
+        // console.log('------');
+        // console.log('AAA', {
+        //     last_dot_scroll_pos,
+        //     scroll_img_pos
+        // });
+        // 
+        update_nav(scroll_img_pos);
+    }
 });
 //  
 
@@ -60,6 +92,7 @@ function portfolio_nav(direction) {
         setTimeout(() => {
             img_class_switcher(imgsBlock[selected_img_pos]);
             img_class_switcher(imgsBlock[target_pos]);
+            last_dot_scroll_pos = target_pos;
         }, 150);
     }
 }
@@ -69,6 +102,8 @@ function nav_goto(pos) {
     // 
     const imgWidth = preview_img.scrollWidth;
     document.getElementById('b-m-bot-portfolio-preview-imgs-cont').scrollTo(parseInt(imgWidth * pos), 0);
+    // update nav dots
+    update_nav(pos);
 }
 // 
 function img_class_switcher(element) {
@@ -80,4 +115,23 @@ function img_class_switcher(element) {
         return [...a, c];
     })).join('-'));
     element.classList.remove(element.classList[1]);
+}
+// 
+// 
+function make_dot(pos = 999999) {
+    let dot_className = 'b-m-bot-portfolio-preview-nav-progress-dot';
+    if (pos == 0)
+        dot_className += " b-m-bot-portfolio-preview-nav-progress-dot-active";
+    let nav_dot = document.createElement('div');
+    nav_dot.setAttribute('class', dot_className);
+    // 
+    document.getElementById('b-m-bot-portfolio-preview-nav-progress').appendChild(nav_dot);
+}
+
+function update_nav(pos) {
+    let nav_dots = document.getElementsByClassName('b-m-bot-portfolio-preview-nav-progress-dot');
+    let selected_nav_dot = document.getElementsByClassName('b-m-bot-portfolio-preview-nav-progress-dot-active')[0];
+    // 
+    nav_dots[pos].classList.add(selected_nav_dot.classList[1]);
+    selected_nav_dot.classList.remove(selected_nav_dot.classList[1]);
 }
