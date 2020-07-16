@@ -15,10 +15,35 @@
     }
 }
 
+@mixin scrollBar($size) {
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: colors.$grey-100;
+        border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: colors.$grey-400;
+        border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: colors.$grey-500;
+    }
+}
+
 //
 .b-m-rootBlank {
     width: 100%;
     height: 50px;
+
+    @media (max-width: 575px) {
+        height: 20px;
+    }
 }
 
 // Content 
@@ -117,6 +142,19 @@
                 background: colors.$accent-100;
                 color: colors.$accent-400;
                 border-radius: 9999px;
+
+                @media (max-width: 575px) {
+                    font-size: 16px;
+                    @include spacing-R(8px);
+
+                    &:nth-child(even) {
+                        margin-right: 0;
+                    }
+
+                    &:nth-child(+n+3) {
+                        margin-top: 8px;
+                    }
+                }
             }
         }
 
@@ -135,6 +173,11 @@
                 @media (min-width: 576px) and (max-width: 767px) {
                     width: 502px;
                 }
+
+                @media (max-width: 575px) {
+                    // max-width: 535px;
+                    width: auto;
+                }
             }
         }
 
@@ -144,6 +187,11 @@
             flex-direction: row;
             align-items: flex-start;
 
+            @media (max-width: 575px) {
+                flex-direction: column;
+                align-items: center;
+            }
+
             // 
             .b-top-infos-adress-label {
                 display: flex;
@@ -151,6 +199,11 @@
                 align-items: center;
                 margin-right: 10px;
                 flex: none;
+
+                @media (max-width: 575px) {
+                    margin-right: 0;
+                    margin-bottom: 5px;
+                }
 
                 svg {
                     margin-right: 5px;
@@ -161,6 +214,8 @@
                     font-weight: normal;
                     font-size: 18px;
                     color: colors.$grey-600;
+
+
                 }
             }
 
@@ -169,6 +224,12 @@
                 font-weight: normal;
                 font-size: 18px;
                 color: colors.$grey-500;
+
+                @media (max-width: 575px) {
+                    text-align: center;
+                    font-size: 16px;
+                }
+
             }
         }
 
@@ -203,7 +264,7 @@
         display: flex;
         flex-direction: row;
 
-        @media (min-width: 576px) and (max-width: 767px) {
+        @media (min-width: 0px) and (max-width: 767px) {
             flex-direction: column;
             align-items: flex-end;
         }
@@ -212,7 +273,7 @@
         &>* {
             @include spacing-R(10px);
 
-            @media (min-width: 576px) and (max-width: 767px) {
+            @media (min-width: 0px) and (max-width: 767px) {
                 margin-right: 0 !important;
                 @include spacing-B(10px);
             }
@@ -345,6 +406,10 @@
             width: 540px;
         }
 
+        @media (max-width: 575px) {
+            width: 320px;
+        }
+
         .b-m-bot-portfolio-cont {
             width: 730px;
             height: 425px;
@@ -365,7 +430,11 @@
 
             @media (min-width: 576px) and (max-width: 767px) {
                 // width: ;
-                height: 430px;
+                height: 493px;
+            }
+
+            @media (max-width: 575px) {
+                height: 333px;
             }
 
             &>* {
@@ -393,6 +462,15 @@
                     height: 368px;
                 }
 
+                @media (max-width: 575px) {
+                    height: 218px;
+                }
+
+
+                // @media (max-width: 575px) {
+                //     width: 218px;
+                // }
+
                 .b-m-bot-portfolio-preview-imgs {
                     display: flex;
                     flex-direction: row;
@@ -401,6 +479,7 @@
                     // overflow-x: scroll;
                     scroll-snap-type: x mandatory;
                     scroll-behavior: smooth;
+                    // @include scrollBar(8px);
 
                     @media (min-width: 0px) and (max-width: 991px) {
                         overflow-x: auto;
@@ -507,24 +586,7 @@
                 width: 95px;
                 overflow: auto;
 
-                &::-webkit-scrollbar {
-                    width: 6px;
-                    height: 6px;
-                }
-
-                &::-webkit-scrollbar-track {
-                    background: colors.$grey-100;
-                    border-radius: 999px;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background: colors.$grey-400;
-                    border-radius: 999px;
-                }
-
-                &::-webkit-scrollbar-thumb:hover {
-                    background: colors.$grey-500;
-                }
+                @include scrollBar(6px);
 
                 @media (min-width: 0px) and (max-width: 991px) {
                     flex-direction: row;

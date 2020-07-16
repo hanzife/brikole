@@ -47,19 +47,9 @@ document.getElementById('b-m-bot-portfolio-preview-imgs-cont').addEventListener(
     }
     let scroll_img_pos = Math.round(scrollData.value / scrollData.coefficient);
     if (last_dot_scroll_pos != scroll_img_pos) {
-        // console.log('BBB', {
-        //     last_dot_scroll_pos,
-        //     scroll_img_pos
-        // });
         img_class_switcher(imgsBlock[scroll_img_pos]);
         img_class_switcher(imgsBlock[last_dot_scroll_pos]);
         last_dot_scroll_pos = scroll_img_pos;
-        // console.log('------');
-        // console.log('AAA', {
-        //     last_dot_scroll_pos,
-        //     scroll_img_pos
-        // });
-        // 
         update_nav(scroll_img_pos);
     }
 });
