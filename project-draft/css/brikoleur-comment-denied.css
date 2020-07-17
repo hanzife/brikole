@@ -1,0 +1,22 @@
+.b-m-bot-comments-denied {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ebebec;
+  border-radius: 10px;
+  background-color: #fafafb;
+}
+.b-m-bot-comments-denied > *:not(:last-child) {
+  margin-bottom: 5px;
+}
+.b-m-bot-comments-denied span {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #0d0c22;
+}
+
+/*# sourceMappingURL=brikoleur-comment-denied.css.map */
