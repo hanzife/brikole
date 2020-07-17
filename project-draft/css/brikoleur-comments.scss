@@ -169,6 +169,128 @@
             }
         }
 
+        .b-m-bot-comments-add {
+            width: 100%;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid colors.$grey-300;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            &>* {
+                @include utility.spacing-B(10px);
+            }
+
+            .b-m-bot-comments-add-title {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                color: colors.$black;
+            }
+
+            .b-m-bot-comments-add-text {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 5px;
+                box-sizing: border-box;
+                padding: 5px;
+                border: 1px solid colors.$grey-400;
+                height: 52px;
+                min-height: 52px;
+
+                @media (min-width: 576px) and (max-width: 767px) {
+                    height: 82px;
+                    min-height: 82px;
+                }
+
+                @media (max-width: 575px) {
+                    height: 115px;
+                    min-height: 115px;
+
+                }
+            }
+
+            .b-m-bot-comments-add-extra {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+
+                .b-m-bot-comments-add-extra-rating {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    &>* {
+                        @include utility.spacing-R(10px);
+                    }
+
+                    span {
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 16px;
+                        color: colors.$grey-600;
+                    }
+
+                    .b-m-bot-comments-add-extra-rating-btn {
+                        padding: 0;
+                        border: none;
+                        background: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 9999px;
+                        overflow: hidden;
+                        cursor: pointer;
+
+                        svg {
+                            padding: 5px;
+                            background-color: colors.$grey-100;
+                        }
+                    }
+
+                    .b-m-bot-comments-add-extra-rating-btn-active {
+                        .b-m-bot-comments-add-extra-rating-btn-P {
+                            background-color: colors.$green-200;
+
+                            path {
+                                fill: colors.$green-300;
+                            }
+                        }
+
+                        .b-m-bot-comments-add-extra-rating-btn-N {
+                            background-color: colors.$red-100;
+
+                            path {
+                                fill: colors.$red-200;
+                            }
+                        }
+                    }
+                }
+
+                .b-m-bot-comments-add-submit {
+                    border-radius: 5px;
+                    border: none;
+                    background: white;
+                    box-sizing: border-box;
+                    padding: 5px 8px;
+                    border: 1px solid colors.$grey-400;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: colors.$grey-600;
+                    cursor: pointer;
+                    transition: box-shadow 150ms cubic-bezier(1, 0.74, 0, 1);
+
+                    &:hover {
+                        box-shadow: 0px 2px 4px -2px rgba(163, 96, 96, 0.4);
+                    }
+                }
+            }
+        }
+
         .b-m-bot-comments {
             width: 100%;
             display: flex;

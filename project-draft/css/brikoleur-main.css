@@ -77,6 +77,7 @@ a:active {
 }
 .b-m-top .b-m-top-profile {
   margin-bottom: 25px;
+  position: relative;
 }
 .b-m-top .b-m-top-profile .b-m-top-profile-img {
   width: 150px;
@@ -84,6 +85,28 @@ a:active {
   border-radius: 9999px;
   user-select: none;
   object-fit: cover;
+}
+.b-m-top .b-m-top-profile .b-m-top-profile-fav {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f8;
+  border: none;
+  border-radius: 9999px;
+  padding: 0;
+  cursor: pointer;
+}
+.b-m-top .b-m-top-profile .b-m-top-profile-fav:hover svg path {
+  stroke: #ff6868;
+}
+.b-m-top .b-m-top-profile .b-m-top-profile-liked svg path {
+  fill: #ff6868;
+  stroke: #ff6868;
 }
 .b-m-top .b-m-top-infos {
   display: flex;
@@ -227,8 +250,10 @@ a:active {
   flex-direction: row;
   align-items: center;
   padding: 9px;
+  border: none;
   border: 1px solid #676878;
   border-radius: 5px;
+  background: white;
 }
 .b-m-top .b-m-top-infos .b-m-top-infos-phone svg {
   margin-right: 10px;
@@ -238,6 +263,17 @@ a:active {
   font-weight: normal;
   font-size: 18px;
   color: #676878;
+}
+.b-m-top .b-m-top-infos .b-m-top-infos-phone-disabled {
+  background-color: #ffc000;
+  border: none;
+  cursor: pointer;
+}
+.b-m-top .b-m-top-infos .b-m-top-infos-phone-disabled svg path {
+  fill: white;
+}
+.b-m-top .b-m-top-infos .b-m-top-infos-phone-disabled span {
+  color: white;
 }
 .b-m-top .b-m-top-options {
   position: absolute;

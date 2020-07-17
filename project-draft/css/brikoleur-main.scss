@@ -29,6 +29,7 @@
     // Image
     .b-m-top-profile {
         margin-bottom: 25px;
+        position: relative;
 
         .b-m-top-profile-img {
             width: 150px;
@@ -36,6 +37,39 @@
             border-radius: 9999px;
             user-select: none;
             object-fit: cover;
+        }
+
+        .b-m-top-profile-fav {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: colors.$grey-100;
+            border: none;
+            border-radius: 9999px;
+            padding: 0;
+            cursor: pointer;
+
+            &:hover {
+                svg {
+                    path {
+                        stroke: colors.$red;
+                    }
+                }
+            }
+        }
+
+        .b-m-top-profile-liked {
+            svg {
+                path {
+                    fill: colors.$red;
+                    stroke: colors.$red;
+                }
+            }
         }
     }
 
@@ -206,8 +240,10 @@
             flex-direction: row;
             align-items: center;
             padding: 9px;
+            border: none;
             border: 1px solid colors.$grey-500;
             border-radius: 5px;
+            background: white;
             // cursor: pointer;
 
             svg {
@@ -219,6 +255,23 @@
                 font-weight: normal;
                 font-size: 18px;
                 color: colors.$grey-500;
+            }
+        }
+
+        // 
+        .b-m-top-infos-phone-disabled {
+            background-color: colors.$accent;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                path {
+                    fill: white;
+                }
+            }
+
+            span {
+                color: white;
             }
         }
     }
