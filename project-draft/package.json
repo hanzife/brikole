@@ -1,0 +1,13 @@
+{
+    "name": "project-draft",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "sass": "sass --watch ./css",
+        "prefix": "postcss ./css/*.css --use autoprefixer -d ./css-prefixed"
+    },
+    "author": "",
+    "license": "ISC",
+    "browserslist": "last 7 versions"
+}
