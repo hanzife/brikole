@@ -51,7 +51,7 @@
                 <select name="" id="Select_Ville" class="selectSearch mr-10">
                     <option value="{{$ville}}" disabled selected hidden>{{$ville}}</option>
                     @foreach($datacity as $row)
-                <option value="{{$row->lieu}}">{{$row->lieu}}</option>
+                <option value="{{$row->ville}}">{{$row->ville}}</option>
                 @endforeach
                 </select>
                 <input
@@ -153,12 +153,16 @@
                                 @if($resultsrow->Id_brikoleur == $rowimg->id_brikoleur)
                                 <a href=""><img src="/images/Uploads/Portfolio/{{$rowimg->reference}}" alt="Portfolio"/></a>
                                 @else
-                                <!-- <a href=""><img src="/images/bkX.png" alt=""/></a>  -->
+                                <a href=""><img src="/images/bkX.png" alt=""/></a>
+                                <!-- <script>
+                                var arrows = document.getElementById("validatedarrows");
+                                arrows.classList.remove("sr-arrows-container");
+                                </script> -->
                                 @endif
                                 @endforeach
-                                <a href=""><img src="/images/bkX.png" alt=""/></a>
+                                <!-- <a href=""><img src="/images/bkX.png" alt=""/></a> -->
                             </div>
-                            <div class="sr-arrows-container">
+                            <div class="sr-arrows-container" id="validatedarrows">
                                 <div class="sr-arrows">
                                     <svg
                                         class="sr-arrowLeft"
@@ -262,7 +266,7 @@
                                     <div class="sr-address">
                                         <span class="fw-500">Adresse : </span>
                                         <span>
-                                        {{$resultsrow->lieu}}
+                                        {{$resultsrow->ville}}
                                         </span>
                                     </div>
                                 </div>

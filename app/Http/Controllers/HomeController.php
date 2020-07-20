@@ -24,7 +24,7 @@ class HomeController extends Controller
         $data = DB::table('brikoleurs')
         ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
         ->where('images.type','=','profile')
-        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
         ->inRandomOrder()
         ->limit(6)
         ->select('images.reference','brikoleurs.nom','brikoleurs.prenom','professions.libelle_P')
@@ -34,7 +34,7 @@ class HomeController extends Controller
         // $dataprofession = Profession::distinct()->get(['libelle_P','professions.id_profession']);
         $dataprofession = Profession::distinct()->get(['libelle_P']);
         //Cities
-        $datacity = Brikoleur::distinct()->get(['lieu']);
+        $datacity = Brikoleur::distinct()->get(['ville']);
         //This will be used to include sun-professions with the 1st $dataprofession
         $suprofession = DB::table('sous_professions')
         ->join('professions','sous_professions.id_sous_profession','=','professions.id_profession')
@@ -61,22 +61,22 @@ class HomeController extends Controller
         //Bring All Professions
         $dataprofession = Profession::distinct()->get(['libelle_P']);
         //Cities
-        $datacity = Brikoleur::distinct()->get(['lieu']);
+        $datacity = Brikoleur::distinct()->get(['ville']);
         //Brikoluer Inforamations
         $results = DB::table('brikoleurs')
-        ->where('brikoleurs.lieu','=',$ville)
+        ->where('brikoleurs.ville','=',$ville)
         ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
         ->where('images.type','=','profile')
-        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
         ->where('professions.libelle_P','=',$profession)
-        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.lieu','images.reference','brikoleurs.Id_brikoleur')
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.ville','images.reference','brikoleurs.Id_brikoleur')
         ->inRandomOrder()
         ->limit(10)
         ->get();
         //All SubProfessions
         $reslibelle_SP = DB::table('brikoleurs')
-        ->where('brikoleurs.lieu','=',$ville)
-        ->join('professions','professions.id_Brikoleur','=','brikoleurs.Id_brikoleur') 
+        ->where('brikoleurs.ville','=',$ville)
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
         ->where('professions.libelle_P','=',$profession)
         ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','brikoleurs.id_Brikoleur')
         ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
