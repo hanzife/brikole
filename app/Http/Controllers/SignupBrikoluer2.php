@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brikoleur;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 class SignupBrikoluer2 extends Controller
 {
     
@@ -14,7 +14,7 @@ class SignupBrikoluer2 extends Controller
     // }
     public function index(){
 
-        // dd(Auth::bikoleur());
+        dd(Auth::bikoleur());
         // $brikoluerlogged = Auth::user();
         // $brikoluerlogged}->nom
         // return view('Auth.signupBrikoleur_2', compact('brikoluerlogged'));
