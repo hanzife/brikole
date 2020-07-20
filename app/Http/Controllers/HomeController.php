@@ -8,6 +8,8 @@ use App\Profession;
 use App\SousProfession;
 use App\SpBrikoluer;
 use DB;
+// use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -15,8 +17,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
+        
         // dd(\App\Brikoleur::all());
         //count Brikoluers
         $brikoluerCount = DB::table('brikoleurs')->count('brikoleurs.Id_brikoleur');
