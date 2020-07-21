@@ -34,7 +34,7 @@ function scrollAnimation() {
         }
     }, 3000);
 }
-// scrollAnimation();
+scrollAnimation();
 
 mql1 = window.matchMedia("(max-width: 1199px)");
 
@@ -145,6 +145,6 @@ function scrollAnimationExplorer() {
         if (scrollLeft == maxScrollVal) {
             $(".explorer").scrollLeft(0);
         }
-    }, 000);
+    }, 3000);
 }
 scrollAnimationExplorer();
