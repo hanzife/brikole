@@ -1,0 +1,67 @@
+@use 'fonts';
+@use 'colors';
+@use 'common';
+@use 'utility';
+
+// 
+.b-m-bot {
+
+    // 
+    .b-m-bot-portfolio {
+        // padding: 10px 0;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 920px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .b-m-bot-portfolio-empty {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px 10px;
+            background-color: colors.$grey-50;
+            border: 1px solid colors.$grey-300;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &>* {
+                @include utility.spacing-B(5px);
+            }
+
+            .b-m-bot-portfolio-empty-text {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 18px;
+                letter-spacing: 0.02em;
+                color: colors.$black;
+            }
+
+            .b-m-bot-portfolio-empty-add {
+                margin-top: 10px;
+                background-color: white;
+                border: none;
+                border: 1px solid colors.$grey-300;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                height: 44px;
+                padding: 0 10px;
+                cursor: pointer;
+
+                svg {
+                    margin-right: 10px;
+                }
+
+                span {
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: colors.$grey-600;
+                }
+            }
+        }
+    }
+}
