@@ -17,11 +17,9 @@ class CreateSousProfessionsTable extends Migration
             $table->bigIncrements('id_sous_profession');
             $table->foreignId('id_profession')->references('id_profession')->on('professions');
             $table->string('libelle_SP',254);
-
             $table->timestamps();
         });
     }
-  
     /**
      * Reverse the migrations.
      *

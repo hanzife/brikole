@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Master Header/Footer -->
+@extends('layouts.master')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@section('content')
     <link rel="stylesheet" href="css/signupBrikoleur_1.css" />
     <title>Inscription Brikoleur</title>
-</head>
-
-<body>
     <!-- header -->
     <!-- ------ -->
     <div class="sb1-blank-51"></div>
-
+                    
     <div class="sb1-container">
         <div class="sb1-sub-container">
             <div><img src="images/logos/logo3.svg" alt="" /></div>
@@ -60,32 +55,49 @@
             </div>
             <div class="sb1-blank-51"></div>
             <div class="sb1-form">
-                <form action="" id="formname">
+                <!-- FORM SIGN UP AS BRIKOLUER -->
+                <form id="formname" method="POST" action="{{ route('register') }}">
+                @csrf
+                    <!-- NAME -->
                     <label for="sb1-surname">Nom</label><br />
-                    <input type="text" id="sb1-surname" name="" required /><br />
+                    <input type="text" id="sb1-surname" name="nom" value="{{ old('nom') }}" required /><br />
                     <div id="sb1-surname-error" class="sb1-error"></div>
-
+                    
                     <div class="sb1-blank-20"></div>
-
+                    
+                    <!-- SURENAME -->
                     <label for="sb1-name">Prénom</label><br />
-                    <input type="text" id="sb1-name" name="" required /><br />
-                    <div id="sb1-name-error" class="sb1-error"></div>
-
+                    <input type="text" id="sb1-name" name="prenom" class="form-control @error('prenom') is-invalid @enderror" value="{{ old('prenom') }}" required autofocus/><br />
+                    <!-- VALIDATION in the back-end side-->
+                    <div id="sb1-name-error" class="sb1-error">
+                    @error('prenom')                     
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
                     <div class="sb1-blank-20"></div>
 
+                    <!-- TELEPHONE -->
                     <div class="sb1-phone-gender">
                         <div>
                             <label for="sb1-tel">Numero de téléphone</label>
                             <br />
-                            <input type="tel" id="sb1-tel" name="" required />
-                            <div id="sb1-tel-error" class="sb1-error"></div>
+                            <input type="tel" id="sb1-tel" name="telephone" class="form-control @error('telephone') is-invalid @enderror" value="{{ old('telephone') }}" required />
+                            @error('telephone')
+                            <div id="sb1-tel-error" class="sb1-error">
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            </div>
+                            @enderror
                         </div>
 
                         <div class="sb1-blank-20-resp"></div>
-
+                    <!-- SEXE -->
                         <div>
                             <label for="sb1-gender">Sexe</label><br />
-                            <select name="" id="sb1-gender" required>
+                            <select name="sexe" id="sb1-gender" required>
                                 <option value="" disabled selected hidden>
                                     Choisir...
                                 </option>
@@ -97,8 +109,9 @@
 
                     <div class="sb1-blank-20"></div>
 
+                    <!-- CITY -->
                     <label for="sb1-city">Ville</label><br />
-                    <input type="text" id="sb1-city" name="" required /><br />
+                    <input type="text" id="sb1-city" name="ville" value="{{ old('ville') }}" required /><br />
 
                     <!-- list of cities -->
                     <div class="sb1-cities-list" id="sb1-cities-list">
@@ -115,17 +128,29 @@
                     <!-- end list of cities -->
 
                     <div id="sb1-city-error" class="sb1-error"></div>
-
                     <div class="sb1-blank-20"></div>
 
+                    <!-- EMAIL -->
+                    <label for="sb1-email">Email</label><br />
+                    <div class="col-md-6">
+                        <input id="email sb1-email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                            <span class="invalid-feedback sb1-error" id="sb1-city-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="sb1-blank-20"></div>
+
+                    <!-- PASSWORD -->
                     <label for="sb1-pass">Mot de passe</label><br />
-                    <input type="password" id="sb1-pass" name="" required /><br />
+                    <input type="password" id="sb1-pass" name="mot_passe" required /><br />
                     <div id="sb1-pass-error" class="sb1-error"></div>
 
                     <div class="sb1-blank-20"></div>
 
                     <label for="sb1-confirm-pass">Confirmation de mot de passe</label><br />
-                    <input type="password" id="sb1-confirm-pass" name="" required /><br />
+                    <input type="password" id="sb1-confirm-pass" name="password_confirmation" required /><br />
                     <div id="sb1-confirm-error" class="sb1-error"></div>
 
                     <div class="sb1-blank-20"></div>
@@ -160,6 +185,4 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="js/signup_1.js"></script>
-</body>
-
-</html>
+    @endsection

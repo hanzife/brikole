@@ -29,6 +29,8 @@ let listProfessions = [
     "Plombier4",
     "default profession card8",
 ];
+
+
 let listSubProfessions = [
     // "Plâtrier",
     "carreleur1",

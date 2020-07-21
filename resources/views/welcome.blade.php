@@ -6,6 +6,9 @@
 @extends('layouts.master')
 
 @section('content')
+
+
+
 <div class="container">
 <div class="blank-51"></div>
     <!-- top section -->
@@ -64,7 +67,7 @@
               <select name="" id="Select_Ville" class="selectSearch mr-10">
                 <option value="" disabled selected hidden>Ville...</option>
                 @foreach($datacity as $row)
-                <option value="{{$row->lieu}}">{{$row->lieu}}</option>
+                <option value="{{$row->ville}}">{{$row->ville}}</option>
                 @endforeach
               </select>
               <!-- Search Button -->

@@ -15,10 +15,9 @@ class CreateProfessionsTable extends Migration
     {
         Schema::create('professions', function (Blueprint $table) {
             $table->bigIncrements('id_profession');
-            $table->foreignId('id_brikoleur')->references('id_brikoleur')->on('brikoleurs');
-            $table->string('libelle_P',254);
+            $table->string('libelle_P',255);
             $table->timestamps();
-        });
+            });
     }
 
     /**

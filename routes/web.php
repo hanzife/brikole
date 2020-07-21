@@ -11,19 +11,33 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-// */
+*/
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+//Redirect To a Page if exsits
+//Route::get('/page','ControllerName@method');
 
 //rederect to home page
+//
 Route::resource('/','HomeController')->only(['index']);
-//Search Result
+// Route::get('/home', 'HomeController@index')->name('home');
+
+////Search Result
+//
 Route::get('/Search', function () {
   return view('searchresults');
      });
+Route::get('/Search/{profession}/{ville}','HomeController@Search');   
 
-Route::get('/Search/{profession}/{ville}','HomeController@Search');    
-//Redirect To a Page if exsits
-//Route::get('/page','ControllerName@method');
+
+// Auth::routes();
+//
+
+//Controller SignupBrikuluerZ
+//
+Route::get('/signupBrikoleur_2', 'SignupBrikoluer2@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
