@@ -150,7 +150,7 @@
                         <div class="sr-portfolio">
                             <div class="sr-portfolio-img">
                                 @foreach($dataimages as $rowimg)
-                                @if($resultsrow->Id_brikoleur == $rowimg->id_brikoleur)
+                                @if($resultsrow->id == $rowimg->id_brikoleur)
                                 <a href=""><img src="/images/Uploads/Portfolio/{{$rowimg->reference}}" alt="Portfolio"/></a>
                                 @else
                                 <a href=""><img src="/images/bkX.png" alt=""/></a>
@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="sr-SousProf-all">
                                             @foreach($reslibelle_SP as $res)
-                                            @if($resultsrow->Id_brikoleur == $res->Id_brikoleur)                    
+                                            @if($resultsrow->id == $res->Id_brikoleur)                    
                                             <div class="sr-SousProf">
                                               {{$res->libelle_SP}}
                                             </div>

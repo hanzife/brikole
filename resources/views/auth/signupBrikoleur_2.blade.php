@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/signupBrikoleur_2.css" />
+<link rel="stylesheet" href="css/signupBrikoleur_2.css" />
     <title>Inscription Brikoleur</title>
-</head>
+<!-- Master Header/Footer -->
+@extends('layouts.master')
 
-<body>
+@section('content')
     <!-- header -->
     <!-- ------ -->
+    <!--  -->
+    bonjour {{$brikoluerlogged->nom}}
     <div class="sb2-blank-51"></div>
 
     <div class="sb2-container">
@@ -56,3 +53,4 @@
 </body>
 
 </html>
+@endsection

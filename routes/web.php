@@ -37,7 +37,12 @@ Route::get('/Search/{profession}/{ville}','HomeController@Search');
 
 //Controller SignupBrikuluerZ
 //
-Route::get('/signupBrikoleur_2', 'SignupBrikoluer2@index');
+Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Brikoleru
+// Route::group(['middleware'=>'brikoleur'], function() {
+//   Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');
+// });

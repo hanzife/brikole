@@ -43,8 +43,12 @@ return [
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'brikoleurs',
             'hash' => false,
+        ],
+        'brikoleur' => [
+            'driver' => 'session',
+            'provider' => 'brikoleurs',
         ],
     ],
 

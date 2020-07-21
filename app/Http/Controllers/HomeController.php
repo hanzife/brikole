@@ -26,10 +26,10 @@ class HomeController extends Controller
         
         // dd(\App\Brikoleur::all());
         //count Brikoluers
-        $brikoluerCount = DB::table('brikoleurs')->count('brikoleurs.Id_brikoleur');
+        $brikoluerCount = DB::table('brikoleurs')->count('id');
         //Show me All Brikoluers with their rrofile img 
         $data = DB::table('brikoleurs')
-        ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
+        ->join('images','images.Id_brikoleur','=','id')
         ->where('images.type','=','profile')
         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
         ->inRandomOrder()
@@ -72,11 +72,11 @@ class HomeController extends Controller
         //Brikoluer Inforamations
         $results = DB::table('brikoleurs')
         ->where('brikoleurs.ville','=',$ville)
-        ->join('images','images.Id_brikoleur','=','brikoleurs.Id_brikoleur')
+        ->join('images','images.Id_brikoleur','=','id')
         ->where('images.type','=','profile')
         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
         ->where('professions.libelle_P','=',$profession)
-        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.ville','images.reference','brikoleurs.Id_brikoleur')
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.ville','images.reference','id')
         ->inRandomOrder()
         ->limit(10)
         ->get();
@@ -85,14 +85,14 @@ class HomeController extends Controller
         ->where('brikoleurs.ville','=',$ville)
         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
         ->where('professions.libelle_P','=',$profession)
-        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','brikoleurs.id_Brikoleur')
+        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
         ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
         ->select('sous_professions.libelle_SP','sp_brikoluers.Id_brikoleur')
         ->distinct()
         ->get();
         //Brikoluer Images
         $dataimages = DB::table('images')
-        ->join('brikoleurs','images.id_brikoleur','=','brikoleurs.id_brikoleur')
+        ->join('brikoleurs','images.id_brikoleur','=','id')
         ->where('images.type','=','Portfolio')
         ->select('images.reference','images.id_brikoleur')
         ->inRandomOrder()
