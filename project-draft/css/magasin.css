@@ -80,6 +80,37 @@ a:active {
   padding: 55px 0px 30px 55px;
   margin-bottom: 50px;
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_2.png");
+  }
+}
+@media (min-width: 576px) and (max-width: 991px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_3.png");
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mg-banner {
+    background-position: 350px 10px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner {
+    height: 425px;
+    padding: 40px 32px 23px 32px;
+    background-position: center 140px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_4.png");
+    height: 300px;
+    padding: 20px;
+    padding-bottom: 70px;
+    background-position: right bottom;
+  }
+}
 .mg-banner .mg-benner-content {
   height: 100%;
   display: flex;
@@ -92,6 +123,11 @@ a:active {
   flex-direction: column;
   align-items: flex-start;
 }
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main {
+    align-items: center;
+  }
+}
 .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
   font-style: normal;
   font-weight: 900;
@@ -101,7 +137,19 @@ a:active {
   width: 610px;
   margin-bottom: 30px;
 }
+@media (min-width: 0px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
+    font-size: 26px;
+  }
+}
 .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+  position: relative;
   width: 550px;
   height: 60px;
   background-color: white;
@@ -112,6 +160,26 @@ a:active {
   padding-left: 15px;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 15px 15px rgba(231, 231, 231, 0.28);
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+    width: 476px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+    width: 100%;
+    padding-left: 10px;
+  }
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(-90deg, white, transparent);
+    right: 50px;
+  }
 }
 .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
   width: 350px;
@@ -123,26 +191,50 @@ a:active {
   border: none;
   background: white;
 }
+@media (min-width: 0px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
+    font-size: 14px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
+    width: 221px;
+    padding: 0;
+  }
+}
 .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share {
   height: 100%;
   padding: 0 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   background: #ffc000;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-}
-.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share svg {
-  margin-right: 10px;
-}
-.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share span {
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   color: white;
   user-select: none;
+  width: 130px;
+  min-width: 130px;
+  z-index: 999;
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share {
+    min-width: 50px;
+    width: unset;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share .mg-banner-ref-share-text {
+  margin-left: 10px;
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share .mg-banner-ref-share-text {
+    display: none;
+  }
 }
 .mg-banner .mg-benner-content .mg-banner-more {
   font-style: normal;
@@ -241,17 +333,6 @@ a:active {
   flex-direction: column;
   align-items: flex-start;
 }
-.mg-store .mg-store-row .mg-store-row-collection .mg-store-service .mg-store-service-buy {
-  padding: 8px 20px;
-  background: #fdf6b2;
-  border-radius: 10px;
-  border: none;
-}
-.mg-store .mg-store-row .mg-store-row-collection .mg-store-service .mg-store-service-buy span {
-  font-weight: 500;
-  font-size: 18px;
-  color: #723b14;
-}
 .mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points {
   background-image: url("/images/ass_2.png");
   background-repeat: no-repeat;
@@ -278,6 +359,59 @@ a:active {
   font-size: 22px;
   color: #0d0c22;
   margin-right: 5px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-buy {
+  padding: 8px 20px;
+  background: #fdf6b2;
+  border-radius: 10px;
+  border: none;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-buy span {
+  font-weight: 500;
+  font-size: 18px;
+  color: #723b14;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost {
+  background-image: url("/images/ass_3.png");
+  background-repeat: no-repeat;
+  background-position: 95px center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-price {
+  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #0d0c22;
+  line-height: 23px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-value {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0d0c22;
+  padding: 4px 10px;
+  border: 1px solid #0d0c22;
+  border-radius: 10px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-value span {
+  font-size: 20px;
+  line-height: 22px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-buy {
+  padding: 8px 20px;
+  background: #fdf6b2;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-buy span {
+  margin-right: 5px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #723b14;
 }
 
 /*# sourceMappingURL=magasin.css.map */
