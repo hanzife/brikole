@@ -132,6 +132,9 @@ a:active {
 
 .sr-search-fit {
   width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 @media (max-width: 575px) {
   .sr-search-fit {
@@ -190,10 +193,11 @@ a:active {
   align-items: center;
   color: #585863;
   font-weight: 500;
+  cursor: pointer;
+  font-size: 16px;
 }
 .sr-showMore .sr-showMoreBtn svg {
-  margin-right: 13px;
-  margin-left: 3px;
+  margin-right: 10px;
 }
 
 .sr-ProfessionVille {
@@ -340,6 +344,7 @@ a:active {
   overflow-y: hidden;
   overflow-x: auto;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .sr-profile .sr-portfolio {
@@ -362,6 +367,9 @@ a:active {
 .sr-profile .sr-portfolio .sr-portfolio-img {
   height: 175px;
   display: flex;
+}
+.sr-profile .sr-portfolio .sr-portfolio-img > * {
+  scroll-snap-align: center;
 }
 .sr-profile .sr-portfolio .sr-portfolio-img img {
   width: 250px;
@@ -399,6 +407,13 @@ a:active {
   display: flex;
   justify-content: space-between;
 }
+.sr-profile .sr-arrows-container .sr-arrows .sr-arrowLeft,
+.sr-profile .sr-arrows-container .sr-arrows .sr-arrowRight {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+}
 .sr-profile .sr-arrows-container svg {
   cursor: pointer;
 }
@@ -419,6 +434,9 @@ a:active {
     width: 175px;
     height: 25px;
   }
+}
+.sr-profile .sr-imgName .sr-profilePhoto {
+  user-select: none;
 }
 @media (max-width: 575px) {
   .sr-profile .sr-imgName .sr-profilePhoto {
@@ -479,6 +497,7 @@ a:active {
   border-radius: 10px;
   margin-right: 5px;
   white-space: nowrap;
+  user-select: none;
 }
 @media (min-width: 575px) {
   .sr-profile .sr-SousProf-all-resp {

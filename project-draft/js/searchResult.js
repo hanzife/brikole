@@ -42,13 +42,43 @@ function fixes() {
 fixes();
 
 // BRIKOLEUR PORTFOLIO ARROWS
+// LEGACY CODE ~~salma
+// $(".sr-arrowLeft").click((e) => {
+//     let i = $(e.currentTarget).index(".sr-arrowLeft");
+//     document.getElementsByClassName("sr-portfolio")[i].scrollBy(-250, 0);
+//     console.log(i);
+// });
+// $(".sr-arrowRight").click((e) => {
+//     let i = $(e.currentTarget).index(".sr-arrowRight");
+//     document.getElementsByClassName("sr-portfolio")[i].scrollBy(250, 0);
+//     console.log(i);
+// });
+// 
 $(".sr-arrowLeft").click((e) => {
-    let i = $(e.currentTarget).index(".sr-arrowLeft");
-    document.getElementsByClassName("sr-portfolio")[i].scrollBy(-250, 0);
-    console.log(i);
+    sr_scroll($(e.currentTarget).index(".sr-arrowLeft"), 'L');
 });
 $(".sr-arrowRight").click((e) => {
-    let i = $(e.currentTarget).index(".sr-arrowRight");
-    document.getElementsByClassName("sr-portfolio")[i].scrollBy(250, 0);
-    console.log(i);
+    sr_scroll($(e.currentTarget).index(".sr-arrowRight"), 'R');
 });
+// 
+function sr_scroll(pos, direction) {
+    const container = document.getElementsByClassName("sr-portfolio")[pos];
+    const scrollData = {
+        width: container.scrollWidth,
+        imgs: container.children[0].children.length,
+        current: container.scrollLeft,
+        scrollValue: 0
+    }
+    scrollData.scrollValue = scrollData.width / scrollData.imgs;
+    // 
+    if (scrollData.current == 0 && direction == 'L')
+        container.scrollBy(scrollData.width, 0);
+    else if ((scrollData.current + scrollData.scrollValue) == scrollData.width && direction == 'R')
+        container.scrollBy(-scrollData.width, 0);
+    else {
+        if (direction == 'L')
+            container.scrollBy(-scrollData.scrollValue, 0);
+        else
+            container.scrollBy(scrollData.scrollValue, 0);
+    }
+}
