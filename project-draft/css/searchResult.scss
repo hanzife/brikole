@@ -88,6 +88,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 
     //XS
     @media (max-width: 575px) {
@@ -281,6 +282,7 @@
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    box-sizing: border-box;
 
     @media (min-width: 992px) and (max-width: 1199px) {
         width: 650px;
@@ -445,14 +447,31 @@
         }
 
         .sr-profileInfo {
-            width: 237px;
-            height: 40px;
+            // width: 237px;
+            width: 445px;
+            // height: 40px;
             margin-left: 10px;
+
+            //LG
+            @media (min-width: 992px) and (max-width: 1199px) {
+                width: 330px;
+            }
+
+            //MD
+            @media (min-width: 768px) and (max-width: 991px) {
+                width: 390px;
+            }
+
+            //SM
+            @media (min-width: 576px) and (max-width: 767px) {
+                width: 265px;
+            }
 
             //SM
             @media (max-width: 575px) {
                 width: 145px;
-                height: 14px;
+                // height: unset;
+                // height: 14px;
             }
 
             .sr-NomPRENOM {
@@ -465,7 +484,8 @@
 
                 //SM
                 @media (max-width: 575px) {
-                    font-size: 12px;
+                    // font-size: 12px;
+                    font: 14px;
                 }
             }
         }
@@ -509,7 +529,8 @@
 
             //SM
             @media (max-width: 575px) {
-                font-size: 10px;
+                // font-size: 10px;
+                font-size: 12px;
                 margin-right: 1px;
             }
         }
@@ -549,7 +570,8 @@
             @media (max-width: 575px) {
                 width: 175px;
                 height: 60px;
-                font-size: 10px;
+                // font-size: 10px;
+                font-size: 12px;
                 margin-top: 6px;
                 margin-bottom: 8px;
                 line-height: 12px;
@@ -588,6 +610,51 @@
             }
         }
     }
+
+    // 
+    .sr-profile-fav {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // background-color: colors.$grey-100;
+        background: white;
+        border: none;
+        border-radius: 9999px;
+        padding: 0;
+        cursor: pointer;
+
+        @media (min-width: 0px) and (max-width: 767px) {
+            right: unset;
+            bottom: unset;
+            left: 5px;
+            top: 5px;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+
+        &:hover {
+            svg {
+                path {
+                    stroke: colors.$red;
+                }
+            }
+        }
+    }
+
+    .sr-profile-fav-liked {
+        svg {
+            path {
+                fill: colors.$red;
+                stroke: colors.$red;
+            }
+        }
+    }
+
 }
 
 .sr-profile:hover {
@@ -697,6 +764,8 @@
         box-sizing: border-box;
         border-radius: 10px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
         // flex-basis: 310px;
         // flex-shrink: 1;
 
@@ -719,6 +788,31 @@
         @media (max-width: 575px) {
             min-width: 200px;
             height: 175px;
+        }
+
+        &>a {
+            width: 310px;
+            height: 200px;
+
+            @media (min-width: 992px) and (max-width: 1199px) {
+                width: 280px;
+            }
+
+            //MD
+            @media (min-width: 768px) and (max-width: 991px) {
+                width: 280px;
+            }
+
+            //SM
+            @media (min-width: 576px) and (max-width: 767px) {
+                width: 280px;
+            }
+
+            //XS
+            @media (max-width: 575px) {
+                width: 200px;
+                height: 125px;
+            }
         }
 
         .sr-AgencyImgBg {
@@ -753,7 +847,7 @@
             width: 290px;
             height: 45px;
             margin-left: 10px;
-            margin-top: 5px;
+            margin-top: 10px;
             box-sizing: border-box;
 
             @media (min-width: 992px) and (max-width: 1199px) {
@@ -819,7 +913,8 @@
 
                     //XS
                     @media (max-width: 575px) {
-                        font-size: 12px;
+                        // font-size: 12px;
+                        font-size: 14px;
                         width: 140px;
                         height: 14px;
                         margin-bottom: 0;
@@ -852,7 +947,8 @@
 
                 //XS
                 @media (max-width: 575px) {
-                    font-size: 10px !important;
+                    // font-size: 10px !important;
+                    font-size: 12px;
                     width: 140px;
                     height: 12px;
                 }

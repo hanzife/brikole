@@ -42,7 +42,7 @@ function fixes() {
 fixes();
 
 // BRIKOLEUR PORTFOLIO ARROWS
-// LEGACY CODE ~~salma
+// LEGACY CODE
 // $(".sr-arrowLeft").click((e) => {
 //     let i = $(e.currentTarget).index(".sr-arrowLeft");
 //     document.getElementsByClassName("sr-portfolio")[i].scrollBy(-250, 0);
@@ -82,3 +82,14 @@ function sr_scroll(pos, direction) {
             container.scrollBy(scrollData.scrollValue, 0);
     }
 }
+// 
+// Functions Fav
+$(".sr-profile-fav").click((e) => {
+
+    let profile_liked = false;
+    //#region Replace this code with a request to check wether this profile is liked or not
+    profile_liked = $(e.currentTarget).hasClass('sr-profile-fav-liked');
+    //#endregion
+    // send a request to update DB data based on profile_liked status, upon success execute the code below
+    $(e.currentTarget).toggleClass('sr-profile-fav-liked');
+});
