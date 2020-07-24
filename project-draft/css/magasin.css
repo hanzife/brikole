@@ -1,0 +1,417 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap");
+.container {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Roboto" !important;
+}
+
+.container-custom {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  .container-custom {
+    width: 1140px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container-custom {
+    width: 960px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-custom {
+    width: 720px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .container-custom {
+    width: 540px;
+  }
+}
+@media (max-width: 575px) {
+  .container-custom {
+    width: 320px;
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.mg-rootBlank {
+  width: 100%;
+  height: 50px;
+}
+@media (max-width: 575px) {
+  .mg-rootBlank {
+    height: 20px;
+  }
+}
+
+.mg-banner {
+  width: 100%;
+  height: 350px;
+  border-radius: 20px;
+  background-color: #f7f7f8;
+  overflow: hidden;
+  background-image: url("/images/ass_1.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  box-sizing: border-box;
+  padding: 55px 0px 30px 55px;
+  margin-bottom: 50px;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_2.png");
+  }
+}
+@media (min-width: 576px) and (max-width: 991px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_3.png");
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .mg-banner {
+    background-position: 350px 10px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner {
+    height: 425px;
+    padding: 40px 32px 23px 32px;
+    background-position: center 140px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner {
+    background-image: url("/images/ass_1_4.png");
+    height: 300px;
+    padding: 20px;
+    padding-bottom: 70px;
+    background-position: right bottom;
+  }
+}
+.mg-banner .mg-benner-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.mg-banner .mg-benner-content .mg-banner-content-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main {
+    align-items: center;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  margin: 0;
+  color: #0d0c22;
+  width: 610px;
+  margin-bottom: 30px;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-title {
+    font-size: 26px;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+  position: relative;
+  width: 550px;
+  height: 60px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding-left: 15px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 15px 15px rgba(231, 231, 231, 0.28);
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+    width: 476px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref {
+    width: 100%;
+    padding-left: 10px;
+  }
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref:after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(-90deg, white, transparent);
+    right: 50px;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
+  width: 350px;
+  height: 26px;
+  padding: 5px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #676878;
+  border: none;
+  background: white;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
+    font-size: 14px;
+  }
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-code {
+    width: 221px;
+    padding: 0;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share {
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #ffc000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  user-select: none;
+  width: 130px;
+  min-width: 130px;
+  z-index: 999;
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share {
+    min-width: 50px;
+    width: unset;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share .mg-banner-ref-share-text {
+  margin-left: 10px;
+}
+@media (max-width: 575px) {
+  .mg-banner .mg-benner-content .mg-banner-content-main .mg-banner-ref .mg-banner-ref-share .mg-banner-ref-share-text {
+    display: none;
+  }
+}
+.mg-banner .mg-benner-content .mg-banner-more {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-decoration-line: underline;
+  color: #676878;
+}
+
+.mg-store {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mg-store > *:not(:last-child) {
+  margin-bottom: 50px;
+}
+.mg-store .mg-store-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #0d0c22;
+}
+.mg-store .mg-store-header .mg-store-header-greet {
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  line-height: 26px;
+  margin: 0;
+}
+.mg-store .mg-store-header .mg-store-header-greet span {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 22px;
+}
+.mg-store .mg-store-header .mg-store-header-points {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mg-store .mg-store-header .mg-store-header-points span {
+  font-weight: 500;
+  font-size: 18px;
+}
+.mg-store .mg-store-header .mg-store-header-points div {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mg-store .mg-store-header .mg-store-header-points div span {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffc000;
+  margin-right: 5px;
+}
+.mg-store .mg-store-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.mg-store .mg-store-row .mg-store-row-title {
+  font-weight: bold;
+  font-size: 30px;
+  color: #0d0c22;
+  margin-bottom: 20px;
+}
+.mg-store .mg-store-row .mg-store-row-collection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service {
+  flex: none;
+  width: 270px;
+  height: 150px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid #ebebec;
+  border-radius: 20px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service:not(:last-child) {
+  margin-right: 20px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service .mg-store-service-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points {
+  background-image: url("/images/ass_2.png");
+  background-repeat: no-repeat;
+  background-position: 95px center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-points-price {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #0d0c22;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-points-price span {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 25px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-points-value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-points-value span {
+  font-weight: bold;
+  font-size: 22px;
+  color: #0d0c22;
+  margin-right: 5px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-buy {
+  padding: 8px 20px;
+  background: #fdf6b2;
+  border-radius: 10px;
+  border: none;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-points .mg-store-service-buy span {
+  font-weight: 500;
+  font-size: 18px;
+  color: #723b14;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost {
+  background-image: url("/images/ass_3.png");
+  background-repeat: no-repeat;
+  background-position: 95px center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-price {
+  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #0d0c22;
+  line-height: 23px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-value {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #0d0c22;
+  padding: 4px 10px;
+  border: 1px solid #0d0c22;
+  border-radius: 10px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-boost-value span {
+  font-size: 20px;
+  line-height: 22px;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-buy {
+  padding: 8px 20px;
+  background: #fdf6b2;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mg-store .mg-store-row .mg-store-row-collection .mg-store-service-boost .mg-store-service-buy span {
+  margin-right: 5px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #723b14;
+}
+
+/*# sourceMappingURL=magasin.css.map */
