@@ -326,7 +326,6 @@ h1 {
     width: 175px;
     height: 58px;
     background-position: 148px center;
-    margin-right: 2px;
   }
 }
 @media (max-width: 575px) {
@@ -335,6 +334,9 @@ h1 {
     height: 58px;
     background-position: 128px center;
     font-size: 18px;
+  }
+  .selectSearch:last-of-type {
+    margin-right: 0;
   }
 }
 
@@ -353,7 +355,7 @@ h1 {
 }
 @media (max-width: 767px) {
   .findBtn {
-    width: 175px;
+    width: 170px;
     height: 58px;
     background-position: 122px center;
     padding-left: 32px;
@@ -361,7 +363,7 @@ h1 {
 }
 @media (max-width: 575px) {
   .findBtn {
-    width: 316px;
+    width: 100%;
     height: 58px;
     background-position: 197px center;
     padding-left: 100px;

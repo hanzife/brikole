@@ -25,10 +25,10 @@ Route::resource('/','HomeController')->only(['index']);
 // Route::get('/home', 'HomeController@index')->name('home');
 
 ////Search Result
-//
-Route::get('/Search', function () {
-  return view('searchresults');
-     });
+// //
+// Route::get('/Search', function () {
+//   return view('searchresults');
+//      });
 Route::get('/Search/{profession}/{ville}','HomeController@Search');   
 
 
@@ -37,8 +37,17 @@ Route::get('/Search/{profession}/{ville}','HomeController@Search');
 
 //Controller SignupBrikuluerZ
 //
-Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');
 Auth::routes();
+
+Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');   
+// Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');  
+Route::get('/signupBrikoleur_3/{professions}', 'signupbrikoleur2Controller@getSubProfession');  
+
+// Route::get('/signupBrikoleur_3', function () {
+//     return view('Auth.signupBrikoleur_3');
+//        });
+
+// Route::get('/getsprof/{profession}','signupbrikoleur2Controller@getsprof');   
 
 Route::get('/home', 'HomeController@index')->name('home');
 
