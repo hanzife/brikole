@@ -30,9 +30,9 @@ function fixes() {
     // $(".sr-portfolio-img").children("img").length;
 
     for (i = 0; i < count; i++) {
-        console.log(
-            $(".sr-portfolio-img:eq(" + i + ")").children("img").length
-        );
+        // console.log(
+        //     $(".sr-portfolio-img:eq(" + i + ")").children("img").length
+        // );
         let numImg = $(".sr-portfolio-img:eq(" + i + ")").children("img")
             .length;
         let widthImg = numImg * 250;
@@ -146,9 +146,10 @@ function adaptive_sps() {
                 // });
                 cont_inner_width -= sp_cont.children[last_sp_child].clientWidth;
                 sp_cont.children[last_sp_child].innerText = '...';
+                sp_cont.children[last_sp_child].style.marginRight = "0px";
                 // 
                 if (cont_inner_width > cont_width) {
-                    sp_cont.children[last_sp_child].style.display = 'none';
+                    sp_cont.children[last_sp_child].style.visibility = 'hidden';
                     // 
                 }
                 // else
@@ -161,8 +162,66 @@ function adaptive_sps() {
                 // });
                 // console.groupEnd();
             }
-            // 
+            let ttt_data = {
+                pos: i,
+                cont_inner_width,
+                cont_width
+            }
             if (cont_inner_width < cont_width) {
+                let dots_pos = -1;
+                for (let j = 0; j < sp_cont.children.length; j++) {
+                    if (sp_cont.children[j].innerText == '...') {
+                        dots_pos = j;
+                        j = sp_cont.children.length;
+                    }
+                }
+                // 
+                ttt_data.dot_pos = dots_pos;
+                ttt_data.child_length = sp_cont.children.length - 1;
+                // 
+                if (dots_pos != -1) {
+                    ttt_data.childs = [];
+                    for (let j = dots_pos; j < sp_cont.children.length; j++) {
+                        const sp_child = sp_cont.children[j];
+                        const sp_child_width = sp_child.clientWidth;
+                        const sp_child_orig_width = parseFloat(sp_child.getAttribute('data-size'));
+                        // const sp_child_style = window.getComputedStyle(sp_child);
+                        // const sp_child_marginRight = parseFloat(sp_child_style.marginRight.substr(0, sp_child_style.marginRight.length - 2));
+                        // 
+                        ttt_data.childs.push({
+                            j,
+                            sp_child_width,
+                            // sp_child_marginRight,
+                            sp_child_orig_width
+                        });
+                        // 
+                        let marginValue = windowSize <= 575 ? 1 : 5;
+                        // 
+                        let next_block = j < sp_cont.children.length - 1 ? sp_cont.children[j + 1].clientWidth : 0;
+                        // 
+                        console.log((cont_inner_width - sp_child_width) + marginValue + sp_child_orig_width + next_block, cont_width);
+                        console.log({
+                            minus: cont_inner_width - sp_child_width,
+                            marginValue,
+                            sp_child_orig_width,
+                            next_block
+                        }, cont_width)
+                        if ((cont_inner_width - sp_child_width) + marginValue + sp_child_orig_width + next_block <= cont_width)
+                            console.log(true);
+                        // console.log({
+                        //     i,
+                        //     sp_child_width,
+                        //     sp_child_marginRight
+                        // });
+                    }
+                    // console.log(ttt_data);
+                }
+                // 
+                // if (i == 0)
+                // console.log(ttt_data);
+            }
+            // 
+            /*if (cont_inner_width < cont_width) {
                 // while (cont_inner_width < cont_width) {
                 let dots_pos = -1;
                 for (let j = 0; j < sp_cont.children.length; j++) {
@@ -179,19 +238,26 @@ function adaptive_sps() {
                         let next_elem_size = sp_cont.children[x + 1] != undefined ? $(sp_cont.children[x + 1]).innerWidth() : 0;
                         var element_style = window.getComputedStyle(element);
                         // 
-                        console.log((cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size')) + next_elem_size - parseFloat(element_style.marginRight.substr(0, element_style.marginRight.length - 2)), cont_width);
+                        let testData = {
+                            pos: i,
+                            size: (cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size')) + next_elem_size - parseFloat(element_style.marginRight.substr(0, element_style.marginRight.length - 2)),
+                            cont: cont_width,
+                            old: element_old_size
+                        }
+                        console.log(testData);
+                        // console.log(i, , cont_width);
                         if ((cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size')) + next_elem_size < cont_width) {
                             // console.log('in');
                             element.innerText = element.getAttribute('data-value');
                             if (sp_cont.children[x + 1])
                                 sp_cont.children[x + 1].style.display = 'block';
                             cont_inner_width = (cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size'));
-                            console.log(cont_inner_width, cont_width, dots_pos);
+                            // console.log(cont_inner_width, cont_width, dots_pos);
                         }
                     }
                 }
 
-            }
+            }*/
             // console.groupEnd();
         }
         // console.log(sp_cont);
