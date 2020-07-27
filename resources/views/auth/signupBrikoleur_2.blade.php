@@ -34,7 +34,7 @@
             <!-- submit -->
             <div class="sb2-submit">
                 <button class="sb2-cancel">Plus-tard</button>
-                <button class="sb2-continue" type="submit" value="Submit">
+                <button class="sb2-continue sb2-continue-P" type="submit" value="Submit">
                     Continuer
                     <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"

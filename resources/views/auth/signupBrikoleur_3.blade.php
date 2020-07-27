@@ -6,6 +6,8 @@
 @section('content')
         <!-- header -->
         <!-- ------ -->
+        
+        <input type="hidden" id="profession_libelle" value="{{$professions}}">
         <div class="sb2-blank-51"></div>
 
         <div class="sb2-container">
@@ -36,7 +38,7 @@
                 <!-- submit -->
                 <div class="sb2-submit">
                     <button class="sb2-cancel">Plus-tard</button>
-                    <button class="sb2-continue" type="submit" value="Submit">
+                    <button class="sb2-continue sb2-continue-SP" type="submit" value="Submit">
                         Continuer
                         <svg
                             width="7"
@@ -63,7 +65,23 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"
         ></script>
-        <script src="{{ asset('js/signupBrikoleur_2.js')}}"></script>
+        <script src="{{asset('js/signupBrikoleur_2.js')}}"></script>
         <!-- <script src="{{ asset('js/signuoBrikoleur_Step3.js')}}"></script> -->
+        <!-- <script>
+$(document).ready(function () {
         
+    $.ajax({
+        url: "/signupBrikoleur_3/{professions}",
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            for (var i = 0; i < result[0].length; i++) {
+                listSubProfessions[i] = result[0][i];
+            }
+            console.log(result);
+            // alert("data[0]");
+        }
+    });
+    });
+    </script> -->
         @endsection

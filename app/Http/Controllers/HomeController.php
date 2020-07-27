@@ -103,4 +103,21 @@ class HomeController extends Controller
         //Redirect to a View searchresults.php
         return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount'));
     }
+
+    public function show($id_brikoleur)
+    {
+        // $ShowBrikoleur =Brikoleur::select()->where('id','=',$id_brikoleur)->get();
+        $DataBrikoleur = DB::table('brikoleurs')
+        ->where('id','=',$id_brikoleur)
+        ->join('images','images.Id_brikoleur','=','id')
+        ->where('images.type','=','profile')
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
+        ->inRandomOrder()
+        ->limit(10)
+        ->get();
+
+        // echo $ShowBrikoleur;
+        return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur'));
+    }
 }

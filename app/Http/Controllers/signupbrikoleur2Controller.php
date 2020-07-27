@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use App\Brikoleur;
 use App\Profession;
+use App\SpBrikoluer;
+use App\SousProfession;
+use App\Image;
 use DB;
 
 class signupbrikoleur2Controller extends Controller
@@ -14,6 +18,7 @@ class signupbrikoleur2Controller extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index(request $req){
         if($req->ajax()){
             $professions = Profession::select('libelle_P')->get();
@@ -28,9 +33,10 @@ class signupbrikoleur2Controller extends Controller
         $brikoluerlogged = Auth::user();
         return view('Auth.signupBrikoleur_2', compact('brikoluerlogged'));
     }
-    public function getSubProfession($professions,request $req){
+
+    public function getSubProfession(request $req,$professions){
         if($req->ajax()){
-            $arr=[];
+            $arr1=[];
             $i=0;
             $sousprofessions = DB::table('sous_professions')
             ->where('professions.libelle_P','=',$professions)
@@ -38,45 +44,69 @@ class signupbrikoleur2Controller extends Controller
             ->select('libelle_SP')
             ->get();   
             foreach($sousprofessions as $row){
-                $arr[$i] = $row->libelle_SP;
+                $arr1[$i] = $row->libelle_SP;
                 $i++;
             }  
-            return response()->json([$arr]);
+            return response()->json([$arr1]);       
         }
-       
         $brikoluerlogged = Auth::user();
         $id_user = $brikoluerlogged->id;
         $id_professions =  Profession::select('id_profession')->where('libelle_P','=',$professions)->get();
         foreach($id_professions as $row){
             $id_profession= $row->id_profession;
-        }    
+        }   
+        // // echo $id_professions; //array
+        // // echo $id_profession; //value
         DB::update('update brikoleurs set id_profession = ? where id = ?',[$id_profession,$id_user]);
-        return view('Auth.signupBrikoleur_3',compact('brikoluerlogged'));
+        return view('Auth.signupBrikoleur_3',compact('professions','brikoluerlogged'));
     }
-    // public function getsprof(request $req, $profession){
-        // if($req->ajax()){
-        //     $arr=[];
-        //     $i=0;
-        //     $sousprofessions = DB::table('professions')
-        //     ->where('professions.libelle_P','=',$profession)
-        //     ->join('sous_professions','sous_professions.id_sous_profession','=','professions.id_sous_profession')
-        //     ->select('libelle_SP')
-        //     ->get();   
-        //     foreach($sousprofessions as $row){
-        //         $arr[$i] = $row->libelle_SP;
-        //         $i++;
-        //     }                
-        //     return response()->json([$arr]);
-        // }
-    //     $brikoluerlogged = Auth::user();
-    //     return view('Auth.signupBrikoleur_3', compact('brikoluerlogged'));
 
-    // }
-
-    //AJAX REQUEST
-    // public function getSubProfessions($proffession){
-       
-    // }
+    //SignUP Brikoleur Step3: SousProfession - Update SP_Brikoleur
+    public function updateSpBrikoleur($selectedSubPrefessions){
+        //Convert string to array
+        $selectedSubPrefessions_arr = explode(',', $selectedSubPrefessions);
+        // echo count($selectedSubPrefessions_arr);
+        //My brikoleur
+        $brikoluerlogged = Auth::user();
+        $id_user = $brikoluerlogged->id;
+        //Insert spbrikoluer
+        $id_sousprofessions =[];
+        for($i=0; $i<count($selectedSubPrefessions_arr); $i++){
+            $id_sousprofessions[$i] =  SousProfession::select('id_sous_profession')->where('libelle_SP','=',$selectedSubPrefessions_arr[$i])->get();
+            //Get One id_sous_profession of SousProfession
+            foreach($id_sousprofessions[$i] as $row){
+                $id_sousprofession= $row->id_sous_profession;
+            }   
+            $spbrikoluer = new SpBrikoluer;
+            $spbrikoluer->id_brikoleur=$id_user;
+            $spbrikoluer->id_SPB = $id_sousprofession;
+            $spbrikoluer->save();
+        }
+        //Redirect to signupBrikoleur_4
+        return view('Auth.signupBrikoleur_4');
+    }
     
+    //SignUp Brikoleur Step 4: Save Image - Update Brikoleur Description 
+    public function saveimage(Request $request){
+            //GetData Inserted Image, Update Description, Get User LogedIn
+            //User
+            $brikoluerlogged = Auth::user();
+            $id_user = $brikoluerlogged->id;
+            //Insert Image
+            $destination ='images/Uploads/Profile'; //Save Image here
+            $image=$request->file('image'); //Get The Image from FORM
+            $filename =time() .'_'.  $image->getClientOriginalName();	//Add Time To File Name
+            $image->move($destination, $filename); //move
+            $images = new Image; //Insert Image
+            $images->id_brikoleur=$id_user;
+            $images->reference=strtolower($filename);
+            $images->type="Profile";
+            $images->save();
+            //Update Description
+            $description=$request->input('description');
+            DB::update('update brikoleurs set description = ? where id = ?',[$description,$id_user]);
+            //Redirect to Profile Page
+            return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged'));
+    }
 
 }
