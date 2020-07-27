@@ -41,6 +41,36 @@ body {
   }
 }
 
+.container-custom2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  .container-custom2 {
+    width: 1140px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container-custom2 {
+    width: 960px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-custom2 {
+    width: 555px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .container-custom2 {
+    width: 527px;
+  }
+}
+@media (max-width: 575px) {
+  .container-custom2 {
+    width: 320px;
+  }
+}
+
 a:link {
   text-decoration: none;
 }
