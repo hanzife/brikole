@@ -206,8 +206,17 @@ function adaptive_sps() {
                             sp_child_orig_width,
                             next_block
                         }, cont_width)
-                        if ((cont_inner_width - sp_child_width) + marginValue + sp_child_orig_width + next_block <= cont_width)
-                            console.log(true);
+                        if ((cont_inner_width - sp_child_width) + marginValue + sp_child_orig_width + next_block <= cont_width) {
+                            sp_child.innerText = sp_child.getAttribute('data-value');
+                            if (sp_cont.children[j + 1]) {
+                                cont_inner_width += marginValue;
+                                // 
+                                sp_cont.children[j].style.marginRight = `${marginValue}px`;
+                                sp_cont.children[j + 1].style.visibility = 'visible';
+                            }
+                            cont_inner_width = (cont_inner_width - sp_child_width) + sp_child_orig_width;
+                        }
+                        // console.log(true);
                         // console.log({
                         //     i,
                         //     sp_child_width,
