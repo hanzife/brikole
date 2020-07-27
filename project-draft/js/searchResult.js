@@ -83,7 +83,7 @@ function sr_scroll(pos, direction) {
     }
 }
 // 
-// Functions Fav
+// Fav button
 $(".sr-profile-fav").click((e) => {
 
     let profile_liked = false;
@@ -93,3 +93,118 @@ $(".sr-profile-fav").click((e) => {
     // send a request to update DB data based on profile_liked status, upon success execute the code below
     $(e.currentTarget).toggleClass('sr-profile-fav-liked');
 });
+// working on resize behaviour
+// ---
+// Beacause i'm lazy, mafiyach li ybdl f'html o nzid les attributes manualy, soooo
+// JS to automate that
+// // add Sousprofession value as a attribute to it's prespective tag (language 100)
+$('.sr-SousProf').each((i, e) => {
+    // Extra :: just to beautify the text
+    $(e).text($(e).text().trim());
+    // Set attributes
+    $(e).attr('data-value', $(e).text());
+    $(e).attr('data-size', e.clientWidth);
+});
+// handling sous-profession display
+adaptive_sps();
+window.addEventListener("resize", adaptive_sps);
+
+function adaptive_sps() {
+    const windowSize = window.innerWidth;
+    $('.sr-SousProf-all').each((i, sp_cont) => {
+        const is_mini_sp = $(sp_cont).hasClass('sr-SousProf-all-resp');
+        let func_continue = false;
+        if (windowSize <= 575) {
+            if (is_mini_sp) {
+                func_continue = true
+            }
+        } else {
+            if (!is_mini_sp) {
+                func_continue = true;
+            }
+        }
+        // 
+        if (func_continue) {
+            const cont_width = sp_cont.clientWidth;
+            let cont_inner_width = 0;
+            let last_sp_child = sp_cont.children.length - 1;
+            // 
+            for (let j = 0; j < sp_cont.children.length; j++) {
+                const sous_profession = sp_cont.children[j];
+                var sp_style = window.getComputedStyle(sous_profession);
+                cont_inner_width += sous_profession.clientWidth + parseFloat(sp_style.marginRight.substr(0, sp_style.marginRight.length - 2));
+            }
+            // 
+            // console.group();
+            // let phase_done = false;
+            while (cont_inner_width > cont_width) {
+                // console.group();
+                // console.log({
+                //     cont_inner_width,
+                //     cont_width,
+                //     last_sp_child
+                // });
+                cont_inner_width -= sp_cont.children[last_sp_child].clientWidth;
+                sp_cont.children[last_sp_child].innerText = '...';
+                // 
+                if (cont_inner_width > cont_width) {
+                    sp_cont.children[last_sp_child].style.display = 'none';
+                    // 
+                }
+                // else
+                // backwards();
+                last_sp_child--;
+                // console.log({
+                //     cont_inner_width,
+                //     cont_width,
+                //     last_sp_child
+                // });
+                // console.groupEnd();
+            }
+            // 
+            if (cont_inner_width < cont_width) {
+                // while (cont_inner_width < cont_width) {
+                let dots_pos = -1;
+                for (let j = 0; j < sp_cont.children.length; j++) {
+                    if (sp_cont.children[j].innerText == '...') {
+                        dots_pos = j;
+                        j = sp_cont.children.length;
+                    }
+                }
+                if (dots_pos > -1) {
+                    for (let x = dots_pos; x < sp_cont.children.length; x++) {
+                        const element = sp_cont.children[x];
+                        let element_old_size = element.clientWidth;
+                        // 
+                        let next_elem_size = sp_cont.children[x + 1] != undefined ? $(sp_cont.children[x + 1]).innerWidth() : 0;
+                        var element_style = window.getComputedStyle(element);
+                        // 
+                        console.log((cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size')) + next_elem_size - parseFloat(element_style.marginRight.substr(0, element_style.marginRight.length - 2)), cont_width);
+                        if ((cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size')) + next_elem_size < cont_width) {
+                            // console.log('in');
+                            element.innerText = element.getAttribute('data-value');
+                            if (sp_cont.children[x + 1])
+                                sp_cont.children[x + 1].style.display = 'block';
+                            cont_inner_width = (cont_inner_width - element_old_size) + parseFloat(element.getAttribute('data-size'));
+                            console.log(cont_inner_width, cont_width, dots_pos);
+                        }
+                    }
+                }
+
+            }
+            // console.groupEnd();
+        }
+        // console.log(sp_cont);
+    });
+    if (windowSize <= 575) {
+
+    } else if (windowSize <= 767) {
+
+    } else if (windowSize <= 991) {
+
+    } else if (windowSize <= 1199) {
+
+    } else {
+
+    }
+}

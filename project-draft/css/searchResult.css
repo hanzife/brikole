@@ -510,9 +510,19 @@ a:active {
   padding: 2px 8px;
   background-color: #fdf6b2;
   border-radius: 10px;
-  margin-right: 5px;
   white-space: nowrap;
   user-select: none;
+}
+.sr-profile .sr-SousProf-all .sr-SousProf:not(:last-child) {
+  margin-right: 5px;
+}
+@media (max-width: 575px) {
+  .sr-profile .sr-SousProf-all .sr-SousProf {
+    font-size: 12px;
+  }
+  .sr-profile .sr-SousProf-all .sr-SousProf:not(:last-child) {
+    margin-right: 1px;
+  }
 }
 @media (min-width: 575px) {
   .sr-profile .sr-SousProf-all-resp {
@@ -524,12 +534,6 @@ a:active {
     display: flex;
     margin-top: 5px;
     width: 175px;
-  }
-}
-@media (max-width: 575px) {
-  .sr-profile .sr-SousProf-all-resp .sr-SousProf {
-    font-size: 12px;
-    margin-right: 1px;
   }
 }
 .sr-profile .sr-description {

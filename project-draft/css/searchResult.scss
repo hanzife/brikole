@@ -1,6 +1,7 @@
 @use 'fonts';
 @use 'colors';
 @use 'common';
+@use 'utility';
 
 @mixin txt-of {
     white-space: nowrap;
@@ -507,9 +508,19 @@
             padding: 2px 8px;
             background-color: colors.$accent-100;
             border-radius: 10px;
-            margin-right: 5px;
             white-space: nowrap;
             user-select: none;
+            // 
+            @include utility.spacing-R(5px);
+
+            // 
+            //SM
+            @media (max-width: 575px) {
+                // font-size: 10px;
+                font-size: 12px;
+                @include utility.spacing-R(1px);
+            }
+
         }
     }
 
@@ -525,15 +536,6 @@
             width: 175px;
         }
 
-        .sr-SousProf {
-
-            //SM
-            @media (max-width: 575px) {
-                // font-size: 10px;
-                font-size: 12px;
-                margin-right: 1px;
-            }
-        }
     }
 
     .sr-description {
