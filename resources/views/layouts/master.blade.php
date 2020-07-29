@@ -10,6 +10,7 @@
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" /> -->
 <!-- <link ref="stylesheet" href="{{asset('css/bootstrap.min.css') }}"> -->
 <link rel="stylesheet" href="{{asset('css/navbar.css')}}" />
+<link rel="stylesheet" href="{{asset('css/navbar-b.css')}}" />
 <link rel="stylesheet" href="{{asset('css/footer.css')}}" />
 <link rel="stylesheet" href="{{asset('css/home.css')}}" />
 <link rel="stylesheet" href="{{asset('css/searchResult.css')}}" />
@@ -19,7 +20,9 @@
 <!--  -->
 <!-- your header here -->
 <div class="container-custom nv-links">
-            <nav class="nv-nav">
+                        @guest
+                        @if (Route::has('register'))
+                        <nav class="nv-nav">
                 <div>
                     <picture>
                         <source
@@ -34,7 +37,7 @@
                     <a class="nv-menuItem" href="#">Comment ça marche</a>
                     <a class="nv-menuItem" href="#">S’identifier</a>
                     <div class="nv-separator"></div>
-                    <a class="nv-signUpButton" href="#">
+                    <a class="nv-signUpButton" href="{{ route('register') }}">
                         <input
                             class="nv-signUp"
                             type="submit"
@@ -64,13 +67,181 @@
                 </div>
             </nav>
             <div class="nv-menu-xs" id="menu_sm">
+            
                 <div class="nv-menu-sub-xs">
                     <a class="nv-menuItem-xs" href="{{url('/')}}">Accueil</a>
                     <a class="nv-menuItem-xs" href="#">Comment ça marche</a>
                     <div class="nv-separator-xs"></div>
                     <a class="nv-menuItem-xs" href="#">S’identifier</a>
                 </div>
+            @endif
+            @else
+            <nav class="nv-b-nav">
+            <a href="/" class="nv-b-logo">
+                <picture>
+                    <source media="(max-width:767px)" srcset="images/logos/logo2.svg" />
+                    <img src="images/logos/logo.svg" alt="brikoleLogo" />
+                </picture>
+            </a>
+            <div class="nv-b-main_menu">
+                <a class="nv-b-menuItem" href="#">Accueil</a>
+                <a class="nv-b-menuItem" href="#">Comment ça marche</a>
+                <div class="nv-b-separator"></div>
+                <div class="nv-b-profile" id="nv-b-profile" data-visible="false">
+                    <img class="nv-b-profile-pic"
+                        src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
+                        alt="Image de profile" />
+                    <svg class="nv-b-profile-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M5.29279 7.29259C5.48031 7.10512 5.73462 6.99981 5.99979 6.99981C6.26495 6.99981 6.51926 7.10512 6.70679 7.29259L9.99979 10.5856L13.2928 7.29259C13.385 7.19708 13.4954 7.1209 13.6174 7.06849C13.7394 7.01608 13.8706 6.9885 14.0034 6.98734C14.1362 6.98619 14.2678 7.01149 14.3907 7.06177C14.5136 7.11205 14.6253 7.18631 14.7192 7.2802C14.8131 7.37409 14.8873 7.48574 14.9376 7.60864C14.9879 7.73154 15.0132 7.86321 15.012 7.99599C15.0109 8.12877 14.9833 8.25999 14.9309 8.382C14.8785 8.504 14.8023 8.61435 14.7068 8.70659L10.7068 12.7066C10.5193 12.8941 10.265 12.9994 9.99979 12.9994C9.73462 12.9994 9.48031 12.8941 9.29279 12.7066L5.29279 8.70659C5.10532 8.51907 5 8.26476 5 7.99959C5 7.73443 5.10532 7.48012 5.29279 7.29259Z"
+                            fill="#676878" />
+                    </svg>
+                    <!-- MENU -->
+                    <div class="nv-b-profile-menu" id="nv-b-profile-menu" style="display: none;">
+                        <a href="#">Profil</a>
+                        <a href="#">Magasin</a>
+                        <div class="nv-b-profile-menu-sep"></div>
+                        <div class="nv-b-profile-menu-points-cont">
+                            <span>Points</span>
+                            <div>
+                                <span>20</span>
+                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H14C14.5304 0 15.0391 0.210714 15.4142 0.585786C15.7893 0.960859 16 1.46957 16 2V4C15.4696 4 14.9609 4.21071 14.5858 4.58579C14.2107 4.96086 14 5.46957 14 6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8V10C16 10.5304 15.7893 11.0391 15.4142 11.4142C15.0391 11.7893 14.5304 12 14 12H2C1.46957 12 0.960859 11.7893 0.585786 11.4142C0.210714 11.0391 0 10.5304 0 10V8C0.530433 8 1.03914 7.78929 1.41421 7.41421C1.78929 7.03914 2 6.53043 2 6C2 5.46957 1.78929 4.96086 1.41421 4.58579C1.03914 4.21071 0.530433 4 0 4V2Z"
+                                        fill="#FFC000" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="nv-b-profile-menu-sep"></div>
+                        <a href="#">Paramètres du compte</a>
+                        <a class="nv-b-profile-menu-exit" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"
+                                >
+                            <span>Déconnecter</span>
+                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M1 0C1.26522 0 1.51957 0.105357 1.70711 0.292893C1.89464 0.48043 2 0.734784 2 1V13C2 13.2652 1.89464 13.5196 1.70711 13.7071C1.51957 13.8946 1.26522 14 1 14C0.734784 14 0.48043 13.8946 0.292893 13.7071C0.105357 13.5196 0 13.2652 0 13V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0ZM8.707 3.293C8.89447 3.48053 8.99979 3.73484 8.99979 4C8.99979 4.26516 8.89447 4.51947 8.707 4.707L7.414 6H15C15.2652 6 15.5196 6.10536 15.7071 6.29289C15.8946 6.48043 16 6.73478 16 7C16 7.26522 15.8946 7.51957 15.7071 7.70711C15.5196 7.89464 15.2652 8 15 8H7.414L8.707 9.293C8.88916 9.4816 8.98995 9.7342 8.98767 9.9964C8.9854 10.2586 8.88023 10.5094 8.69482 10.6948C8.50941 10.8802 8.2586 10.9854 7.9964 10.9877C7.7342 10.99 7.4816 10.8892 7.293 10.707L4.293 7.707C4.10553 7.51947 4.00021 7.26516 4.00021 7C4.00021 6.73484 4.10553 6.48053 4.293 6.293L7.293 3.293C7.48053 3.10553 7.73484 3.00021 8 3.00021C8.26516 3.00021 8.51947 3.10553 8.707 3.293Z"
+                                    fill="#FF6868" />
+                            </svg>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                        </a>
+
+                       
+                      
+                   
+
+
+                    </div>
+                </div>
+                <svg class="nv-b-menuIcon_xs" data-toggle="collapse" href="#menu_sm" role="button" aria-expanded="false"
+                    aria-controls="menu_sm" width="18" height="16" viewBox="0 0 18 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0 1.33333C0 0.979711 0.135459 0.640573 0.376577 0.390525C0.617695 0.140476 0.944722 0 1.28571 0H16.7143C17.0553 0 17.3823 0.140476 17.6234 0.390525C17.8645 0.640573 18 0.979711 18 1.33333C18 1.68696 17.8645 2.02609 17.6234 2.27614C17.3823 2.52619 17.0553 2.66667 16.7143 2.66667H1.28571C0.944722 2.66667 0.617695 2.52619 0.376577 2.27614C0.135459 2.02609 0 1.68696 0 1.33333ZM0 8C0 7.64638 0.135459 7.30724 0.376577 7.05719C0.617695 6.80714 0.944722 6.66667 1.28571 6.66667H16.7143C17.0553 6.66667 17.3823 6.80714 17.6234 7.05719C17.8645 7.30724 18 7.64638 18 8C18 8.35362 17.8645 8.69276 17.6234 8.94281C17.3823 9.19286 17.0553 9.33333 16.7143 9.33333H1.28571C0.944722 9.33333 0.617695 9.19286 0.376577 8.94281C0.135459 8.69276 0 8.35362 0 8ZM0 14.6667C0 14.313 0.135459 13.9739 0.376577 13.7239C0.617695 13.4738 0.944722 13.3333 1.28571 13.3333H16.7143C17.0553 13.3333 17.3823 13.4738 17.6234 13.7239C17.8645 13.9739 18 14.313 18 14.6667C18 15.0203 17.8645 15.3594 17.6234 15.6095C17.3823 15.8595 17.0553 16 16.7143 16H1.28571C0.944722 16 0.617695 15.8595 0.376577 15.6095C0.135459 15.3594 0 15.0203 0 14.6667Z"
+                        fill="#585863" />
+                </svg>
             </div>
+        </nav>
+        <div class="nv-b-menu-xs" id="menu_sm">
+            <div class="nv-b-menu-sub-xs">
+                <a class="nv-b-menuItem-xs" href="#">Accueil</a>
+                <a class="nv-b-menuItem-xs" href="#">Comment ça marche</a>
+                <div class="nv-b-separator-xs"></div>
+                <div class="nv-b-menuItem-profile">
+                    <div class="nv-b-menuItem-profile-data">
+                        <img class="nv-b-profile-pic"
+                            src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
+                            alt="Image de profile" />
+                        <span>Nom prenom Brikoleur</span>
+                    </div>
+                    <a class="nv-b-menuItem-xs" href="#">Profil</a>
+                    <a class="nv-b-menuItem-xs" href="#">Magasin</a>
+                    <div class="nv-b-separator-xs"></div>
+                    <div class="nv-b-profile-menu-points-cont nv-b-menuItem-xs">
+                        <span>Points</span>
+                        <div>
+                            <span>20</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0 2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H14C14.5304 0 15.0391 0.210714 15.4142 0.585786C15.7893 0.960859 16 1.46957 16 2V4C15.4696 4 14.9609 4.21071 14.5858 4.58579C14.2107 4.96086 14 5.46957 14 6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8V10C16 10.5304 15.7893 11.0391 15.4142 11.4142C15.0391 11.7893 14.5304 12 14 12H2C1.46957 12 0.960859 11.7893 0.585786 11.4142C0.210714 11.0391 0 10.5304 0 10V8C0.530433 8 1.03914 7.78929 1.41421 7.41421C1.78929 7.03914 2 6.53043 2 6C2 5.46957 1.78929 4.96086 1.41421 4.58579C1.03914 4.21071 0.530433 4 0 4V2Z"
+                                    fill="#FFC000" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="nv-b-separator-xs"></div>
+                    <a class="nv-b-menuItem-xs" href="#">Paramètres du compte</a>
+                    <a class="nv-b-profile-menu-exit nv-b-menuItem-xs" href="#">
+                        <span>Déconnecter</span>
+                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1 0C1.26522 0 1.51957 0.105357 1.70711 0.292893C1.89464 0.48043 2 0.734784 2 1V13C2 13.2652 1.89464 13.5196 1.70711 13.7071C1.51957 13.8946 1.26522 14 1 14C0.734784 14 0.48043 13.8946 0.292893 13.7071C0.105357 13.5196 0 13.2652 0 13V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0ZM8.707 3.293C8.89447 3.48053 8.99979 3.73484 8.99979 4C8.99979 4.26516 8.89447 4.51947 8.707 4.707L7.414 6H15C15.2652 6 15.5196 6.10536 15.7071 6.29289C15.8946 6.48043 16 6.73478 16 7C16 7.26522 15.8946 7.51957 15.7071 7.70711C15.5196 7.89464 15.2652 8 15 8H7.414L8.707 9.293C8.88916 9.4816 8.98995 9.7342 8.98767 9.9964C8.9854 10.2586 8.88023 10.5094 8.69482 10.6948C8.50941 10.8802 8.2586 10.9854 7.9964 10.9877C7.7342 10.99 7.4816 10.8892 7.293 10.707L4.293 7.707C4.10553 7.51947 4.00021 7.26516 4.00021 7C4.00021 6.73484 4.10553 6.48053 4.293 6.293L7.293 3.293C7.48053 3.10553 7.73484 3.00021 8 3.00021C8.26516 3.00021 8.51947 3.10553 8.707 3.293Z"
+                                fill="#FF6868" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+            <!-- <div class="nv-b-menu-sub-xs">
+                <a class="nv-b-menuItem-xs" href="#">Accueil</a>
+                <a class="nv-b-menuItem-xs" href="#">Comment ça marche</a>
+                <div class="nv-b-separator-xs"></div>
+                <div class="nv-b-menuItem-profile">
+                    <div class="nv-b-menuItem-profile-data">
+                        <img class="nv-b-profile-pic"
+                            src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
+                            alt="Image de profile" />
+                        <span>{{ Auth::user()->nom }} {{ Auth::user()->prenom }}</span>
+                    </div>
+                    <a class="nv-b-menuItem-xs" href="#">Profil</a>
+                    <a class="nv-b-menuItem-xs" href="#">Magasin</a>
+                    <div class="nv-b-separator-xs"></div>
+                    <div class="nv-b-profile-menu-points-cont nv-b-menuItem-xs">
+                        <span>Points</span>
+                        <div>
+                            <span>20</span>
+                            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0 2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H14C14.5304 0 15.0391 0.210714 15.4142 0.585786C15.7893 0.960859 16 1.46957 16 2V4C15.4696 4 14.9609 4.21071 14.5858 4.58579C14.2107 4.96086 14 5.46957 14 6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8V10C16 10.5304 15.7893 11.0391 15.4142 11.4142C15.0391 11.7893 14.5304 12 14 12H2C1.46957 12 0.960859 11.7893 0.585786 11.4142C0.210714 11.0391 0 10.5304 0 10V8C0.530433 8 1.03914 7.78929 1.41421 7.41421C1.78929 7.03914 2 6.53043 2 6C2 5.46957 1.78929 4.96086 1.41421 4.58579C1.03914 4.21071 0.530433 4 0 4V2Z"
+                                    fill="#FFC000" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="nv-b-separator-xs"></div>
+                    <a class="nv-b-menuItem-xs" href="#">Paramètres du compte</a>
+                    <a class="nv-b-profile-menu-exit nv-b-menuItem-xs" href="{{ route('logout') }}" 
+                        onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                        
+                        <span>Déconnecter</span>
+                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1 0C1.26522 0 1.51957 0.105357 1.70711 0.292893C1.89464 0.48043 2 0.734784 2 1V13C2 13.2652 1.89464 13.5196 1.70711 13.7071C1.51957 13.8946 1.26522 14 1 14C0.734784 14 0.48043 13.8946 0.292893 13.7071C0.105357 13.5196 0 13.2652 0 13V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0ZM8.707 3.293C8.89447 3.48053 8.99979 3.73484 8.99979 4C8.99979 4.26516 8.89447 4.51947 8.707 4.707L7.414 6H15C15.2652 6 15.5196 6.10536 15.7071 6.29289C15.8946 6.48043 16 6.73478 16 7C16 7.26522 15.8946 7.51957 15.7071 7.70711C15.5196 7.89464 15.2652 8 15 8H7.414L8.707 9.293C8.88916 9.4816 8.98995 9.7342 8.98767 9.9964C8.9854 10.2586 8.88023 10.5094 8.69482 10.6948C8.50941 10.8802 8.2586 10.9854 7.9964 10.9877C7.7342 10.99 7.4816 10.8892 7.293 10.707L4.293 7.707C4.10553 7.51947 4.00021 7.26516 4.00021 7C4.00021 6.73484 4.10553 6.48053 4.293 6.293L7.293 3.293C7.48053 3.10553 7.73484 3.00021 8 3.00021C8.26516 3.00021 8.51947 3.10553 8.707 3.293Z"
+                                fill="#FF6868" />
+                        </svg>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                </div>
+            </div> -->
+
+              
+        </div>
+        
+            </div>
+                           
+                               
+          
+                            @endguest
+           
         </div>
 <!-- end header -->
 
@@ -190,6 +361,8 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"
         ></script>
+         <!-- ------- -->
+    
 <!-- end footer -->
 
 <!-- 
@@ -212,6 +385,9 @@
   <script src="{{asset('js/home.js')}}"></script>
   <script src="{{asset('js/navbar.js')}}"></script>
   <script src="{{asset('js/searchResult.js')}}"></script>
+  <script src="{{asset('js/navbar-b.js')}}"></script>
+  
+
 
 
 </body>

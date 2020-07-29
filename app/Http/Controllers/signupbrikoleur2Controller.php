@@ -106,7 +106,63 @@ class signupbrikoleur2Controller extends Controller
             $description=$request->input('description');
             DB::update('update brikoleurs set description = ? where id = ?',[$description,$id_user]);
             //Redirect to Profile Page
-            return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged'));
+            // return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged'));
+
+            //Redirect to another Rout Which Will Show Profile 
+            return redirect('myportfolio');
+    }
+
+    public function myportfolio(){
+        //Logged Brikoleur
+        $brikoluerlogged = Auth::user();
+        $id_user = $brikoluerlogged->id;
+        //My Profession with My Profile Picture
+        $DataBrikoleur = DB::table('brikoleurs')
+        ->where('id','=',$id_user)
+        ->join('images','images.Id_brikoleur','=','id')
+        ->where('images.type','=','profile')
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
+        // ->distinct()
+        ->limit(1)
+        ->get();
+        //My Images
+        $DataImages = DB::table('images')
+        ->where('images.id_brikoleur','=',$id_user)
+        ->where('images.type','=','Portfolio')
+        ->select('images.reference','images.id_brikoleur')
+        // ->limit(3)
+        ->get();
+        //My Sub-Professions
+        $libelle_SP = DB::table('brikoleurs')
+        ->where('id','=',$id_user)
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
+        ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+        ->select('sous_professions.libelle_SP')
+        ->distinct()
+        ->get();
+    
+        
+        // $results = DB::table('brikoleurs')
+        // ->where('brikoleurs.ville','=',$ville)
+        // ->join('images','images.Id_brikoleur','=','id')
+        // ->where('images.type','=','profile')
+        // ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
+        // ->where('professions.libelle_P','=',$profession)
+        // ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.ville','images.reference','id')
+        // ->inRandomOrder()
+        // ->limit(10)
+        // ->get();
+
+        // $sousprofessions = DB::table('sous_professions')
+        // ->where('professions.libelle_P','=',$professions)
+        // ->join('professions','sous_professions.id_profession','=','professions.id_profession')
+        // ->select('libelle_SP')
+        // ->get();   
+
+
+        return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged','DataBrikoleur','brikoluerlogged','DataImages','libelle_SP'));
     }
 
 }

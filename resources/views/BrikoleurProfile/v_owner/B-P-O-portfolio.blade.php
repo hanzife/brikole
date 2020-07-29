@@ -1,30 +1,28 @@
-<title>Profile Brikoleur</title>
+<title>{{$brikoluerlogged->nom}} {{$brikoluerlogged->prenom}}</title>
     <link rel="stylesheet" href="{{asset('css/brikoleur-main.css')}}">
     <link rel="stylesheet" href="{{asset('css/brikoleur-portfolio.css')}}">
-
 <!-- Master Header/Footer -->
 @extends('layouts.master')
-@section('content')
-    
-    
+@section('content')    
     <div>
         <!-- header -->
     </div>
     <!-- main -->
     <div class="b-m-rootBlank"></div>
     <!-- Content -->
+    @foreach($DataBrikoleur as $rowBrikoleur)
     <div class="container-custom">
         <div class="b-m-top">
             <div class="b-m-top-profile">
                 <img class="b-m-top-profile-img"
-                    src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
+                    src="/images/Uploads/Profile/{{$rowBrikoleur->reference}}"
                     alt="Image Brikoleur" />
             </div>
             <!--  -->
             <div class="b-m-top-infos">
                 <div class="b-m-top-infos-main">
                     <div class="b-m-top-infos-main-name">
-                        <span>{{$brikoluerlogged->nom}} {{$brikoluerlogged->prenom}}</span>
+                        <span>{{$rowBrikoleur->nom}} {{$rowBrikoleur->prenom}}</span>
                         <!-- Unverfied -->
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -39,18 +37,20 @@
                         </svg> -->
                     </div>
                     <!-- In the future in case of multiple Professions, just insert the below in  a div  -->
-                    <span class="b-m-top-infos-main-prs">profession</span>
+                    <span class="b-m-top-infos-main-prs">{{$rowBrikoleur->libelle_P}}</span>
                 </div>
                 <!--  -->
                 <div class="b-m-top-infos-sps">
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
-                </div>
+                    @foreach($libelle_SP as $rowLibelle_SP)
+                    <span class="b-m-top-infos-sps-sp">{{$rowLibelle_SP->libelle_SP}}</span>
+                    @endforeach
+                </div>          
+                                              
+                                           
                 <!--  -->
                 <div class="b-m-top-infos-desc">
                     <span class="b-m-top-infos-desc-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam lacinia est, placerat
-                        pretium aliquam sem. Mi a vitae cursus in in arcu.
+                    {{$rowBrikoleur->description}}
                     </span>
                 </div>
                 <!--  -->
@@ -66,7 +66,7 @@
                         </span>
                     </span>
                     <span class="b-top-infos-adress-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    {{$rowBrikoleur->adresse}}, {{$rowBrikoleur->ville}} 
                     </span>
                 </div>
                 <!--  -->
@@ -76,7 +76,7 @@
                             d="M2 3C2 2.73478 2.10536 2.48043 2.29289 2.29289C2.48043 2.10536 2.73478 2 3 2H5.153C5.38971 2.00011 5.6187 2.08418 5.79924 2.23726C5.97979 2.39034 6.10018 2.6025 6.139 2.836L6.879 7.271C6.91436 7.48222 6.88097 7.69921 6.78376 7.89003C6.68655 8.08085 6.53065 8.23543 6.339 8.331L4.791 9.104C5.34611 10.4797 6.17283 11.7293 7.22178 12.7782C8.27072 13.8272 9.52035 14.6539 10.896 15.209L11.67 13.661C11.7655 13.4695 11.9199 13.3138 12.1106 13.2166C12.3012 13.1194 12.5179 13.0859 12.729 13.121L17.164 13.861C17.3975 13.8998 17.6097 14.0202 17.7627 14.2008C17.9158 14.3813 17.9999 14.6103 18 14.847V17C18 17.2652 17.8946 17.5196 17.7071 17.7071C17.5196 17.8946 17.2652 18 17 18H15C7.82 18 2 12.18 2 5V3Z"
                             fill="#676878" />
                     </svg>
-                    <span>0601020304</span>
+                    <span> {{$rowBrikoleur->telephone}}</span>
                 </span>
             </div>
             <!--  -->
@@ -108,29 +108,15 @@
             <!--  -->
             <div class="b-m-bot-portfolio">
                 <div class="b-m-bot-portfolio-cont">
+                
                     <div class="b-m-bot-portfolio-preview">
                         <div class="b-m-bot-portfolio-preview-imgs" id="b-m-bot-portfolio-preview-imgs-cont">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="0"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="1"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="2"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="3"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="4"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="5"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="6"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
+                        @foreach($DataImages as $rowImage)
+                            <img class="b-m-bot-portfolio-preview-img" 
+                            src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
+                                alt="Image de portfolio Brikoleur"
+                                >
+                        @endforeach
                         </div>
                         <div class="b-m-bot-portfolio-preview-nav">
                             <button class="b-m-bot-portfolio-preview-nav-btn"
@@ -161,42 +147,14 @@
                         <div id="b-m-bot-portfolio-preview-nav-progress">
                         </div>
                     </div>
+
                     <div class="b-m-bot-portfolio-catalogue">
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active"
-                            data-id='id dyal limage_1'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_2'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_3'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_4'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_5'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_6'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
-                            data-id='id dyal limage_7'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
-                                alt="Image Portfolio Brikoleur">
-                        </div>
+                    @foreach($DataImages as $rowImage)
+                           <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active">
+                       <img   src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
+                           alt="Image Portfolio Brikoleur">
+                   </div>
+                   @endforeach
                         <!-- ADD -->
                         <button class="b-m-bot-portfolio-catalogue-add">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
@@ -211,9 +169,10 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!--  -->
     <div class="b-m-rootBlank"></div>
     <!--  -->
-    <script src="../../js/brikoleur-preview-nav.js"></script>
-    <script src="../../js/brikoleur-preview-supp.js"></script>
+    <script src="{{asset('js/brikoleur-preview-nav.js')}}"></script>
+    <script src="{{asset('js/brikoleur-preview-supp.js')}}"></script>
 @endsection
