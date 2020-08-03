@@ -1,6 +1,7 @@
 <title>{{$brikoluerlogged->nom}} {{$brikoluerlogged->prenom}}</title>
     <link rel="stylesheet" href="{{asset('css/brikoleur-main.css')}}">
     <link rel="stylesheet" href="{{asset('css/brikoleur-portfolio.css')}}">
+    <link rel="stylesheet" href="../../css-prefixed/brikoleur-portfolio_empty.css">
 <!-- Master Header/Footer -->
 @extends('layouts.master')
 @section('content')    
@@ -106,6 +107,27 @@
                     href="./B-P-O-comments.html">Commentaires</a>
             </div>
             <!--  -->
+            @if(!$CountImages)
+            <div class="b-m-bot-portfolio">
+                <div class="b-m-bot-portfolio-empty">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.172 16.172C9.92211 15.4221 10.9393 15.0009 12 15.0009C13.0607 15.0009 14.0779 15.4221 14.828 16.172M9 10H9.01M15 10H15.01M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z"
+                            stroke="#0D0C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="b-m-bot-portfolio-empty-text">Aucune photo n'a été trouvée</span>
+                    <button class="b-m-bot-portfolio-empty-add">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M10.5 3C10.7652 3 11.0196 3.10536 11.2071 3.29289C11.3946 3.48043 11.5 3.73478 11.5 4V9H16.5C16.7652 9 17.0196 9.10536 17.2071 9.29289C17.3946 9.48043 17.5 9.73478 17.5 10C17.5 10.2652 17.3946 10.5196 17.2071 10.7071C17.0196 10.8946 16.7652 11 16.5 11H11.5V16C11.5 16.2652 11.3946 16.5196 11.2071 16.7071C11.0196 16.8946 10.7652 17 10.5 17C10.2348 17 9.98043 16.8946 9.79289 16.7071C9.60536 16.5196 9.5 16.2652 9.5 16V11H4.5C4.23478 11 3.98043 10.8946 3.79289 10.7071C3.60536 10.5196 3.5 10.2652 3.5 10C3.5 9.73478 3.60536 9.48043 3.79289 9.29289C3.98043 9.10536 4.23478 9 4.5 9H9.5V4C9.5 3.73478 9.60536 3.48043 9.79289 3.29289C9.98043 3.10536 10.2348 3 10.5 3Z"
+                                fill="#585863" />
+                        </svg>
+                        <span>Ajouter des photos</span>
+                    </button>
+                </div>
+            </div>
+            @endif
+            @if($CountImages)
             <div class="b-m-bot-portfolio">
                 <div class="b-m-bot-portfolio-cont">
                 
@@ -114,7 +136,7 @@
                         @foreach($DataImages as $rowImage)
                             <img class="b-m-bot-portfolio-preview-img" 
                             src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
-                                alt="Image de portfolio Brikoleur"
+                                alt="{{$rowImage->reference}}"
                                 >
                         @endforeach
                         </div>
@@ -150,9 +172,9 @@
 
                     <div class="b-m-bot-portfolio-catalogue">
                     @foreach($DataImages as $rowImage)
-                           <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active">
+                           <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active" data-id='{{$rowImage->id_image}}'>
                        <img   src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
-                           alt="Image Portfolio Brikoleur">
+                           alt="Image Portfolio Brikoleur" >
                    </div>
                    @endforeach
                         <!-- ADD -->
@@ -167,8 +189,11 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
+
+    
     @endforeach
     <!--  -->
     <div class="b-m-rootBlank"></div>

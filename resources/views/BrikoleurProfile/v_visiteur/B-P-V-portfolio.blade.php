@@ -19,8 +19,8 @@
 
         <div class="b-m-top">
             <div class="b-m-top-profile">
-                <img class="b-m-top-profile-img"
-                    src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
+            <img class="b-m-top-profile-img"
+                    src="/images/Uploads/Profile/{{$row->reference}}"
                     alt="Image Brikoleur" />
                     
             </div>
@@ -47,8 +47,9 @@
                 </div>
                 <!--  -->
                 <div class="b-m-top-infos-sps">
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
+                @foreach($libelle_SP as $rowLibelle_SP)
+                    <span class="b-m-top-infos-sps-sp">{{$rowLibelle_SP->libelle_SP}}</span>
+                    @endforeach
                 </div>
                 <!--  -->
                 <div class="b-m-top-infos-desc">
@@ -95,10 +96,12 @@
                 <div class="b-m-bot-portfolio-cont">
                     <div class="b-m-bot-portfolio-preview">
                         <div class="b-m-bot-portfolio-preview-imgs" id="b-m-bot-portfolio-preview-imgs-cont">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="0"
-                                src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
-                            <img class="b-m-bot-portfolio-preview-img" data-pos="1"
+                        @foreach($DataImages as $rowIamges)
+                            <img class="b-m-bot-portfolio-preview-img" data-pos=""
+                            src="/images/Uploads/Portfolio/{{$rowIamges->reference}}"
+                                alt="Image de portfolio Brikoleur">                     
+                        @endforeach
+                            <!-- <img class="b-m-bot-portfolio-preview-img" data-pos="1"
                                 src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
                                 alt="Image de portfolio Brikoleur">
                             <img class="b-m-bot-portfolio-preview-img" data-pos="2"
@@ -115,7 +118,7 @@
                                 alt="Image de portfolio Brikoleur">
                             <img class="b-m-bot-portfolio-preview-img" data-pos="6"
                                 src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image de portfolio Brikoleur">
+                                alt="Image de portfolio Brikoleur"> -->
                         </div>
                         <div class="b-m-bot-portfolio-preview-nav">
                             <button class="b-m-bot-portfolio-preview-nav-btn"
@@ -139,12 +142,16 @@
                         </div>
                     </div>
                     <div class="b-m-bot-portfolio-catalogue">
+                        @foreach($DataImages as $rowIamges)
                         <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active"
-                            data-id='id dyal limage_1'>
-                            <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/92570115_3873721969334579_7643778429369016452_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=111&_nc_ohc=pw4ixdhzu1EAX_JAE_t&oh=5874495a33a6c787f1b295faf2fae1df&oe=5F36E5FB"
-                                alt="Image Portfolio Brikoleur">
+                            data-id='{{$rowIamges->id_image}}'>
+                            <img src="/images/Uploads/Portfolio/{{$rowIamges->reference}}"
+                            alt="Image Portfolio Brikoleur">
                         </div>
-                        <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
+                        @endforeach
+                        
+                        
+                        <!-- <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-inactive"
                             data-id='id dyal limage_2'>
                             <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
                                 alt="Image Portfolio Brikoleur">
@@ -173,12 +180,14 @@
                             data-id='id dyal limage_7'>
                             <img src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/101687040_606243696648946_3058382731987508433_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=110&_nc_ohc=2bTK9tMwvpEAX8WP8Au&oh=bd29421ba4f1ccb89cc4f804d6589182&oe=5F3671D8"
                                 alt="Image Portfolio Brikoleur">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
     @endforeach
     
     <!--  -->

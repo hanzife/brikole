@@ -114,10 +114,26 @@ class HomeController extends Controller
         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
         ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
         ->inRandomOrder()
-        ->limit(10)
+        ->limit(1)
+        ->get();
+        //Selected Brikoleur's Portfolio Images
+        $DataImages = DB::table('images')
+        ->where('images.id_brikoleur','=',$id_brikoleur)
+        ->where('images.type','=','Portfolio')
+        ->select('images.reference','images.id_brikoleur','images.id_image')
+        ->get();
+        //SubProfessions
+        $libelle_SP = DB::table('brikoleurs')
+        ->where('id','=',$id_brikoleur)
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
+        ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+        ->select('sous_professions.libelle_SP')
+        ->distinct()
         ->get();
 
         // echo $ShowBrikoleur;
-        return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur'));
+        return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur','DataImages','libelle_SP'));
     }
+    
 }

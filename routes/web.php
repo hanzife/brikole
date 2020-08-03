@@ -19,8 +19,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Search/{profession}/{ville}','HomeController@Search');   
 //
 //Selected Profile From Search Results
-Route::get('/search/{id_brikoleur}',['as'=>'search/profile', 'uses' => 'HomeController@show']);   
+Route::get('/search/{id_brikoleur}','HomeController@show');   
 //
+
+// Route::get('/search/{id_brikoleur}', function () {
+//     echo "he";
+//        });
+
+
 //SignUp Brikoleur
 Auth::routes();
 //

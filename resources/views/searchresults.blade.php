@@ -146,7 +146,7 @@
 
                     <!-- Biokoleur profile -->
                     @foreach($results as $resultsrow)
-                    <div class="sr-profile" style="cursor: pointer;">
+                    <div class="sr-profile">
                         <div class="sr-portfolio">
                             <div class="sr-portfolio-img">
                                 @foreach($dataimages as $rowimg)
@@ -239,10 +239,12 @@
                                     </div>
                                     <div class="sr-profileInfo">
                                         <div class="sr-NomPRENOM">
-                                            <a href="" >  {{$resultsrow->prenom}} {{$resultsrow->nom}}</a
+                                            <a> {{$resultsrow->prenom}} {{$resultsrow->nom}}</a
                                             >
                                         </div>
-                                        <input type="hidden" id="selectedBrikoleur_id" value="{{$resultsrow->id}}">
+                                        <input type="hidden" class="selectedBrikoleur" value="{{$resultsrow->id}}">
+                                       
+                                        
                                         <div class="sr-SousProf-all">
                                             @foreach($reslibelle_SP as $res)
                                             @if($resultsrow->id == $res->Id_brikoleur)                    

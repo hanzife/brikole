@@ -31,6 +31,8 @@ class signupbrikoleur2Controller extends Controller
             return response()->json([$arr]);
         }
         $brikoluerlogged = Auth::user();
+
+
         return view('Auth.signupBrikoleur_2', compact('brikoluerlogged'));
     }
 
@@ -130,9 +132,11 @@ class signupbrikoleur2Controller extends Controller
         $DataImages = DB::table('images')
         ->where('images.id_brikoleur','=',$id_user)
         ->where('images.type','=','Portfolio')
-        ->select('images.reference','images.id_brikoleur')
+        ->select('images.reference','images.id_brikoleur','images.id_image')
         // ->limit(3)
         ->get();
+        //How many Iamges
+        $CountImages = count($DataImages);
         //My Sub-Professions
         $libelle_SP = DB::table('brikoleurs')
         ->where('id','=',$id_user)
@@ -142,27 +146,7 @@ class signupbrikoleur2Controller extends Controller
         ->select('sous_professions.libelle_SP')
         ->distinct()
         ->get();
-    
-        
-        // $results = DB::table('brikoleurs')
-        // ->where('brikoleurs.ville','=',$ville)
-        // ->join('images','images.Id_brikoleur','=','id')
-        // ->where('images.type','=','profile')
-        // ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
-        // ->where('professions.libelle_P','=',$profession)
-        // ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','brikoleurs.ville','images.reference','id')
-        // ->inRandomOrder()
-        // ->limit(10)
-        // ->get();
-
-        // $sousprofessions = DB::table('sous_professions')
-        // ->where('professions.libelle_P','=',$professions)
-        // ->join('professions','sous_professions.id_profession','=','professions.id_profession')
-        // ->select('libelle_SP')
-        // ->get();   
-
-
-        return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged','DataBrikoleur','brikoluerlogged','DataImages','libelle_SP'));
+        return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged','DataBrikoleur','brikoluerlogged','DataImages','CountImages','libelle_SP'));
     }
 
 }
