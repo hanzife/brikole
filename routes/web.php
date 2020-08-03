@@ -39,6 +39,8 @@ Route::get('/signupBrikoleur_4/{selectedSubPrefessions}','signupbrikoleur2Contro
 //SignUp Brikoleur Step 3 - SaveImage and Resirect to Profile 
 Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
 Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio');
+//Upload Portfolio Images 
+Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
 // Route::post('/portfolio',function(Request $request){
 //     // dd(Request()->all());
 //     // dd(Request()->file('image'));

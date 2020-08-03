@@ -114,6 +114,27 @@ class signupbrikoleur2Controller extends Controller
             return redirect('myportfolio');
     }
 
+    public function uploadImagesPortfolio(request $request){
+        //this user
+        $brikoluerlogged = Auth::user();
+        $id_user = $brikoluerlogged->id;
+        $destination ='images/Uploads/Portfolio';
+        //get images 
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $name = time() .'_'. $file->getClientOriginalName();
+                $file->move($destination,$name);
+                 //insert Images
+                Image::insert( [
+                        'id_brikoleur' => $id_user,
+                        'reference' =>$name,
+                        'type' =>"Portfolio"
+                    ]);
+               }
+        }
+        return redirect('myportfolio');   
+    }
+
     public function myportfolio(){
         //Logged Brikoleur
         $brikoluerlogged = Auth::user();

@@ -1,7 +1,7 @@
 <title>{{$brikoluerlogged->nom}} {{$brikoluerlogged->prenom}}</title>
     <link rel="stylesheet" href="{{asset('css/brikoleur-main.css')}}">
     <link rel="stylesheet" href="{{asset('css/brikoleur-portfolio.css')}}">
-    <link rel="stylesheet" href="../../css-prefixed/brikoleur-portfolio_empty.css">
+    <link rel="stylesheet" href="{{asset('css/brikoleur-portfolio_empty.css')}}">
 <!-- Master Header/Footer -->
 @extends('layouts.master')
 @section('content')    
@@ -116,7 +116,13 @@
                             stroke="#0D0C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     <span class="b-m-bot-portfolio-empty-text">Aucune photo n'a été trouvée</span>
-                    <button class="b-m-bot-portfolio-empty-add">
+                    <!-- Upload Images -->
+                    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="/uploadImagesPortfolio">
+                    @csrf
+                    <input required type="file" class="form-control" name="images[]" placeholder="" multiple>
+                    </form>              
+
+                    <button class="b-m-bot-portfolio-empty-add" id="ImagesUpload">
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M10.5 3C10.7652 3 11.0196 3.10536 11.2071 3.29289C11.3946 3.48043 11.5 3.73478 11.5 4V9H16.5C16.7652 9 17.0196 9.10536 17.2071 9.29289C17.3946 9.48043 17.5 9.73478 17.5 10C17.5 10.2652 17.3946 10.5196 17.2071 10.7071C17.0196 10.8946 16.7652 11 16.5 11H11.5V16C11.5 16.2652 11.3946 16.5196 11.2071 16.7071C11.0196 16.8946 10.7652 17 10.5 17C10.2348 17 9.98043 16.8946 9.79289 16.7071C9.60536 16.5196 9.5 16.2652 9.5 16V11H4.5C4.23478 11 3.98043 10.8946 3.79289 10.7071C3.60536 10.5196 3.5 10.2652 3.5 10C3.5 9.73478 3.60536 9.48043 3.79289 9.29289C3.98043 9.10536 4.23478 9 4.5 9H9.5V4C9.5 3.73478 9.60536 3.48043 9.79289 3.29289C9.98043 3.10536 10.2348 3 10.5 3Z"
@@ -124,6 +130,8 @@
                         </svg>
                         <span>Ajouter des photos</span>
                     </button>
+
+                   
                 </div>
             </div>
             @endif
@@ -132,13 +140,16 @@
                 <div class="b-m-bot-portfolio-cont">
                 
                     <div class="b-m-bot-portfolio-preview">
+                       
                         <div class="b-m-bot-portfolio-preview-imgs" id="b-m-bot-portfolio-preview-imgs-cont">
-                        @foreach($DataImages as $rowImage)
-                            <img class="b-m-bot-portfolio-preview-img" 
+                        @foreach($DataImages as $rowImage)  
+                        <img class="b-m-bot-portfolio-preview-img" 
                             src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
                                 alt="{{$rowImage->reference}}"
-                                >
+                                data-pos="{{ $loop->index }}">
+                            <!-- <input type="text" value="{{$rowImage->id_image}}"> -->
                         @endforeach
+
                         </div>
                         <div class="b-m-bot-portfolio-preview-nav">
                             <button class="b-m-bot-portfolio-preview-nav-btn"
@@ -198,6 +209,13 @@
     <!--  -->
     <div class="b-m-rootBlank"></div>
     <!--  -->
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"
+        ></script>
     <script src="{{asset('js/brikoleur-preview-nav.js')}}"></script>
     <script src="{{asset('js/brikoleur-preview-supp.js')}}"></script>
+    <script src="{{asset('js/BrikoleurUploadImages.js')}}"></script>
+    
 @endsection
