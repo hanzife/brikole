@@ -2,6 +2,11 @@
 .container {
   padding: 0;
 }
+@media (max-width: 575px) {
+  .container {
+    width: 320px;
+  }
+}
 
 body {
   margin: 0;
@@ -130,11 +135,18 @@ body {
 .nv-menuItem {
   padding: 12px 10px;
   margin-right: 15px;
+  line-height: 16px;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 @media (max-width: 767px) {
   .nv-menuItem {
     display: none;
   }
+}
+
+.nv-menuItem:hover {
+  background-color: #f1f1f2;
 }
 
 .nv-separator {
@@ -216,6 +228,12 @@ body {
 .nv-menuItem-xs {
   padding: 5px;
   margin-bottom: 5px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.nv-menuItem-xs:hover {
+  background-color: #f1f1f2;
 }
 
 .nv-separator-xs {

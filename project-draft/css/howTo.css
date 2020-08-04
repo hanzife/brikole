@@ -2,6 +2,11 @@
 .container {
   padding: 0;
 }
+@media (max-width: 575px) {
+  .container {
+    width: 320px;
+  }
+}
 
 body {
   margin: 0;
@@ -243,4 +248,4 @@ a:active {
   }
 }
 
-/*# sourceMappingURL=howto.css.map */
+/*# sourceMappingURL=howTo.css.map */

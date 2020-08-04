@@ -20,6 +20,9 @@
     margin: auto;
     background-image: $bg;
 }
+img {
+    // object-fit: cover;
+}
 
 .color-grey-dark {
     color: colors.$grey-dark;
@@ -176,7 +179,7 @@ h1 {
 .img-s215 {
     width: 215px;
     height: 180px;
-    border-radius: 10px 10px 0 0;
+    // border-radius: 10px 10px 0 0;
 }
 
 .img-s50 {
@@ -189,7 +192,15 @@ h1 {
     max-width: 225px;
     max-height: 85px;
 }
-
+.BriKoleurNameFix {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.recRechNameCntnr {
+    max-width: 148px;
+    margin-right: 7px;
+}
 //ads
 .ad1 {
     @include ads(970px, 250px, url("../images/ad1.png"));
@@ -239,7 +250,7 @@ h1 {
     }
 
     @media (max-width: 767px) {
-        width: 175px;
+        width: 172px;
         height: 58px;
         background-position: 148px center;
         // margin-right: 2px;
@@ -269,14 +280,14 @@ h1 {
     padding-left: 51px;
 
     @media (max-width: 767px) {
-        width: 170px;
+        width: 168px;
         height: 58px;
         background-position: 122px center;
         padding-left: 32px;
     }
 
     @media (max-width: 575px) {
-        width: 100%;
+        width: 320px;
         height: 58px;
         background-position: 197px center;
         padding-left: 100px;
@@ -335,6 +346,11 @@ h1 {
         width: 174px;
         height: 210px;
     }
+    //XS
+    @media (max-width: 575px) {
+        width: 152px;
+        height: 186px;
+    }
 }
 
 .sm-container-320 {
@@ -344,10 +360,16 @@ h1 {
 
 .sm-container2 {
     width: 217px;
+    max-width: 217px;
+    min-width: 217px;
     height: 244px;
+    max-height: 244px;
+    min-height: 244px;
     border: 1px solid colors.$grey-300;
     border-radius: 10px;
     background-color: white;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
 
     @media (max-width: 1199px) {
         margin-right: 16px;
@@ -382,12 +404,30 @@ h1 {
 
 .recRechSlide {
     @include scrollBar;
+    //style scrollbar on moz
+    scrollbar-color: colors.$grey-500 colors.$grey-300;
+    scrollbar-width: thin;
     scroll-behavior: smooth;
+    padding-bottom: 17px;
 }
 
 .recRechSlide::-webkit-scrollbar {
-    // for chrome & safari (works on edge too)
-    display: none;
+    width: 8px;
+    height: 8px;
+}
+
+.recRechSlide::-webkit-scrollbar-track {
+    background: colors.$grey-300;
+    border-radius: 15px;
+}
+
+.recRechSlide::-webkit-scrollbar-thumb {
+    background: colors.$grey-500;
+    border-radius: 15px;
+}
+
+.recRechSlide::-webkit-scrollbar-thumb:hover {
+    background: colors.$grey-600;
 }
 
 .slideIndicatorT2-ctn {
@@ -403,10 +443,11 @@ h1 {
     background-color: colors.$grey-300;
     border-radius: 15px;
     margin-top: 17px;
+    display: none;
 
-    @media (min-width: 1200px) {
-        display: none;
-    }
+    // @media (min-width: 1200px) {
+    //     display: none;
+    // }
 
     .progress-bar-cstm {
         background-color: colors.$grey-500;
@@ -658,5 +699,9 @@ h1 {
 
     .show-on-xs {
         display: block;
+    }
+    .img-s152-r {
+        width: 132px;
+        height: 120px;
     }
 }
