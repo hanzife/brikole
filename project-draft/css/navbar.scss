@@ -46,11 +46,17 @@ body {
 .nv-menuItem {
     padding: 12px 10px;
     margin-right: 15px;
+    line-height: 16px;
+    border-radius: 10px;
+    transition: 0.3s;
 
     //SM
     @media (max-width: 767px) {
         display: none;
     }
+}
+.nv-menuItem:hover {
+    background-color: colors.$grey-200;
 }
 .nv-separator {
     height: 30px;
@@ -122,6 +128,11 @@ body {
 .nv-menuItem-xs {
     padding: 5px;
     margin-bottom: 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.nv-menuItem-xs:hover {
+    background-color: colors.$grey-200;
 }
 .nv-separator-xs {
     height: 1px;

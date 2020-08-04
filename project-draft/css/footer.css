@@ -2,6 +2,11 @@
 .container {
   padding: 0;
 }
+@media (max-width: 575px) {
+  .container {
+    width: 320px;
+  }
+}
 
 body {
   margin: 0;
@@ -96,6 +101,10 @@ a:active {
 }
 
 .ft-container-all {
+  background-color: #fafafb;
+}
+
+.ft-bgc {
   background-color: #fafafb;
 }
 

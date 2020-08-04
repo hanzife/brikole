@@ -32,7 +32,7 @@ function scrollAnimation() {
         if (scrollLeft == maxScrollVal) {
             $(".recRechSlide").scrollLeft(0);
         }
-    }, 3000);
+    }, 5000);
 }
 scrollAnimation();
 
@@ -145,6 +145,6 @@ function scrollAnimationExplorer() {
         if (scrollLeft == maxScrollVal) {
             $(".explorer").scrollLeft(0);
         }
-    }, 3000);
+    }, 5000);
 }
 scrollAnimationExplorer();

@@ -11,6 +11,9 @@
 .ft-container-all {
     background-color: colors.$grey-50;
 }
+.ft-bgc {
+    background-color: colors.$grey-50;
+}
 .ft-footerTop {
     //SM
     @media (max-width: 767px) {
