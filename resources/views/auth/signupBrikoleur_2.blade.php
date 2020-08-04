@@ -7,7 +7,6 @@
     <!-- header -->
     <!-- ------ -->
     <!--  -->
-    bonjour {{$brikoluerlogged->nom}}
     <div class="sb2-blank-51"></div>
 
     <div class="sb2-container">

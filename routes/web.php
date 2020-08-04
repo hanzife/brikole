@@ -19,8 +19,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Search/{profession}/{ville}','HomeController@Search');   
 //
 //Selected Profile From Search Results
-Route::get('/search/{id_brikoleur}',['as'=>'search/profile', 'uses' => 'HomeController@show']);   
+Route::get('/search/{id_brikoleur}','HomeController@show');   
 //
+
+// Route::get('/search/{id_brikoleur}', function () {
+//     echo "he";
+//        });
+
+
 //SignUp Brikoleur
 Auth::routes();
 //
@@ -32,6 +38,9 @@ Route::get('/signupBrikoleur_3/{professions}', 'signupbrikoleur2Controller@getSu
 Route::get('/signupBrikoleur_4/{selectedSubPrefessions}','signupbrikoleur2Controller@updateSpBrikoleur');
 //SignUp Brikoleur Step 3 - SaveImage and Resirect to Profile 
 Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
+Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio');
+//Upload Portfolio Images 
+Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
 // Route::post('/portfolio',function(Request $request){
 //     // dd(Request()->all());
 //     // dd(Request()->file('image'));

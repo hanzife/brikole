@@ -60,8 +60,9 @@ $('#btn_searchBrikoluer').on("click", function () {
     var ville = document.getElementById("Select_Ville").value;
     window.location.href = "../../Search/" + profession + "/" + ville
 });
-//Click Brikoleur for profile 
-$('.sr-profile').on("click", function () {
-    var id_brikoleur = document.getElementById("selectedBrikoleur_id").value;
-    window.location.href = "../../search/" + id_brikoleur
+//Click Brikoleur for profile
+$('.sr-profileInfo').on("click", function () {
+    var id_brikoleur = $(this).find('.selectedBrikoleur').val();
+    // alert(id_brikoleur);
+    window.location.href = "../../search/" + id_brikoleur;
 });
