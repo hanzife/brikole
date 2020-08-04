@@ -46,10 +46,25 @@ return [
             'provider' => 'brikoleurs',
             'hash' => false,
         ],
+
         'brikoleur' => [
             'driver' => 'session',
             'provider' => 'brikoleurs',
         ],
+
+        //Client Guard 
+        
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
+        'client-api' => [
+            'driver' => 'token',
+            'provider' => 'clients',
+            'hash' => false,
+        ],
+
     ],
 
     /*
@@ -75,6 +90,11 @@ return [
             'model' => App\Brikoleur::class,
         ],
 
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Client::class,
+        ],
+        
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -99,6 +119,12 @@ return [
     'passwords' => [
         'brikoleurs' => [
             'provider' => 'brikoleurs',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'clients' => [
+            'provider' => 'clients',
             'table' => 'password_resets',
             'expire' => 60,
         ],

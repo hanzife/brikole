@@ -50,7 +50,8 @@ Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPor
 //     //GetData
 // });
 
-
+//Client 
+Route::get('/client','ClientController@index');
 
 
 // Route::get('/signupBrikoleur_3', function () {
