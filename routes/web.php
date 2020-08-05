@@ -41,17 +41,20 @@ Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
 Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio');
 //Upload Portfolio Images 
 Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
-// Route::post('/portfolio',function(Request $request){
-//     // dd(Request()->all());
-//     // dd(Request()->file('image'));
-//     dd(Request()->file('image'));
-//     // Request()->image->store('image');
-//     // return 'brah';
-//     //GetData
-// });
+
 
 //Client 
-Route::get('/client','ClientController@index');
+Route::get('/ClientRegister', function () {
+    return view('Auth.ClientRegister');
+       });
+//Client SignUp       
+Route::post('/registerclient', 'Auth\ClientRegisterController@register')->name('registerclient');       
+
+
+// homeclient
+Route::get('/clientdashboard','ClientController@index')->name('clientdashboard');       
+    
+// Route::get('/client','ClientController@index');
 
 
 // Route::get('/signupBrikoleur_3', function () {

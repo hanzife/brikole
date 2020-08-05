@@ -23,6 +23,7 @@
                     <div>Brikoleur</div>
                 </div>
                 <div class="sb1-blank-53"></div>
+                <a href="{{url('ClientRegister')}}">
                 <div class="sb1-accountType-item">
                     <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="22.5" cy="22.5" r="22.5" fill="#F7F7F8" />
@@ -31,6 +32,7 @@
                             fill="#676878" />
                     </svg>
                     <div>Particulier</div>
+                    </a>
                 </div>
                 <div class="sb1-blank-53"></div>
                 <div class="sb1-accountType-item">
