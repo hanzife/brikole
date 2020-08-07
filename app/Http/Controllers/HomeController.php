@@ -7,6 +7,7 @@ use App\Image;
 use App\Profession;
 use App\SousProfession;
 use App\SpBrikoluer;
+use App\Commentaire;
 use DB;
 // use Illuminate\Support\Facades\Auth;
 
@@ -98,10 +99,13 @@ class HomeController extends Controller
         ->inRandomOrder()
         // ->limit(3)
         ->get();
+
+        $CountImages = count($dataimages);
+
         //Count the rows retrieved
         $resCount = count($results);
         //Redirect to a View searchresults.php
-        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount'));
+        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount','CountImages'));
     }
 
     public function show($id_brikoleur)
@@ -134,6 +138,53 @@ class HomeController extends Controller
 
         // echo $ShowBrikoleur;
         return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur','DataImages','libelle_SP'));
+    }
+
+    public function showComments($id_brikoleur)
+    {
+        // $ShowBrikoleur =Brikoleur::select()->where('id','=',$id_brikoleur)->get();
+        $DataBrikoleur = DB::table('brikoleurs')
+        ->where('id','=',$id_brikoleur)
+        ->join('images','images.Id_brikoleur','=','id')
+        ->where('images.type','=','profile')
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
+        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
+        ->inRandomOrder()
+        ->limit(1)
+        ->get();
+        //SubProfessions
+        $libelle_SP = DB::table('brikoleurs')
+        ->where('id','=',$id_brikoleur)
+        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
+        ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+        ->select('sous_professions.libelle_SP')
+        ->distinct()
+        ->get();
+        //Comments
+        $DataComments = DB::table('commentaires')
+        ->where('commentaires.id_brikoleur','=',$id_brikoleur)
+        ->join('clients','clients.id','=','commentaires.id_client')
+        ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
+        ->get();
+        //Count My Comments
+        $CountComents = count($DataComments);
+
+
+        //if Client Connected
+            $value = session()->get('id');
+            $ClientData = DB::table('clients')
+            ->where('id','=',$value)
+            ->select('nom')
+            ->get();
+            
+       
+        
+
+       
+
+        // echo $ShowBrikoleur;
+        return view('BrikoleurProfile.v_visiteur.B-P-V-comments',compact('DataBrikoleur','libelle_SP','DataComments','CountComents','value'));
     }
     
 }

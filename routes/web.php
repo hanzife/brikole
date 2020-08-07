@@ -1,35 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//
-/*
-| Web Routes
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-//
+
+
 //rederect to home page
 Route::resource('/','HomeController')->only(['index']);
 Route::get('/home', 'HomeController@index')->name('home');
-//
+
 //rederect to Search Result
 Route::get('/Search/{profession}/{ville}','HomeController@Search');   
-//
-//Selected Profile From Search Results
-Route::get('/search/{id_brikoleur}','HomeController@show');   
-//
 
-// Route::get('/search/{id_brikoleur}', function () {
-//     echo "he";
-//        });
+//Selected Profile From Search Results
+Route::get('/search/{id_brikoleur}','HomeController@show');
+//Brikoleur's Comments 
+Route::get('/search/{id_brikoleur}/comments','HomeController@showComments')->name('clientComments');
+//Add Comment for Clients
+Route::post('/search/{id_brikoleur}/addComment','ClientController@postComment')->name('addComment');
+// Route::get('/search/{id_brikoleur}/getComment','ClientController@getComment')->name('getComment');
+//Brikoleur Add TO Fav
+Route::get('/search/{id_brikoleur}/BrikoleurAddFav','ClientController@BrikoleurAddFav')->name('BrikoleurAddFav');
 
 
 //SignUp Brikoleur
 Auth::routes();
-//
 //SignUp Brikoleur Step 2 - Select a Profession
 Route::get('/signupBrikoleur_2', 'signupbrikoleur2Controller@index');  
 //SignUp Brikoleur Step 3 - Select a Sub-Profession Within selected Profession
@@ -53,7 +46,9 @@ Route::post('/registerclient', 'Auth\ClientRegisterController@register')->name('
 
 // homeclient
 Route::get('/clientdashboard','ClientController@index')->name('clientdashboard');       
-    
+//LogOut
+Route::get('/logoutClient','ClientController@forgetClient')->name('forgetClient');     
+
 // Route::get('/client','ClientController@index');
 
 

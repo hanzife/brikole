@@ -1,34 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Master Header/Footer -->
+@extends('layouts.master')
+@section('content')
     <title>Profile Brikoleur</title>
-    <link rel="stylesheet" href="../../css-prefixed/brikoleur-main.css">
-    <link rel="stylesheet" href="../../css-prefixed/brikoleur-comments.css">
-    <link rel="stylesheet" href="../../css-prefixed/brikoleur-comment-denied.css">
-</head>
+    <link rel="stylesheet" href="{{asset('css/brikoleur-main.css')}}">
+    <link rel="stylesheet" href="{{asset('css/brikoleur-comment-denied.css')}}">
+    <link rel="stylesheet" href="{{asset('css/brikoleur-comments.css')}}">
 
-<body>
     <div>
         <!-- header -->
     </div>
     <!-- main -->
     <div class="b-m-rootBlank"></div>
     <!-- Content -->
+    @foreach($DataBrikoleur as $row)
     <div class="container-custom">
         <div class="b-m-top">
             <div class="b-m-top-profile">
                 <img class="b-m-top-profile-img"
-                    src="https://instagram.frak1-2.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/96373109_2940098229362306_8759984751380354264_n.jpg?_nc_ht=instagram.frak1-2.fna.fbcdn.net&_nc_cat=102&_nc_ohc=EXhgyJqbY4MAX_IL7lT&oh=86b703238bc1cf71f7e7b89de3728666&oe=5F3442E6"
-                    alt="Image Brikoleur" />
+                src="/images/Uploads/Profile/{{$row->reference}}"
+                 alt="Image Brikoleur" />
             </div>
             <!--  -->
             <div class="b-m-top-infos">
                 <div class="b-m-top-infos-main">
                     <div class="b-m-top-infos-main-name">
-                        <span>Mahmoud SOCADYA</span>
+                        <span>{{$row->nom}} {{$row->prenom}}</span>
                         <!-- Unverfied -->
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -43,18 +40,18 @@
                         </svg> -->
                     </div>
                     <!-- In the future in case of multiple Professions, just insert the below in  a div  -->
-                    <span class="b-m-top-infos-main-prs">profession</span>
+                    <span class="b-m-top-infos-main-prs">{{$row->libelle_P}}</span>
                 </div>
                 <!--  -->
                 <div class="b-m-top-infos-sps">
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
-                    <span class="b-m-top-infos-sps-sp">sous-profession</span>
+                @foreach($libelle_SP as $rowLibelle_SP)
+                    <span class="b-m-top-infos-sps-sp">{{$rowLibelle_SP->libelle_SP}}</span>
+                @endforeach    
                 </div>
                 <!--  -->
                 <div class="b-m-top-infos-desc">
                     <span class="b-m-top-infos-desc-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in quam lacinia est, placerat
-                        pretium aliquam sem. Mi a vitae cursus in in arcu.
+                    {{$row->description}} 
                     </span>
                 </div>
                 <!--  -->
@@ -70,7 +67,7 @@
                         </span>
                     </span>
                     <span class="b-top-infos-adress-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    {{$row->adresse}}, {{$row->ville}} 
                     </span>
                 </div>
                 <!--  -->
@@ -86,14 +83,14 @@
         </div>
         <div class="b-m-bot">
             <div class="b-m-bot-header">
-                <a class="b-m-bot-header-text b-m-bot-header-text-inactive" href="./B-P-V-portfolio.html">Portfolio</a>
+                <a class="b-m-bot-header-text b-m-bot-header-text-inactive" href="../../search/{{$row->id}}">Portfolio</a>
                 <span class="b-m-bot-header-text b-m-bot-header-text-active">Commentaires</span>
             </div>
             <!--  -->
             <div class="b-m-bot-comments-cont">
                 <div class="b-m-bot-comments-info-bar">
                     <div class="b-m-bot-comments-info-bar-left">
-                        <span class="b-m-bot-comments-info-bar-left-count">16</span>
+                        <span class="b-m-bot-comments-info-bar-left-count">{{$CountComents}}</span>
                         <span>Commentaires</span>
                     </div>
                     <div class="b-m-bot-comments-info-bar-right">
@@ -142,6 +139,44 @@
                         </form>
                     </div>
                 </div>
+                <!-- If Client Is Connected -->
+                <!-- Add New Comment -->
+                @if (session()->has('id'))
+                <form class="b-m-bot-comments-add" method="post" id="form_addComment" action="addComment">
+                {{ csrf_field() }}
+                    <span class="b-m-bot-comments-add-title">Écrire votre commentaire :</span>
+                    <textarea name="commentaire" class="b-m-bot-comments-add-text"></textarea>
+                   
+                    <input type="hidden" name="idbrikoleur" value="{{$row->id}}"> 
+                    <input type="hidden" name="liked" id="rateme" value=""> 
+                    <div class="b-m-bot-comments-add-extra">
+                        <div class="b-m-bot-comments-add-extra-rating">
+                            <span>Avis :</span>
+                            <button
+                                class="b-m-bot-comments-add-extra-rating-btn b-m-bot-comments-add-extra-rating-btn-active"
+                                type="button" id="liked">
+                                <svg class="b-m-bot-comments-add-extra-rating-btn-P" width="14" height="15"
+                                    viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 7.9375C-2.64103e-09 7.76514 0.0349094 7.59447 0.102735 7.43523C0.17056 7.27599 0.269973 7.1313 0.395298 7.00942C0.520623 6.88755 0.669406 6.79087 0.833151 6.72491C0.996895 6.65895 1.1724 6.625 1.34963 6.625C1.52687 6.625 1.70237 6.65895 1.86611 6.72491C2.02986 6.79087 2.17864 6.88755 2.30397 7.00942C2.42929 7.1313 2.52871 7.27599 2.59653 7.43523C2.66436 7.59447 2.69927 7.76514 2.69927 7.9375V13.1875C2.69927 13.5356 2.55707 13.8694 2.30397 14.1156C2.05086 14.3617 1.70758 14.5 1.34963 14.5C0.991688 14.5 0.648403 14.3617 0.395298 14.1156C0.142193 13.8694 5.33379e-09 13.5356 0 13.1875V7.9375ZM3.59902 7.79138V12.5426C3.59886 12.8678 3.69189 13.1866 3.86767 13.4633C4.04344 13.74 4.29501 13.9635 4.59415 14.1089L4.63914 14.1307C5.1384 14.3734 5.68885 14.4998 6.247 14.5H11.1201C11.5362 14.5002 11.9396 14.36 12.2615 14.1035C12.5833 13.847 12.8038 13.4899 12.8854 13.093L13.9651 7.843C14.0173 7.58914 14.0109 7.32718 13.9464 7.07601C13.8819 6.82484 13.7609 6.59071 13.5921 6.39051C13.4233 6.19031 13.211 6.02901 12.9704 5.91825C12.7298 5.80749 12.4669 5.75003 12.2007 5.75H8.99755V2.25C8.99755 1.78587 8.80796 1.34075 8.47049 1.01256C8.13301 0.684374 7.6753 0.5 7.19804 0.5C6.95941 0.5 6.73055 0.592187 6.56182 0.756282C6.39308 0.920376 6.29829 1.14294 6.29829 1.375V1.95863C6.29829 2.71592 6.04571 3.45279 5.57848 4.05862L4.31882 5.69138C3.85159 6.29721 3.59902 7.03408 3.59902 7.79138Z"
+                                        fill="#676878" />
+                                </svg>
+                            </button>
+                            <button class="b-m-bot-comments-add-extra-rating-btn" type="button" id="disliked">
+                                <svg class="b-m-bot-comments-add-extra-rating-btn-N" width="14" height="15"
+                                    viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 7.0625C-2.64103e-09 7.23486 0.0349094 7.40553 0.102735 7.56477C0.17056 7.72401 0.269973 7.8687 0.395298 7.99058C0.520623 8.11245 0.669406 8.20913 0.833151 8.27509C0.996895 8.34105 1.1724 8.375 1.34963 8.375C1.52687 8.375 1.70237 8.34105 1.86611 8.27509C2.02986 8.20913 2.17864 8.11245 2.30397 7.99058C2.42929 7.8687 2.52871 7.72401 2.59653 7.56477C2.66436 7.40553 2.69927 7.23486 2.69927 7.0625V1.8125C2.69927 1.4644 2.55707 1.13056 2.30397 0.884423C2.05086 0.638282 1.70758 0.5 1.34963 0.5C0.991688 0.5 0.648403 0.638282 0.395298 0.884423C0.142193 1.13056 5.33379e-09 1.4644 0 1.8125V7.0625ZM3.59902 7.20862V2.45738C3.59886 2.13217 3.69189 1.81336 3.86767 1.5367C4.04344 1.26004 4.29501 1.03649 4.59415 0.891126L4.63914 0.869251C5.1384 0.626587 5.68885 0.500173 6.247 0.5H11.1201C11.5362 0.49984 11.9396 0.639958 12.2615 0.896498C12.5833 1.15304 12.8038 1.51014 12.8854 1.907L13.9651 7.157C14.0173 7.41086 14.0109 7.67282 13.9464 7.92399C13.8819 8.17516 13.7609 8.40929 13.5921 8.60949C13.4233 8.80969 13.211 8.97099 12.9704 9.08175C12.7298 9.19251 12.4669 9.24997 12.2007 9.25H8.99755V12.75C8.99755 13.2141 8.80796 13.6592 8.47049 13.9874C8.13301 14.3156 7.6753 14.5 7.19804 14.5C6.95941 14.5 6.73055 14.4078 6.56182 14.2437C6.39308 14.0796 6.29829 13.8571 6.29829 13.625V13.0414C6.29829 12.2841 6.04571 11.5472 5.57848 10.9414L4.31882 9.30862C3.85159 8.70279 3.59902 7.96592 3.59902 7.20862Z"
+                                        fill="#676878" />
+                                </svg>
+                            </button>
+                        </div>
+                        <button type="submit" id="btn_addComment" class="b-m-bot-comments-add-submit">Ajouter</button>
+                    </div>
+                </form>
+                @endif
+                <!-- if client not connected -->
+                @if (session()->has('id') == false)
                 <div class="b-m-bot-comments-denied">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -150,14 +185,69 @@
                     </svg>
                     <span>Veuillez créer un compte pour pouvoir écrire un commentaire</span>
                 </div>
-                <div class="b-m-bot-comments">
-                    <div class="b-m-bot-comment b-m-bot-comment-P">
+                @endif
+
+                <!-- if brikoleur has no comments -->
+                @if(!$CountComents)
+                <div class="b-m-bot-portfolio-empty">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M9.172 16.172C9.92211 15.4221 10.9393 15.0009 12 15.0009C13.0607 15.0009 14.0779 15.4221 14.828 16.172M9 10H9.01M15 10H15.01M21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z"
+                            stroke="#0D0C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="b-m-bot-portfolio-empty-text">Il n'existe aucun commentaire</span>
+                </div>
+                @endif
+                <!-- if Brikoleur has comments -->
+                @if($CountComents)
+                <div class="b-m-bot-comments" id="b-m-bot-comments">
+                @foreach($DataComments as $rowComment) 
+                @if($rowComment->liked)
+                <div class="b-m-bot-comment b-m-bot-comment-P">
                         <div class="b-m-bot-comment-top">
                             <div class="b-m-bot-comment-top-left">
-                                <span class="b-m-bot-comment-name">nom prenom client</span>
+                                <span class="b-m-bot-comment-name">{{$rowComment->nom}} {{$rowComment->prenom}}</span>
                                 <div class="b-m-bot-comment-extra">
-                                    <span class="b-m-bot-comment-city">ville</span>
-                                    <span class="b-m-bot-comment-date">07/16/2020</span>
+                                    <span class="b-m-bot-comment-city">{{$rowComment->lieu}}</span>
+                                    <span class="b-m-bot-comment-date">{{$rowComment->created_at}} </span>
+                                </div>
+                            </div>
+                            <div class="b-m-bot-comment-top-right">
+                                <div class="b-m-bot-comment-rating b-m-bot-comment-rating-p">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 7.4375C-2.64103e-09 7.26514 0.0349094 7.09447 0.102735 6.93523C0.17056 6.77599 0.269973 6.6313 0.395298 6.50942C0.520623 6.38755 0.669406 6.29087 0.833151 6.22491C0.996895 6.15895 1.1724 6.125 1.34963 6.125C1.52687 6.125 1.70237 6.15895 1.86611 6.22491C2.02986 6.29087 2.17864 6.38755 2.30397 6.50942C2.42929 6.6313 2.52871 6.77599 2.59653 6.93523C2.66436 7.09447 2.69927 7.26514 2.69927 7.4375V12.6875C2.69927 13.0356 2.55707 13.3694 2.30397 13.6156C2.05086 13.8617 1.70758 14 1.34963 14C0.991688 14 0.648403 13.8617 0.395298 13.6156C0.142193 13.3694 5.33379e-09 13.0356 0 12.6875V7.4375ZM3.59902 7.29138V12.0426C3.59886 12.3678 3.69189 12.6866 3.86767 12.9633C4.04344 13.24 4.29501 13.4635 4.59415 13.6089L4.63914 13.6307C5.1384 13.8734 5.68885 13.9998 6.247 14H11.1201C11.5362 14.0002 11.9396 13.86 12.2615 13.6035C12.5833 13.347 12.8038 12.9899 12.8854 12.593L13.9651 7.343C14.0173 7.08914 14.0109 6.82718 13.9464 6.57601C13.8819 6.32484 13.7609 6.09071 13.5921 5.89051C13.4233 5.69031 13.211 5.52901 12.9704 5.41825C12.7298 5.30749 12.4669 5.25003 12.2007 5.25H8.99755V1.75C8.99755 1.28587 8.80796 0.840752 8.47049 0.512563C8.13301 0.184374 7.6753 0 7.19804 0C6.95941 0 6.73055 0.0921872 6.56182 0.256282C6.39308 0.420376 6.29829 0.642936 6.29829 0.875V1.45863C6.29829 2.21592 6.04571 2.95279 5.57848 3.55862L4.31882 5.19138C3.85159 5.79721 3.59902 6.53408 3.59902 7.29138Z"
+                                            fill="#51B6AB" />
+                                    </svg>
+
+                                </div>
+                                
+                                <div class="b-m-bot-comment-rating b-m-bot-comment-rating-n">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 6.5625C-2.64103e-09 6.73486 0.0349094 6.90553 0.102735 7.06477C0.17056 7.22401 0.269973 7.3687 0.395298 7.49058C0.520623 7.61245 0.669406 7.70913 0.833151 7.77509C0.996895 7.84105 1.1724 7.875 1.34963 7.875C1.52687 7.875 1.70237 7.84105 1.86611 7.77509C2.02986 7.70913 2.17864 7.61245 2.30397 7.49058C2.42929 7.3687 2.52871 7.22401 2.59653 7.06477C2.66436 6.90553 2.69927 6.73486 2.69927 6.5625V1.3125C2.69927 0.964403 2.55707 0.630565 2.30397 0.384423C2.05086 0.138282 1.70758 0 1.34963 0C0.991688 0 0.648403 0.138282 0.395298 0.384423C0.142193 0.630565 5.33379e-09 0.964403 0 1.3125V6.5625ZM3.59902 6.70862V1.95738C3.59886 1.63217 3.69189 1.31336 3.86767 1.0367C4.04344 0.760043 4.29501 0.536492 4.59415 0.391126L4.63914 0.369251C5.1384 0.126587 5.68885 0.000172615 6.247 0H11.1201C11.5362 -0.000160217 11.9396 0.139958 12.2615 0.396498C12.5833 0.653037 12.8038 1.01014 12.8854 1.407L13.9651 6.657C14.0173 6.91086 14.0109 7.17282 13.9464 7.42399C13.8819 7.67516 13.7609 7.90929 13.5921 8.10949C13.4233 8.30969 13.211 8.47099 12.9704 8.58175C12.7298 8.69251 12.4669 8.74997 12.2007 8.75H8.99755V12.25C8.99755 12.7141 8.80796 13.1592 8.47049 13.4874C8.13301 13.8156 7.6753 14 7.19804 14C6.95941 14 6.73055 13.9078 6.56182 13.7437C6.39308 13.5796 6.29829 13.3571 6.29829 13.125V12.5414C6.29829 11.7841 6.04571 11.0472 5.57848 10.4414L4.31882 8.80862C3.85159 8.20279 3.59902 7.46592 3.59902 6.70862Z"
+                                            fill="#D74949" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="b-m-bot-comment-bot">
+                            <span class="b-m-bot-comment-text">
+                            {{$rowComment->commentaire}}
+                            </span>
+                        </div>
+                    </div>
+                @endif
+                @if(!$rowComment->liked)
+                <div class="b-m-bot-comment b-m-bot-comment-N">
+                        <div class="b-m-bot-comment-top">
+                            <div class="b-m-bot-comment-top-left">
+                                <span class="b-m-bot-comment-name">{{$rowComment->nom}} {{$rowComment->prenom}}</span>
+                                <div class="b-m-bot-comment-extra">
+                                    <span class="b-m-bot-comment-city">{{$rowComment->lieu}}</span>
+                                    <span class="b-m-bot-comment-date">{{$rowComment->created_at}}</span>
                                 </div>
                             </div>
                             <div class="b-m-bot-comment-top-right">
@@ -181,14 +271,14 @@
                         </div>
                         <div class="b-m-bot-comment-bot">
                             <span class="b-m-bot-comment-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elit, ultrices ornare volutpat
-                                a eget et purus volutpat cras. Cras nunc erat orci ut ipsum facilisis posuere non ut.
-                                Dolor sollicitudin in dolor nec eget mi, suscipit vulputate. Id congue donec consectetur
-                                tellus.
+                            {{$rowComment->commentaire}}
                             </span>
                         </div>
                     </div>
-                    <div class="b-m-bot-comment b-m-bot-comment-N">
+                @endif
+                @endforeach
+                    
+                    <!-- <div class="b-m-bot-comment b-m-bot-comment-N">
                         <div class="b-m-bot-comment-top">
                             <div class="b-m-bot-comment-top-left">
                                 <span class="b-m-bot-comment-name">nom prenom client</span>
@@ -221,8 +311,8 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tempus orci orci faucibus ante.
                             </span>
                         </div>
-                    </div>
-                    <div class="b-m-bot-comment b-m-bot-comment-P">
+                    </div> -->
+                    <!-- <div class="b-m-bot-comment b-m-bot-comment-P">
                         <div class="b-m-bot-comment-top">
                             <div class="b-m-bot-comment-top-left">
                                 <span class="b-m-bot-comment-name">nom prenom client</span>
@@ -257,8 +347,8 @@
                                 dignissim sit id dignissim ut quis metus.
                             </span>
                         </div>
-                    </div>
-                    <div class="b-m-bot-comment b-m-bot-comment-P">
+                    </div> -->
+                    <!-- <div class="b-m-bot-comment b-m-bot-comment-P">
                         <div class="b-m-bot-comment-top">
                             <div class="b-m-bot-comment-top-left">
                                 <span class="b-m-bot-comment-name">nom prenom client</span>
@@ -294,8 +384,8 @@
                                 tellus.
                             </span>
                         </div>
-                    </div>
-                    <div class="b-m-bot-comment b-m-bot-comment-N">
+                    </div> -->
+                    <!-- <div class="b-m-bot-comment b-m-bot-comment-N">
                         <div class="b-m-bot-comment-top">
                             <div class="b-m-bot-comment-top-left">
                                 <span class="b-m-bot-comment-name">nom prenom client</span>
@@ -334,7 +424,7 @@
                             </span>
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
                 <button type="button" class="b-m-bot-btn-showMore">
                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -344,15 +434,22 @@
                     </svg>
                     <span>Afficher plus</span>
                 </button>
+                @endif
             </div>
         </div>
     </div>
+
+    @endforeach
+
     <!--  -->
     <div class="b-m-rootBlank"></div>
     <!--  -->
-    <script src="../../js/_select_sort.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!--  -->
-    <script src="../../js/brikoleur-main-shared.js"></script>
-</body>
-
-</html>
+    <script src="{{asset('js/_select_sort.js')}}"></script>
+    <!--  -->
+    <script src="{{asset('js/brikoleur-main-shared.js')}}"></script>
+    <!-- <script src="../../js/addCommen.js"></script> -->
+@endsection
+    

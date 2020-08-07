@@ -31,8 +31,6 @@ class signupbrikoleur2Controller extends Controller
             return response()->json([$arr]);
         }
         $brikoluerlogged = Auth::user();
-
-
         return view('Auth.signupBrikoleur_2', compact('brikoluerlogged'));
     }
 
