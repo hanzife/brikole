@@ -490,3 +490,8 @@ $("#sc-signup").click(() => {
         console.log("all good!!");
     } else console.log("ERROR!");
 });
+
+
+$("#btn_clientsignup").click(() => {
+    $("#form_clientsignup").submit();
+});

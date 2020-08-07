@@ -27,9 +27,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
          //compose all the views....
-    view()->composer('layouts.master', function ($view) 
+    view()->composer('layouts.master', function ($view, $guard = null) 
     {
-        if (Auth::check()){
+        //$guard == "brikoleur" &&
+        if ( Auth::guard($guard)->check()) {
+            
             $id_brikoleur = Auth::user()->id;
             // $id_brikoleur = 1;
             $ProfileImage = DB::table('images')
@@ -39,7 +41,13 @@ class AppServiceProvider extends ServiceProvider
             ->get();
             //...with this variable
             $view->with('ProfileBrikoleur', $ProfileImage);    
-        }
+
+            }
+
+
+        // if (Auth::check()){
+            
+        // }
        
     });  
     }
