@@ -34,6 +34,9 @@ Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
 Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio');
 //Upload Portfolio Images 
 Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
+//Delete Images 
+Route::get('/DeletePicture','signupbrikoleur2Controller@DeletePicture')->name('DeletePicture');
+
 
 
 //Client 
@@ -46,9 +49,18 @@ Route::post('/registerclient', 'Auth\ClientRegisterController@register')->name('
 
 // homeclient
 Route::get('/clientdashboard','ClientController@index')->name('clientdashboard');       
+//Client Dashboard
+Route::get('/Historique','ClientController@Historique');
+//Delete History
+Route::get('/deleteHistory','ClientController@deleteHistory')->name('deleteHistory');
+//Comments
+Route::get('/clientComments','ClientController@clientComments')->name('clientComments');
+//Favourits
+Route::get('clientFavoris','ClientController@clientFavoris')->name('clientFavoris');
+//Delete Favourite
+Route::get('deletefavorit','ClientController@deletefavorit')->name('deletefavorit');
 //LogOut
 Route::get('/logoutClient','ClientController@forgetClient')->name('forgetClient');     
-
 // Route::get('/client','ClientController@index');
 
 

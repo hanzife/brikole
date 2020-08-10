@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Commentaire;
 use App\Favoris;
+use App\Historique;
 use Illuminate\Http\Request;
 use Validator;
 // use Illuminate\Support\Facades\Validator;
@@ -89,20 +90,165 @@ class ClientController extends Controller
         return redirect()->route('home');
     }
 
-    public function BrikoleurAddFav($id_brikoleur){
-        
-        //Id This Client
+    public function BrikoleurAddFav($id_brikoleur,Request $request){
+            
         $idClient = session()->get('id');
+        $bool = $request->profile_liked;
+        
+        // echo $bool ;
+        if($bool == "false"){
+                 Favoris::insert( [
+                'id_brikoleur' => $id_brikoleur,
+                'id_client' =>$idClient,
+            ]);
+            echo 'inserted';
+            echo $bool;
+        }
+        else{
+            DB::table('favoris')->where('id_brikoleur', '=', $id_brikoleur)->delete();
+            echo 'deleted';
+            echo $bool;
 
-        //Insert to favorits
-        Favoris::insert( [
-            'id_brikoleur' => $id_brikoleur,
-            'id_client' =>$idClient,
-        ]);
+        }
 
-        $success = "inserted";
-        echo json_encode($success);
+        // if(!$bool){
+        //     Favoris::insert( [
+        //         'id_brikoleur' => $id_brikoleur,
+        //         'id_client' =>$idClient,
+        //     ]);
+        //     $bool = "inserted";
+        // }
+        // if($bool){
+        //     DB::table('favoris')->where('id_brikoleur', '=', $id_brikoleur)->delete();
+        //     $bool ="deleted";
+        // }
+           
+
+        // echo json_encode($bool);
+    }
+
+    public function Historique(){
+        if (session()->has('id')){
+            $idClient = session()->get('id');
+
+            $historique = DB::table('historiques')
+            ->where('id_client','=',$idClient)
+            ->select('id_client','id_brikoleur','created_at')
+            ->get();
+            $countHistorique = count($historique);
+
+            $Datahistorique = DB::table('historiques')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','historiques.id_brikoleur','=','brikoleurs.id')
+            ->join('images','images.id_brikoleur','=','brikoleurs.id')
+            ->where('images.type','=','Profile')
+            ->select('historiques.id_history','brikoleurs.id','brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','images.reference')
+            ->limit(5)
+            ->get();
+            
+
+            $libelle_SP = DB::table('historiques')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','brikoleurs.id','=','historiques.id_brikoleur')
+            ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+            ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','historiques.id_brikoleur')
+            ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+            ->select('sous_professions.libelle_SP','historiques.id_brikoleur')
+            ->distinct()
+            ->get();
+            
+
+            
+            return view('ClientDashboard.clientHistorique',compact('historique','countHistorique','Datahistorique','libelle_SP'));
+        }
+       else
+       //return view('');
+       return redirect()->route('login');
+
     }
 
    
+    public function deleteHistory(Request $request){
+        $idhistory = $request->id;
+
+        DB::table('historiques')->where('id_history', $idhistory)->delete();
+
+        echo 'deleted';
+
+    }
+
+    public function clientComments(){
+        if (session()->has('id')){
+            $idClient = session()->get('id');
+
+            
+            $libelle_SP = DB::table('historiques')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','brikoleurs.id','=','historiques.id_brikoleur')
+            ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+            ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','historiques.id_brikoleur')
+            ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+            ->select('sous_professions.libelle_SP','historiques.id_brikoleur')
+            ->distinct()
+            ->get();
+            
+
+
+            return view('ClientDashboard.clientComments');
+        }
+        else
+        //return view('');
+        return redirect()->route('login');
+    }
+
+    public function clientFavoris(){
+        if (session()->has('id')){
+            $idClient = session()->get('id');
+            
+
+            $historique = DB::table('favoris')
+            ->where('id_client','=',$idClient)
+            ->select('id_client','id_brikoleur','created_at')
+            ->get();
+            $countfavoris = count($historique);
+
+            $Datafavoris = DB::table('favoris')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','favoris.id_brikoleur','=','brikoleurs.id')
+            ->join('images','images.id_brikoleur','=','brikoleurs.id')
+            ->where('images.type','=','Profile')
+            ->select('favoris.id_favoris','brikoleurs.id','brikoleurs.nom','brikoleurs.prenom','brikoleurs.adresse','brikoleurs.ville','brikoleurs.telephone','brikoleurs.description','images.reference')
+            ->limit(5)
+            ->get();
+            
+
+            $libelle_SP = DB::table('favoris')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','brikoleurs.id','=','favoris.id_brikoleur')
+            ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+            ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','favoris.id_brikoleur')
+            ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+            ->select('sous_professions.libelle_SP','favoris.id_brikoleur')
+            ->distinct()
+            ->get();
+
+
+            return view('ClientDashboard.clientFavoris',compact('historique','countfavoris','Datafavoris','libelle_SP'));
+
+        }
+        else
+        //return view('');
+        return redirect()->route('login');
+    }
+
+
+    public function deletefavorit(Request $request){
+        $id_favoris = $request->id;
+        $idClient = session()->get('id');
+        //delete id_favoris linked to id_client preventing deleting another id_client 
+        DB::table('favoris')->where('id_favoris', $id_favoris)
+        ->where('id_client',$idClient)->delete();
+
+        echo 'deleted';
+    }
 }

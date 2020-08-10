@@ -183,9 +183,16 @@
 
                     <div class="b-m-bot-portfolio-catalogue">
                     @foreach($DataImages as $rowImage)
-                           <div class="b-m-bot-portfolio-catalogue-img b-m-bot-portfolio-catalogue-img-active" data-id='{{$rowImage->id_image}}'>
+                    <?php $className='b-m-bot-portfolio-catalogue-img' ?>
+                        @if ($loop->first)
+                        <?php $className .= ' b-m-bot-portfolio-catalogue-img-active' ?>
+                        @else
+                        <?php $className .= ' b-m-bot-portfolio-catalogue-img-inactive' ?>
+                        @endif
+                           <div class="{{$className}}" data-id='{{$rowImage->id_image}}'>
                        <img   src="/images/Uploads/Portfolio/{{$rowImage->reference}}"
                            alt="Image Portfolio Brikoleur" >
+
                    </div>
                    @endforeach
                         <!-- ADD -->

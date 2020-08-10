@@ -200,22 +200,24 @@ function sr_scroll(pos, direction) {
 
 $('.btn_like').on("click", function (e) {
     var id_brikoleur = $(this).find('.BrikoleurAddFav').val();
-    // alert(id_brikoleur);
-    let profile_liked = false;
-    // //#region Replace this code with a request to check wether this profile is liked or not
+    //#region Replace this code with a request to check wether this profile is liked or not
     profile_liked = $(e.currentTarget).hasClass('sr-profile-fav-liked');
-    // //#endregion
+
+    //get profile_liked condition
+    var profile_liked = profile_liked.toString()
+
     $.ajax({
         url: '/search/' + id_brikoleur + '/BrikoleurAddFav',
         type: 'GET',
-        data: id_brikoleur,
+        data: { profile_liked: profile_liked },
         success: function (data) {
-            console.log(data);
             // send a request to update DB data based on profile_liked status, upon success execute the code below
             $(e.currentTarget).toggleClass('sr-profile-fav-liked');
+
         }
 
     });
+
 });
 // working on resize behaviour
 // ---

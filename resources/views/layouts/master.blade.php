@@ -45,9 +45,11 @@
                     </svg>
                     <!-- MENU -->
                     <div class="nv-b-profile-menu" id="nv-b-profile-menu" style="display: none;">
-                        <a href="#">Favoris</a>
-                        <a href="#">Historique</a>
-                        <a href="#">Commentaires</a>
+    
+
+                        <a href="/clientFavoris">Favoris</a>
+                        <a href="/Historique">Historique</a>
+                        <a href="/clientComments">Commentaires</a>
                         <div class="nv-b-profile-menu-sep"></div>
                         <a href="#">Paramètres du compte</a>
                         <a class="nv-b-profile-menu-exit" href="#">
@@ -382,17 +384,17 @@
 <!-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script> -->
 <!-- <script src="{{asset('js/navbar.js')}}"></script> -->
 <!-- make this in a separate file -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script> -->
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
   <script src="{{asset('js/home.js')}}"></script>
   <script src="{{asset('js/navbar.js')}}"></script>
   <script src="{{asset('js/searchResult.js')}}"></script>

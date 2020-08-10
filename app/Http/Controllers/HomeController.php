@@ -8,6 +8,8 @@ use App\Profession;
 use App\SousProfession;
 use App\SpBrikoluer;
 use App\Commentaire;
+use App\Favoris;
+use App\Historique;
 use DB;
 // use Illuminate\Support\Facades\Auth;
 
@@ -102,10 +104,16 @@ class HomeController extends Controller
 
         $CountImages = count($dataimages);
 
+        
+        //GET FAVE
+        $favoites = DB::table('favoris')
+        ->select('favoris.id_client','favoris.id_brikoleur')
+        ->get();
+
         //Count the rows retrieved
         $resCount = count($results);
         //Redirect to a View searchresults.php
-        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount','CountImages'));
+        return view('searchresults',compact('results','profession','ville','dataprofession','datacity','reslibelle_SP','dataimages','resCount','CountImages','favoites'));
     }
 
     public function show($id_brikoleur)
@@ -135,6 +143,26 @@ class HomeController extends Controller
         ->select('sous_professions.libelle_SP')
         ->distinct()
         ->get();
+
+        if (session()->has('id')){
+            $idClient = session()->get('id');
+
+            //this client has this brikoleur  
+            $ThisVisited = DB::table('historiques')
+            ->where('id_brikoleur','=',$id_brikoleur)
+            ->where('id_client','=',$idClient)
+            ->select('id_client','id_brikoleur')
+            ->get();
+    
+             //Add Brikoleur to my History
+            if(count($ThisVisited)==0){
+                $history = new Historique;
+                $history->id_client=$idClient;
+                $history->id_brikoleur=$id_brikoleur;
+                $history->save();
+            }
+
+        }
 
         // echo $ShowBrikoleur;
         return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur','DataImages','libelle_SP'));
@@ -176,12 +204,7 @@ class HomeController extends Controller
             $ClientData = DB::table('clients')
             ->where('id','=',$value)
             ->select('nom')
-            ->get();
-            
-       
-        
-
-       
+            ->get();      
 
         // echo $ShowBrikoleur;
         return view('BrikoleurProfile.v_visiteur.B-P-V-comments',compact('DataBrikoleur','libelle_SP','DataComments','CountComents','value'));

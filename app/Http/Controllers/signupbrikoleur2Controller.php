@@ -167,5 +167,17 @@ class signupbrikoleur2Controller extends Controller
         ->get();
         return view('BrikoleurProfile.v_owner.B-P-O-portfolio', compact('brikoluerlogged','DataBrikoleur','brikoluerlogged','DataImages','CountImages','libelle_SP'));
     }
+    
+    public function DeletePicture(Request $request){
 
+        $imageId = $request->id;
+        //Delete image same brikoleur -- preventing deletion of other --
+        // $imageId = $request->id_brikoleur;
+
+
+        DB::table('images')->where('id_image', $imageId)->delete();
+
+        echo 'deleted';
+
+    }
 }
