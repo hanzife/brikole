@@ -5,6 +5,7 @@
 .sb2-blank-40 {
     height: 40px;
 }
+
 .sb2-blank-51 {
     height: 51px;
 
@@ -12,13 +13,16 @@
         height: 50px;
     }
 }
+
 .sb2-blank-50 {
     height: 50px;
 }
+
 .sb2-container {
     display: flex;
     justify-content: center;
 }
+
 .sb2-sub-container {
     max-width: 450px;
     display: flex;
@@ -33,6 +37,7 @@
         max-width: 320px;
     }
 }
+
 .sb2-section2 {
     width: 100%;
     display: flex;
@@ -42,6 +47,7 @@
     @media (max-width: 575px) {
         flex-direction: column;
     }
+
     .sb2-section2-text {
         .sb2-section2-text1 {
             font-weight: 500;
@@ -50,6 +56,7 @@
             letter-spacing: 0.02em;
             color: colors.$black;
         }
+
         .sb2-section2-text2 {
             font-weight: 500;
             font-size: 18px;
@@ -58,6 +65,7 @@
             color: colors.$grey-600;
         }
     }
+
     .sb2-section2-search {
         input {
             width: 148px;
@@ -83,27 +91,32 @@
                 margin-bottom: 31px;
             }
         }
+
         input:focus {
             outline: none !important;
             border: 1px solid colors.$grey-500;
             box-shadow: 0 0 0 2px colors.$grey-400;
         }
+
         input::-webkit-search-cancel-button {
             display: none;
         }
     }
 }
+
 .sb2-seperator {
     width: 100%;
     height: 1px;
     background-color: colors.$grey-400;
     margin-top: 20px;
     margin-bottom: 31px;
+
     //XS
     @media (max-width: 575px) {
         display: none;
     }
 }
+
 .sb2-professions {
     width: 450px;
     max-height: 405px;
@@ -129,11 +142,18 @@
 
     .sb2-profession-cards-container {
         margin-right: 4px;
+        flex: 1;
+
         //XS
         @media (max-width: 575px) {
             margin-right: 14px;
         }
+
+        // &:last-of-type {
+        //     background: red;
+        // }
     }
+
     .sb2-profession-card {
         width: 140px;
         max-height: 90px;
@@ -154,29 +174,37 @@
             margin-bottom: 20px;
         }
     }
+
     .sb2-profession-card-click {
         background-color: colors.$green-100;
-        border: 2px solid colors.$green-300;
+        // border: 2px solid colors.$green-300;
+        box-shadow: inset 0px 0px 0px 2px colors.$green-300;
+        border-color: transparent;
         color: colors.$green-500;
+
         svg {
             rect {
                 fill: colors.$green-200;
             }
+
             path {
                 fill: colors.$green-400;
             }
         }
     }
+
     .sb2-profession-name {
         margin-bottom: 13px;
         width: 84px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
     svg {
         margin-top: 2px;
     }
 }
+
 //style scrollbar webkit
 .sb2-professions::-webkit-scrollbar {
     width: 6px;
@@ -191,6 +219,7 @@
     background: colors.$grey-300;
     border-radius: 4px;
 }
+
 .sb2-professions::-webkit-scrollbar-thumb:hover {
     background: colors.$grey-400;
 }
@@ -208,6 +237,7 @@
         align-items: center;
         width: 320px;
     }
+
     .sb2-cancel {
         width: 176px;
         height: 57px;
@@ -228,15 +258,18 @@
             width: 320px;
         }
     }
+
     .sb2-cancel:hover {
         background-color: colors.$grey-50;
     }
+
     .sb2-cancel:focus {
         outline: none !important;
         border: 1px solid colors.$grey-400;
         box-shadow: 0 0 0 3px colors.$grey-200;
         background-color: colors.$grey-100;
     }
+
     .sb2-continue {
         width: 256px;
         height: 57px;
@@ -256,9 +289,11 @@
             width: 320px;
         }
     }
+
     .sb2-continue:hover {
         background-color: colors.$accent-200;
     }
+
     .sb2-continue:focus {
         background-color: colors.$accent;
         outline: none !important;
@@ -273,6 +308,7 @@
 .sb3-professions {
     @extend .sb2-professions;
     max-height: 300px;
+
     @media (max-width: 575px) {
         max-height: 420px;
     }
@@ -280,9 +316,11 @@
     .sb3-profession-cards-container {
         @extend .sb2-profession-cards-container;
     }
+
     .sb3-profession-card {
         @extend .sb2-profession-card;
     }
+
     // .sb3-profession-card-click {
     //     @extend .sb2-profession-card-click;
     // }
