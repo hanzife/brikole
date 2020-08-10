@@ -99,7 +99,7 @@ function greenOnClick() {
         $(".sb2-profession-card").removeClass("sb2-profession-card-click");
         $(e.currentTarget).addClass("sb2-profession-card-click");
         selectedPrefession = $(e.currentTarget).contents().text().trim();
-        console.log(selectedPrefession);
+        // console.log(selectedPrefession);
     });
 }
 
@@ -115,13 +115,13 @@ function greenListOnClick() {
                 selectedSubPrefessions,
                 $(e.currentTarget).contents().text().trim()
             );
-            console.log(selectedSubPrefessions);
+            // console.log(selectedSubPrefessions);
         } else {
             $(e.currentTarget).addClass("sb2-profession-card-click");
             selectedSubPrefessions.push(
                 $(e.currentTarget).contents().text().trim()
             );
-            console.log(selectedSubPrefessions);
+            // console.log(selectedSubPrefessions);
         }
     });
 }
