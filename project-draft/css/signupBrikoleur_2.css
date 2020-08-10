@@ -221,6 +221,7 @@ a:active {
 }
 .sb2-professions .sb2-profession-cards-container, .sb3-professions .sb2-profession-cards-container, .sb3-professions .sb3-profession-cards-container {
   margin-right: 4px;
+  flex: 1;
 }
 @media (max-width: 575px) {
   .sb2-professions .sb2-profession-cards-container, .sb3-professions .sb2-profession-cards-container, .sb3-professions .sb3-profession-cards-container {
@@ -249,7 +250,8 @@ a:active {
 }
 .sb2-professions .sb2-profession-card-click, .sb3-professions .sb2-profession-card-click {
   background-color: #f9fefd;
-  border: 2px solid #51b6ab;
+  box-shadow: inset 0px 0px 0px 2px #51b6ab;
+  border-color: transparent;
   color: #134c4a;
 }
 .sb2-professions .sb2-profession-card-click svg rect, .sb3-professions .sb2-profession-card-click svg rect {

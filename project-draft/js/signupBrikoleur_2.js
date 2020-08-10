@@ -93,6 +93,7 @@ function keepGreenList(selectedElmnts) {
 //GREEN ON CLICK
 
 let selectedPrefession;
+
 function greenOnClick() {
     $(".sb2-profession-card").click((e) => {
         $(".sb2-profession-card").removeClass("sb2-profession-card-click");
@@ -105,6 +106,7 @@ function greenOnClick() {
 //GREEN LIST ON CLICK
 
 let selectedSubPrefessions = [];
+
 function greenListOnClick() {
     $(".sb3-profession-card").click((e) => {
         if ($(e.currentTarget).hasClass("sb2-profession-card-click")) {
@@ -134,46 +136,66 @@ function initializeVar() {
 
 //SEARCH/FILTER
 
-function filterCardsInside(cardClass, searchId) {
+function filterCardsInside(cardClass, searchId, containerClass = null) {
     $("." + cardClass)
         .toArray()
         .forEach((card) => {
             if (
                 $(card)
-                    .contents()
-                    .text()
-                    .trim()
+                .contents()
+                .text()
+                .trim()
+                .toUpperCase()
+                .includes(
+                    $("#" + searchId)
+                    .val()
                     .toUpperCase()
-                    .includes(
-                        $("#" + searchId)
-                            .val()
-                            .toUpperCase()
-                    )
+                )
             ) {
-                $(card).css("display", "flex");
-            } else $(card).css("display", "none");
+                card.setAttribute('data-display', 'show');
+                $(card).css("display", "none");
+                // // 
+            } else {
+                $(card).css("display", "none");
+                card.setAttribute('data-display', 'hide');
+            }
+
         });
+    // 
+    let loopCount = 0;
+    $(`.${cardClass}[data-display=show]`).each((card_pos, card_show) => {
+        let currentContainer = document.getElementsByClassName(containerClass)[loopCount];
+        currentContainer.appendChild(card_show);
+        currentContainer.children[currentContainer.children.length - 1].style.display = 'flex';
+
+        // 
+        if (loopCount == document.getElementsByClassName(containerClass).length - 1)
+            loopCount = 0;
+        else
+            loopCount++;
+    });
+
 }
 
 //filter profession cards
 
-function filterCards() {
+function filterCards(laVarDeAli) {
     $("#sb2-search").keyup(() => {
-        filterCardsInside("sb2-profession-card", "sb2-search");
+        filterCardsInside("sb2-profession-card", "sb2-search", laVarDeAli);
     });
     if ($("#sb2-search").val()) {
-        filterCardsInside("sb2-profession-card", "sb2-search");
+        filterCardsInside("sb2-profession-card", "sb2-search", laVarDeAli);
     }
 }
 
 //filter sub profession cards
 
-function filterCardsSub() {
+function filterCardsSub(laVarDeAli) {
     $("#sb3-search").keyup(() => {
-        filterCardsInside("sb3-profession-card", "sb3-search");
+        filterCardsInside("sb3-profession-card", "sb3-search", laVarDeAli);
     });
     if ($("#sb3-search").val()) {
-        filterCardsInside("sb3-profession-card", "sb3-search");
+        filterCardsInside("sb3-profession-card", "sb3-search", laVarDeAli);
     }
 }
 
@@ -181,7 +203,7 @@ function filterCardsSub() {
 
 //ADD HTML OF CARD
 function singleCard(selector, index, newClass, profession) {
-    $("." + selector + ":eq(" + index + ")").append(`<div class="${newClass}">
+    $("." + selector + ":eq(" + index + ")").append(`<div class="${newClass}" data-cont-index="${index}">
     <div class="sb2-profession-name">${profession}</div>
     <div>
         <svg
@@ -286,7 +308,7 @@ function addProfessionCard() {
         listProfessions
     );
     greenOnClick();
-    filterCards();
+    filterCards('sb2-profession-cards-container');
 }
 
 //ADD SUB PROFESSION CARDS
@@ -299,7 +321,7 @@ function addSubProfessionCard() {
         listSubProfessions
     );
     greenListOnClick();
-    filterCardsSub();
+    filterCardsSub('sb3-profession-cards-container');
 }
 
 addProfessionCard();
