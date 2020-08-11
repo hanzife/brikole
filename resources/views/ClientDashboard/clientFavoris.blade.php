@@ -1,4 +1,5 @@
-
+@extends('layouts.master')
+@section('content')
         <link rel="stylesheet" href="css/clientFavoris.css" />
         <title>Favori</title>
         <div class="cf-blank-21"></div>
@@ -118,14 +119,13 @@
 
             <!-- FAV LIST ------------------------------------------------------ -->
 
-            
+            @if ( $countfavoris )
+                
             <section class="cf-results-section">
                 <!-- LOOP START HERE -->
 
                 <!-- each cf-results-profil has cf-blank-10 underneath -->
-                @if ( $countfavoris  == 0 )
-                <p>not found</p>
-                        @else 
+                
 
                         @foreach($Datafavoris as $rowFavoris)
                         <div class="cf-results-profil" idProfil="{{$rowFavoris->id_favoris}}">
@@ -241,10 +241,9 @@
                         </div>
                         @endforeach
 
-                    @endif
                 <div class="cf-blank-10"></div>
 
-                <div class="cf-results-profil" idProfil="2">
+                <!-- <div class="cf-results-profil" idProfil="2">
                     <div class="cf-results-top">
                         <div class="cf-results-top-left">
                             <div class="cf-results-top-img">
@@ -264,13 +263,13 @@
                                     <div>Sous-profession</div>
                                     <div>Sous-profession</div>
                                     <div>Sous-profession</div>
-                                    <div>Sous-profession</div>
+                                    <div>Sous-profession</div> -->
 
                                     <!-- do not delete this -->
                                     <!-- <div class="cf-results-top-info-prof-dots">
                                         ...
                                     </div> -->
-                                </div>
+                                <!-- </div>
                             </div>
                         </div>
                         <div class="cf-results-top-right">
@@ -288,10 +287,10 @@
                                         d="M2.3999 3.60039C2.3999 3.28213 2.52633 2.97691 2.75137 2.75186C2.97642 2.52682 3.28164 2.40039 3.5999 2.40039H6.1835C6.46755 2.40052 6.74234 2.50141 6.959 2.6851C7.17565 2.8688 7.32012 3.12339 7.3667 3.40359L8.2547 8.72559C8.29713 8.97905 8.25707 9.23944 8.14042 9.46843C8.02376 9.69741 7.83668 9.8829 7.6067 9.99759L5.7491 10.9252C6.41523 12.576 7.4073 14.0755 8.66603 15.3343C9.92476 16.593 11.4243 17.5851 13.0751 18.2512L14.0039 16.3936C14.1185 16.1638 14.3038 15.9769 14.5326 15.8603C14.7613 15.7436 15.0214 15.7034 15.2747 15.7456L20.5967 16.6336C20.8769 16.6802 21.1315 16.8246 21.3152 17.0413C21.4989 17.2579 21.5998 17.5327 21.5999 17.8168V20.4004C21.5999 20.7186 21.4735 21.0239 21.2484 21.2489C21.0234 21.474 20.7182 21.6004 20.3999 21.6004H17.9999C9.3839 21.6004 2.3999 14.6164 2.3999 6.00039V3.60039Z"
                                         fill="#676878"
                                     />
-                                </svg>
+                                </svg> -->
                                 <!-- remove this div if no number (use an if or smthn) -->
                                 <!-- <div class="cf-phone-XL">0601020304</div> -->
-                            </div>
+                            <!-- </div>
                             <div
                                 class="cf-results-top-iconBG cf-results-top-heart"
                             >
@@ -313,25 +312,25 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="cf-blank-10"></div>
+                    <!-- <div class="cf-blank-10"></div> -->
 
                     <!-- description (if no description is entered by user, use a default one) -->
-                    <div class="cf-results-desc">
+                    <!-- <div class="cf-results-desc">
                        
                     </div>
 
-                    <div class="cf-blank-10"></div>
+                    <div class="cf-blank-10"></div> -->
 
                     <!-- adress -->
-                    <div class="cf-results-address">
+                    <!-- <div class="cf-results-address">
                         <span>Adresse : </span>
                         <span>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.
                         </span>
-                    </div>
+                    </div> -->
 
                     <!-- phone number on XS -->
                     <!-- AGAIN remove this div if no number -->
@@ -353,9 +352,9 @@
                         <div>0601020304</div>
                     </div> -->
                     <!-- --------------------------------- -->
-                </div>
+                <!-- </div> -->
 
-                <div class="cf-blank-10"></div>
+                <!-- <div class="cf-blank-10"></div> -->
 
                 <!-- LOOP END HERE -->
 
@@ -378,7 +377,7 @@
             <!-- END FAV LIST ------------------------------------------------------ -->
 
             <!-- page not found -->
-
+            @else
             <div class="cf-notFoundPage">
                 <div>
                     <svg
@@ -399,7 +398,10 @@
                 </div>
                 <div>Aucun contenu trouvé</div>
             </div>
+            @endif
+
         </div>
+        <div class="cf-blank-10"></div>
 
         <!-- script -->
         <script
@@ -408,5 +410,5 @@
             crossorigin="anonymous"
         ></script>
         <script src="js/clientFavoris.js"></script>
-    </body>
-</html>
+@endsection
+        

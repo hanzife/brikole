@@ -339,79 +339,36 @@
     <div class="blank-80 hide-on-sm"></div>
     <!-- bottom section -->
     <!-- Recherches récentes -->
+    @if (session()->has('id'))
     <div class="recRechSlide-parent">
       <h3 class="fs-24 color-black textCenter">Recherches récentes</h3>
       <div class="d-flex justify-content-between recRechSlide">
+        @if($countHistory)
+        @foreach($Datahistorique as $rowHistory)
         <div class="sm-container2">
-          <img class="img-s215" src="images/bk1.png" alt="" />
+          @foreach($dataimages as $rowImages)
+          @if($rowHistory->id == $rowImages->id_brikoleur)
+          <img class="img-s215" src="/images/Uploads/Portfolio/{{$rowImages->reference}}" alt="" />
+          @endif
+          @endforeach
           <div class="d-flex align-items-center">
             <img
               class="rounded-circle img-s50"
-              src="images/testimg.jpg"
+              src="images/Uploads/Profile/{{$rowHistory->reference}}"
               alt=""
             />
             <div>
-              <div class="fs-14 color-black fw-500">Mahmoud SOCADYA</div>
-              <div class="fs-14 color-grey-dark fw-500">Paintre</div>
+              <div class="fs-14 color-black fw-500">{{$rowHistory->nom}} {{$rowHistory->prenom}}</div>
+              <div class="fs-14 color-grey-dark fw-500">{{$rowHistory->libelle_P}}</div>
             </div>
           </div>
         </div>
-        <div class="sm-container2">
-          <img class="img-s215" src="images/bk2.png" alt="" />
-          <div class="d-flex align-items-center">
-            <img
-              class="rounded-circle img-s50"
-              src="images/testimg.jpg"
-              alt=""
-            />
-            <div>
-              <div class="fs-14 color-black fw-500">Mahmoud SOCADYA</div>
-              <div class="fs-14 color-grey-dark fw-500">Paintre</div>
-            </div>
-          </div>
-        </div>
-        <div class="sm-container2">
-          <img class="img-s215" src="images/bk3.png" alt="" />
-          <div class="d-flex align-items-center">
-            <img
-              class="rounded-circle img-s50"
-              src="images/testimg.jpg"
-              alt=""
-            />
-            <div>
-              <div class="fs-14 color-black fw-500">Mahmoud SOCADYA</div>
-              <div class="fs-14 color-grey-dark fw-500">Paintre</div>
-            </div>
-          </div>
-        </div>
-        <div class="sm-container2">
-          <img class="img-s215" src="images/bk4.png" alt="" />
-          <div class="d-flex align-items-center">
-            <img
-              class="rounded-circle img-s50"
-              src="images/testimg.jpg"
-              alt=""
-            />
-            <div>
-              <div class="fs-14 color-black fw-500">Mahmoud SOCADYA</div>
-              <div class="fs-14 color-grey-dark fw-500">Paintre</div>
-            </div>
-          </div>
-        </div>
-        <div class="sm-container2">
-          <img class="img-s215" src="images/bk5.png" alt="" />
-          <div class="d-flex align-items-center">
-            <img
-              class="rounded-circle img-s50"
-              src="images/testimg.jpg"
-              alt=""
-            />
-            <div>
-              <div class="fs-14 color-black fw-500">Mahmoud SOCADYA</div>
-              <div class="fs-14 color-grey-dark fw-500">Paintre</div>
-            </div>
-          </div>
-        </div>
+       
+        @endforeach
+        @else
+          <p>visit a profile</p> 
+        @endif
+       
       </div>
       <div class="progress float-right progress-cstm">
         <div
@@ -424,6 +381,7 @@
         ></div>
       </div>
     </div>
+    @endif
     <!-- end Recherches récentes -->
     <div class="blank-80"></div>
     <!-- ad -->

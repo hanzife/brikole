@@ -121,6 +121,7 @@
             <div class="cf-blank-10"></div>
 
             <!-- HISTORY LIST ------------------------------------------------------ -->
+            @if($countHistorique)
             <section class="cf-results-section">
                 <!-- LOOP START HERE -->
 
@@ -234,7 +235,7 @@
             <!-- END HISTORY LIST ------------------------------------------------------ -->
 
             <!-- page not found -->
-
+            @else
             <div class="cf-notFoundPage">
                 <div>
                     <svg
@@ -255,7 +256,9 @@
                 </div>
                 <div>Aucun contenu trouvé</div>
             </div>
+            @endif
         </div>
+        <div class="cf-blank-10"></div>
 
         <!-- script -->
         <script

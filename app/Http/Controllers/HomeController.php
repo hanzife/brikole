@@ -27,7 +27,6 @@ class HomeController extends Controller
     public function index()
     {
         
-        // dd(\App\Brikoleur::all());
         //count Brikoluers
         $brikoluerCount = DB::table('brikoleurs')->count('id');
         //Show me All Brikoluers with their rrofile img 
@@ -51,13 +50,42 @@ class HomeController extends Controller
         ->select('sous_professions.libelle_SP','sous_professions.id_profession')
         ->distinct()
         ->get();
+     
+
+        if(session()->has('id')){
+
+            $idClient = session()->get('id');
+
+            $Datahistorique = DB::table('historiques')
+            ->where('id_client','=',$idClient)
+            ->join('brikoleurs','historiques.id_brikoleur','=','brikoleurs.id')
+            ->join('images','images.id_brikoleur','=','brikoleurs.id')
+            ->where('images.type','=','Profile')
+            ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+            ->select('professions.libelle_P','brikoleurs.id','brikoleurs.nom','brikoleurs.prenom','brikoleurs.description','images.reference')
+            ->limit(5)
+            ->get();
+            $countHistory = count($Datahistorique);
+
+
+            $dataimages = DB::table('images')  
+            ->where('images.type','=','Portfolio')
+            ->join('historiques','historiques.id_brikoleur','=','images.id_brikoleur')
+            ->where('id_client','=',$idClient)
+            ->select('images.reference','images.id_brikoleur')
+            ->take(1)
+            ->get();
+
+            return view('welcome',compact('data','dataprofession','datacity','suprofession','brikoluerCount','Datahistorique','countHistory','dataimages'));
+
+        }
+        else{
+            return view('welcome',compact('data','dataprofession','datacity','suprofession','brikoluerCount'));
+
+        }
+
         //Redirect to View welcome.php
-        return view('welcome',compact('data','dataprofession','datacity','suprofession','brikoluerCount'));
-        // return view('welcome',[
-        //     'brikoleurs' => Brikoleur::all()
-        //     // 'images' => Image::all()            
-        // ]);
-        // ORDER BY RAND() LIMIT 6
+
     }
 
     /**
