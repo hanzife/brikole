@@ -62,7 +62,7 @@
                 border-radius: 999px;
                 background-image: url("../images/icons/imageUploadDefault.svg");
                 overflow: hidden;
-                background-size: 150px;
+                background-size: cover;
                 background-position: center;
 
                 img {
@@ -274,7 +274,61 @@
             max-width: 450px;
             min-height: 147px;
         }
+
+        .b-p-cities-list {
+            border: 1px solid colors.$grey-400;
+            box-sizing: border-box;
+            border-radius: 5px;
+            // bottom: -110px;
+            margin-top: 75px;
+            padding: 5px 0;
+            position: absolute;
+            width: 100%;
+            background-color: white;
+            display: none;
+
+            .b-p-city-select {
+                padding: 4px 5px;
+                height: 24px;
+                font-size: 14px;
+                line-height: 16px;
+                color: colors.$grey-600;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .b-p-city-select:hover {
+                background-color: colors.$grey-100;
+            }
+
+            .b-p-city-select:focus {
+                outline: none !important;
+                background-color: colors.$grey-100;
+            }
+
+        }
+
+        // 
+        .b-p-input-error {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            margin-top: 5px;
+            color: colors.$red-200;
+        }
+
+        .b-p-error-border {
+            border: 1px solid colors.$red !important;
+            box-shadow: 0 0 0 2px colors.$red-100 !important;
+        }
+
     }
+}
+
+.errorStyle {
+    color: colors.$red-200 !important;
+    font-weight: bold;
 }
 
 // }

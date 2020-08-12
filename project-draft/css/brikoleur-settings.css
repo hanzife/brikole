@@ -139,7 +139,7 @@ a:active {
   border-radius: 999px;
   background-image: url("../images/icons/imageUploadDefault.svg");
   overflow: hidden;
-  background-size: 150px;
+  background-size: cover;
   background-position: center;
 }
 .b-p-content .b-p-content-top .b-p-content-top-left .b-p-imageProfile img {
@@ -318,6 +318,50 @@ a:active {
   min-width: 100%;
   max-width: 450px;
   min-height: 147px;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-cities-list {
+  border: 1px solid #d2d6db;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 75px;
+  padding: 5px 0;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  display: none;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-cities-list .b-p-city-select {
+  padding: 4px 5px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #585863;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-cities-list .b-p-city-select:hover {
+  background-color: #f7f7f8;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-cities-list .b-p-city-select:focus {
+  outline: none !important;
+  background-color: #f7f7f8;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-input-error {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 5px;
+  color: #d74949;
+}
+.b-p-content .b-p-content-top-right-input-grp .b-p-error-border {
+  border: 1px solid #ff6868 !important;
+  box-shadow: 0 0 0 2px #ffb1b1 !important;
+}
+
+.errorStyle {
+  color: #d74949 !important;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=brikoleur-settings.css.map */
