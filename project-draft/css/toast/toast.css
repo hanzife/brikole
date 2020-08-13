@@ -78,7 +78,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   color: #0d0c22;
-  max-width: 366px;
+  max-width: 85%;
   /* display: flex; */
   /* align-items: center; */
 }
@@ -222,6 +222,17 @@ body {
   width: 325px;
   z-index: 11;
   /* background-color: blue; */
+}
+
+@media screen and (max-width: 480px) {
+  .toastBox {
+    width: 100% !important;
+    min-width: unset;
+  }
+
+  #toastsContainer:hover .toastHide {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=toast.css.map */
