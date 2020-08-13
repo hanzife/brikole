@@ -83,7 +83,21 @@
         </div>
         <div class="b-m-bot">
             <div class="b-m-bot-header">
+            @if (session()->has('id') == true)
+               
                 <a class="b-m-bot-header-text b-m-bot-header-text-inactive" href="../../search/{{$row->id}}">Portfolio</a>
+               
+                @else
+                @guest
+                <a class="b-m-bot-header-text b-m-bot-header-text-inactive" href="../../search/{{$row->id}}">Portfolio</a>
+
+                @endguest
+                @endif
+
+                @auth
+                    <a class="b-m-bot-header-text b-m-bot-header-text-inactive" href="/myportfolio">Portfolio</a>
+                @endauth
+
                 <span class="b-m-bot-header-text b-m-bot-header-text-active">Commentaires</span>
             </div>
             <!--  -->
@@ -177,6 +191,8 @@
                 @endif
                 <!-- if client not connected -->
                 @if (session()->has('id') == false)
+                @guest
+
                 <div class="b-m-bot-comments-denied">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -185,6 +201,7 @@
                     </svg>
                     <span>Veuillez créer un compte pour pouvoir écrire un commentaire</span>
                 </div>
+                @endguest
                 @endif
 
                 <!-- if brikoleur has no comments -->

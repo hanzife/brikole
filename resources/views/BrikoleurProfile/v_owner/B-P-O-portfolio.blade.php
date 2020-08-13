@@ -104,7 +104,7 @@
             <div class="b-m-bot-header">
                 <span class="b-m-bot-header-text b-m-bot-header-text-active">Portfolio</span>
                 <a class="b-m-bot-header-text b-m-bot-header-text-inactive"
-                    href="./B-P-O-comments.html">Commentaires</a>
+                    href="../../search/{{$rowBrikoleur->id}}/comments">Commentaires</a>
             </div>
             <!--  -->
             @if(!$CountImages)

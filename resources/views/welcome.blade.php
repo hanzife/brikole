@@ -345,6 +345,7 @@
       <div class="d-flex justify-content-between recRechSlide">
         @if($countHistory)
         @foreach($Datahistorique as $rowHistory)
+        
         <div class="sm-container2">
           @foreach($dataimages as $rowImages)
           @if($rowHistory->id == $rowImages->id_brikoleur)

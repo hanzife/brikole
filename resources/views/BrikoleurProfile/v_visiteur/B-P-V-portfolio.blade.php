@@ -97,7 +97,7 @@
                     <div class="b-m-bot-portfolio-preview">
                         <div class="b-m-bot-portfolio-preview-imgs" id="b-m-bot-portfolio-preview-imgs-cont">
                         @foreach($DataImages as $rowIamges)
-                            <img class="b-m-bot-portfolio-preview-img" data-pos=""
+                            <img class="b-m-bot-portfolio-preview-img" data-pos="{{ $loop->index }}"
                             src="/images/Uploads/Portfolio/{{$rowIamges->reference}}"
                                 alt="Image de portfolio Brikoleur">                     
                         @endforeach
