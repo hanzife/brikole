@@ -146,6 +146,8 @@ class ClientController extends Controller
             ->limit(5)
             ->get();
             
+        
+
 
             $libelle_SP = DB::table('historiques')
             ->where('id_client','=',$idClient)
@@ -181,24 +183,29 @@ class ClientController extends Controller
         if (session()->has('id')){
             $idClient = session()->get('id');
 
-            
-            $libelle_SP = DB::table('historiques')
-            ->where('id_client','=',$idClient)
-            ->join('brikoleurs','brikoleurs.id','=','historiques.id_brikoleur')
-            ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
-            ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','historiques.id_brikoleur')
-            ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
-            ->select('sous_professions.libelle_SP','historiques.id_brikoleur')
-            ->distinct()
+            //commentaires
+            $DataComments = DB::table('clients')
+            ->where('clients.id','=',$idClient)
+            ->join('commentaires','commentaires.id_client','=','clients.id')
+            ->select('clients.nom','clients.prenom','commentaire','clients.lieu','commentaires.liked','commentaires.created_at','commentaires.id_client','clients.id')
             ->get();
+
+            $CountComments = count($DataComments);
+
+           
             
 
 
-            return view('ClientDashboard.clientComments');
+            return view('ClientDashboard.clientComments',compact('DataComments','CountComments'));
         }
         else
         //return view('');
         return redirect()->route('login');
+
+
+       
+       
+
     }
 
     public function clientFavoris(){

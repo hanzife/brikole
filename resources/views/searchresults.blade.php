@@ -145,6 +145,9 @@
                     <!-- ------------- -->
 
                     <!-- Biokoleur profile -->
+                    
+
+                    
                     @foreach($results as $resultsrow)
                     <div class="sr-profile">
                         <div class="sr-portfolio">
@@ -275,8 +278,10 @@
                                 </div>
                             </div>
                         </div>
-                        @if (session()->has('id'))
 
+                        @if (session()->has('id'))
+                        <?php $idClient= session()->get('id')?>
+                        
                         <!-- <input type="hidden" value="{{$resultsrow->id}}" bame="inputiddd"> -->
                         <!-- <a href="/search/{{$resultsrow->id}}/BrikoleurAddFav" id="preventme">  -->
                         <button class="sr-profile-fav btn_like">
@@ -287,10 +292,10 @@
                                 stroke="#676878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         </button>
-
+                        
                         @foreach($favoites as $rowFavoites)
                         <?php $className='sr-profile-fav btn_like' ?>
-                        @if($rowFavoites->id_brikoleur == $resultsrow->id)
+                        @if($rowFavoites->id_brikoleur == $resultsrow->id && $rowFavoites->id_client ==$idClient )
                         <?php $className .= ' sr-profile-fav-liked' ?>
 
                         <button class="{{$className}}">
@@ -317,6 +322,7 @@
                     </div>
                     <div class="blank-15"></div>
                     @endforeach
+                    <div class="sr-records"></div>
                     <div class="blank-15"></div>
 
                     <!-- ads -->

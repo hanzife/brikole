@@ -67,43 +67,7 @@ $('.sr-profileInfo').on("click", function () {
     window.location.href = "../../search/" + id_brikoleur;
 });
 
-// $('.btn_like').on("click", function () {
-//     var id_brikoleur = $(this).find('.BrikoleurAddFav').val();
-//     alert(id_brikoleur);
 
-//     $.ajax({
-//         type: "POST",
-//         url: "BrikoleurAddFav",
-//         data: id_brikoleur,
-//         complete: function (data) {
-//             alert("Item added to cart");
-//             console.log(data);
-
-//         }
-//     });
-
-//     //var id_brikoleur = $(this).find('.selectedBrikoleur').val();
-//     // alert(id_brikoleur);
-//     //window.location.href = "../../search/" + id_brikoleur;
-//     // var id_brikoleur = document.getElementsByName("inputiddd")[0].value;
-//     // alert(document.getElementsByName("username")[0].value);
-// });
-
-
-// $('.btn_like').on("click", function () {
-//     var id_brikoleur = $(this).find('.BrikoleurAddFav').val();
-//     // alert(id_brikoleur);
-//     $.ajax({
-//         url: '/search/' + id_brikoleur + '/BrikoleurAddFav',
-//         type: 'GET',
-//         data: id_brikoleur,
-//         success: function (data) {
-//             // alert(id_brikoleur);
-//             console.log(data);
-//         }
-
-//     });
-// });
 
 
 // New JS
@@ -219,6 +183,30 @@ $('.btn_like').on("click", function (e) {
     });
 
 });
+
+//Load More Data 
+$('.sr-showMore').on("click", function () {
+    var profession = document.getElementById("Select_profession").value;
+    var ville = document.getElementById("Select_Ville").value;
+
+
+
+    $.ajax({
+        url: "/sr_loadmore",
+        type: 'GET',
+        data: { profession: profession, ville: ville },
+        success: function (data) {
+            // $('.sr-showMore').remove();
+            // $('.sr-records').append(data);
+
+
+        }
+
+    });
+
+    // return view('searchresults');
+});
+
 // working on resize behaviour
 // ---
 // Beacause i'm lazy, mafiyach li ybdl f'html o nzid les attributes manualy, soooo

@@ -20,7 +20,8 @@ Route::post('/search/{id_brikoleur}/addComment','ClientController@postComment')-
 //Brikoleur Add TO Fav
 Route::get('/search/{id_brikoleur}/BrikoleurAddFav','ClientController@BrikoleurAddFav')->name('BrikoleurAddFav');
 
-
+//load more on searchreasuls
+Route::get('/sr_loadmore','HomeController@Searchloadmore')->name('sr_loadmore');
 //SignUp Brikoleur
 Auth::routes();
 //SignUp Brikoleur Step 2 - Select a Profession
@@ -31,7 +32,7 @@ Route::get('/signupBrikoleur_3/{professions}', 'signupbrikoleur2Controller@getSu
 Route::get('/signupBrikoleur_4/{selectedSubPrefessions}','signupbrikoleur2Controller@updateSpBrikoleur');
 //SignUp Brikoleur Step 3 - SaveImage and Resirect to Profile 
 Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
-Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio');
+Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio')->name('myportfolio');
 //Upload Portfolio Images 
 Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
 //Delete Images 
@@ -63,6 +64,10 @@ Route::get('deletefavorit','ClientController@deletefavorit')->name('deletefavori
 Route::get('/logoutClient','ClientController@forgetClient')->name('forgetClient');     
 // Route::get('/client','ClientController@index');
 
+
+
+//Login
+Route::post('checklogin','Auth\LoginController@checklogin')->name('checklogin');
 
 // Route::get('/signupBrikoleur_3', function () {
 //     return view('Auth.signupBrikoleur_3');

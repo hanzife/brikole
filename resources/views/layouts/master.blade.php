@@ -32,7 +32,7 @@
             </a>
             <div class="nv-b-main_menu">
                 <a class="nv-b-menuItem" href="#">Accueil</a>
-                <a class="nv-b-menuItem" href="{{ route('forgetClient') }}">Comment ça marche</a>
+                <a class="nv-b-menuItem" href="">Comment ça marche</a>
                 <div class="nv-b-separator"></div>
                 <div class="nv-b-profile" id="nv-b-profile" data-visible="false">
                     <img class="nv-b-profile-pic" src="{{asset('images/steve-johnson-e5LdlAMpkEw-unsplash.jpg')}}"
@@ -52,7 +52,7 @@
                         <a href="/clientComments">Commentaires</a>
                         <div class="nv-b-profile-menu-sep"></div>
                         <a href="#">Paramètres du compte</a>
-                        <a class="nv-b-profile-menu-exit" href="#">
+                        <a class="nv-b-profile-menu-exit" href="{{ route('forgetClient') }}">
                             <span>Déconnecter</span>
                             <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
             <div class="nv-main_menu">
                 <a class="nv-menuItem" href="{{url('/')}}">Accueil</a>
                 <a class="nv-menuItem" href="#">Comment ça marche</a>
-                <a class="nv-menuItem" href="#">S’identifier</a>
+                <a class="nv-menuItem" href="{{ route('login') }}">S’identifier</a>
                 <div class="nv-separator"></div>
                 <a class="nv-signUpButton" href="{{ route('register') }}">
                     <input
@@ -156,7 +156,7 @@
                     </svg>
                     <!-- MENU -->                   
                     <div class="nv-b-profile-menu" id="nv-b-profile-menu" style="display: none;">
-                        <a href="#">Profil</a>
+                        <a href="/myportfolio">Profil</a>
                         <a href="#">Magasin</a>
                         <div class="nv-b-profile-menu-sep"></div>
                         <div class="nv-b-profile-menu-points-cont">
