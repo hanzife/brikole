@@ -229,6 +229,9 @@ body {
     width: 100% !important;
     min-width: unset;
   }
+  .toastBox .toastText {
+    max-width: 75% !important;
+  }
 
   #toastsContainer:hover .toastHide {
     width: 100%;
