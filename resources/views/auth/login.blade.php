@@ -1,8 +1,16 @@
+@if (session()->has('id'))
+<script>window.location = "/";</script>
+@endif
+@auth
+<script>window.location = "/";</script>
+@endauth
+        
 @extends('layouts.master')
 
 @section('content')
 
 
+  
 <link rel="stylesheet" href="css/signupBrikoleur_1.css" />
         <title>Inscription Brikoleur</title>
         <!-- header -->
@@ -18,9 +26,7 @@
                     <form method="POST" action="checklogin">
                     @csrf
 
-                    @if($errors->any())
-                        <h4>{{$errors->first()}}</h4>
-                    @endif
+                 
 
 
                         <label for="li-id">Identifiant</label><br />
@@ -38,7 +44,10 @@
                             required
                         /><br />
 
-                        <div id="li-pass-error" class="sb1-error"></div>
+                        <div id="li-pass-error" class="sb1-error">  
+                        @if($errors->any())
+                            <h4>{{$errors->first()}}</h4>
+                        @endif</div>
 
                         <div class="sb1-blank-20"></div>
 
@@ -71,6 +80,7 @@
         <!-- ------ -->
 
         <script></script>
-
+    
+       
 @endsection
-        
+    

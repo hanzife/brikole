@@ -1,4 +1,11 @@
+@if (session()->has('id'))
+<script>window.location = "/";</script>
+@endif
+@auth
+<script>window.location = "/";</script>
+@endauth
 <!-- Master Header/Footer -->
+
 @extends('layouts.master')
 
 @section('content')

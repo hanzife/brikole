@@ -11,7 +11,10 @@ use App\SpBrikoluer;
 use App\SousProfession;
 use App\Image;
 use DB;
+use Redirect;
 
+use Validate;
+use Validator;
 class signupbrikoleur2Controller extends Controller
 {
     public function __construct()
@@ -173,11 +176,73 @@ class signupbrikoleur2Controller extends Controller
         $imageId = $request->id;
         //Delete image same brikoleur -- preventing deletion of other --
         // $imageId = $request->id_brikoleur;
-
-
         DB::table('images')->where('id_image', $imageId)->delete();
-
         echo 'deleted';
 
+    }
+
+
+    public function brikoleursettings(){
+        $brikoluerlogged = Auth::user();
+        $id_user = $brikoluerlogged->id;
+
+        $DataBrikoleur = DB::table('brikoleurs')
+        ->where('id','=',$id_user)
+        ->join('images','images.Id_brikoleur','=','id')
+        ->where('images.type','=','profile')
+        ->select('brikoleurs.telephone','brikoleurs.description','brikoleurs.ville','images.reference','brikoleurs.mot_passe')
+        ->get();
+
+        return view('BrikoleurProfile.v_owner.brikoleur-settings',compact('DataBrikoleur'));
+        
+    }
+
+    public function brikoleuredit(Request $request){
+        //Get Brikoleur
+        $brikoluerlogged = Auth::user();
+        $id_user = $brikoluerlogged->id;
+        //Get Requests
+        $description = $request->description;
+        $telephone =$request->telephone;
+        $ville = $request->ville;
+        $mot_passe = $request->mot_passe;
+        $Confirmmot_passe = $request->Confirmmot_passe;
+        //Validation Password and telephone
+        $validator = Validator::make($request->all(),[
+            // 'telephone' => 'required|string|max:30|regex:/^\+?\s?[1-9\s\-]+$/|unique:brikoleurs',
+            'mot_passe' => 'required|exists:brikoleurs|string|min:6]);'
+        ]);
+
+        if($validator->fails()){
+            return Redirect::back()->withErrors(['Password Incorrect', 'PasswrdError']); 
+        }
+        else{
+            $getIDBrikoleur = DB::table('brikoleurs') 
+            ->where('brikoleurs.id','=',$id_user)
+            ->where('brikoleurs.mot_passe','=',$mot_passe)
+            ->get();
+            if(count($getIDBrikoleur)){
+                //Brikoleur Update
+                DB::table('brikoleurs')
+                ->where('id', $id_user)
+                ->update(['description' => $description, 'ville' => $ville, 'telephone' => $telephone]);
+                //Upload Image
+                if($request->hasFile('image')){
+                    $destination ='images/Uploads/Profile'; //Save Image here
+                    $image=$request->file('image'); //Get The Image from FORM
+                    $filename =time() .'_'. $image->getClientOriginalName();	//Add Time To File Name
+                    $image->move($destination, $filename); //move
+                    //Update
+                    DB::table('images')
+                    ->where('images.type','=','Profile')
+                    ->where('images.id_brikoleur','=',$id_user)
+                    ->update(['images.reference' => $filename]);
+                }
+            }
+            else{
+                return Redirect::back()->withErrors(['Password Incorrect', 'PasswrdError']);
+            }
+            return Redirect::back()->with('success', 'profile Updated'); 
+        }                
     }
 }

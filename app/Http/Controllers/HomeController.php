@@ -36,7 +36,7 @@ class HomeController extends Controller
         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
         ->inRandomOrder()
         ->limit(6)
-        ->select('images.reference','brikoleurs.nom','brikoleurs.prenom','professions.libelle_P')
+        ->select('images.reference','brikoleurs.nom','brikoleurs.prenom','professions.libelle_P','brikoleurs.id')
         ->get();
         //all professions
         //This will be used to include sun-professions with the $suprofession

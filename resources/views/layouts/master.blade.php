@@ -26,13 +26,13 @@
         <nav class="nv-b-nav">
             <a href="/" class="nv-b-logo">
                 <picture>
-                    <source media="(max-width:767px)" srcset="images/logos/logo2.svg" />
+                    <source media="(max-width:767px)" srcset="{{asset('images/logos/logo2.svg')}}" />
                     <img src="{{asset('images/logos/logo.svg')}}" alt="brikoleLogo" />
                 </picture>
             </a>
             <div class="nv-b-main_menu">
-                <a class="nv-b-menuItem" href="#">Accueil</a>
-                <a class="nv-b-menuItem" href="">Comment ça marche</a>
+                <a class="nv-b-menuItem" href="{{url('/')}}">Accueil</a>
+                <a class="nv-b-menuItem" href="howTo">Comment ça marche</a>
                 <div class="nv-b-separator"></div>
                 <div class="nv-b-profile" id="nv-b-profile" data-visible="false">
                     <img class="nv-b-profile-pic" src="{{asset('images/steve-johnson-e5LdlAMpkEw-unsplash.jpg')}}"
@@ -51,7 +51,7 @@
                         <a href="/Historique">Historique</a>
                         <a href="/clientComments">Commentaires</a>
                         <div class="nv-b-profile-menu-sep"></div>
-                        <a href="#">Paramètres du compte</a>
+                        <a href="/brikoleur-settings">Paramètres du compte</a>
                         <a class="nv-b-profile-menu-exit" href="{{ route('forgetClient') }}">
                             <span>Déconnecter</span>
                             <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
@@ -80,14 +80,14 @@
                 <picture>
                     <source
                         media="(max-width:767px)"
-                        srcset="/images/logos/logo2.svg"
+                        srcset="{{asset('images/logos/logo2.svg')}}"
                     />
-                    <img src="/images/logos/logo.svg" alt="brikoleLogo" />
+                    <img src="{{asset('images/logos/logo.svg')}}" alt="brikoleLogo" />
                 </picture>
             </div>
             <div class="nv-main_menu">
                 <a class="nv-menuItem" href="{{url('/')}}">Accueil</a>
-                <a class="nv-menuItem" href="#">Comment ça marche</a>
+                <a class="nv-menuItem" href="howTo">Comment ça marche</a>
                 <a class="nv-menuItem" href="{{ route('login') }}">S’identifier</a>
                 <div class="nv-separator"></div>
                 <a class="nv-signUpButton" href="{{ route('register') }}">
@@ -123,7 +123,7 @@
             
                 <div class="nv-menu-sub-xs">
                     <a class="nv-menuItem-xs" href="{{url('/')}}">Accueil</a>
-                    <a class="nv-menuItem-xs" href="#">Comment ça marche</a>
+                    <a class="nv-menuItem-xs" href="howTo">Comment ça marche</a>
                     <div class="nv-separator-xs"></div>
                     <a class="nv-menuItem-xs" href="#">S’identifier</a>
                 </div>
@@ -134,13 +134,13 @@
             <nav class="nv-b-nav">
                 <a href="/" class="nv-b-logo">
                     <picture>
-                        <source media="(max-width:767px)" srcset="images/logos/logo2.svg" />
-                        <img src="images/logos/logo.svg" alt="brikoleLogo" />
+                        <source media="(max-width:767px)"srcset="{{asset('images/logos/logo2.svg')}}" />
+                        <img src="{{asset('images/logos/logo.svg')}}" alt="brikoleLogo" />
                     </picture>
                  </a>
                 <div class="nv-b-main_menu">
-                <a class="nv-b-menuItem" href="#">Accueil</a>
-                <a class="nv-b-menuItem" href="#">Comment ça marche</a>
+                <a class="nv-b-menuItem" href="{{url('/')}}">Accueil</a>
+                <a class="nv-b-menuItem" href="howTo">Comment ça marche</a>
                 <div class="nv-b-separator"></div>
                 <div class="nv-b-profile" id="nv-b-profile" data-visible="false">
                 @foreach($ProfileBrikoleur ?? '' as $rowImage)
@@ -172,7 +172,7 @@
                             </div>
                         </div>
                         <div class="nv-b-profile-menu-sep"></div>
-                        <a href="#">Paramètres du compte</a>
+                        <a href="/brikoleur-settings">Paramètres du compte</a>
                         <a class="nv-b-profile-menu-exit" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"
@@ -208,8 +208,8 @@
             
         <div class="nv-b-menu-xs" id="menu_sm">
             <div class="nv-b-menu-sub-xs">
-                <a class="nv-b-menuItem-xs" href="#">Accueil</a>
-                <a class="nv-b-menuItem-xs" href="#">Comment ça marche</a>
+                <a class="nv-b-menuItem-xs" href="{{url('/')}}">Accueil</a>
+                <a class="nv-b-menuItem-xs" href="howTo">Comment ça marche</a>
                 <div class="nv-b-separator-xs"></div>
                 <div class="nv-b-menuItem-profile">
                     <div class="nv-b-menuItem-profile-data">
@@ -234,7 +234,7 @@
                         </div>
                     </div>
                     <div class="nv-b-separator-xs"></div>
-                    <a class="nv-b-menuItem-xs" href="#">Paramètres du compte</a>
+                    <a class="nv-b-menuItem-xs" href="/brikoleur-settings">Paramètres du compte</a>
                     <a class="nv-b-profile-menu-exit nv-b-menuItem-xs" href="#">
                         <span>Déconnecter</span>
                         <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,11 +267,7 @@
             <div class="container-custom">
                 <div class="blank-30"></div>
                 <div class="ft-footerTop">
-                    <img
-                        id="logo"
-                        src="/images/logos/logo.svg"
-                        alt="brikoleLogo"
-                    />
+                <img src="{{asset('images/logos/logo.svg')}}" alt="brikoleLogo" />
                     <div class="ft-desc">
                         Brikole est une plate-forme qui permet aux manoeuvres de
                         présenter leurs compétences et les clients à la

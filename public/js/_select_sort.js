@@ -55,3 +55,9 @@ const sorting_setup = () => {
 }
 // Execute sorting setup
 sorting_setup();
+
+
+
+$('#MySettings').on("click", function () {
+    window.location.href = "/brikoleur-settings"
+});

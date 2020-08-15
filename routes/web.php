@@ -33,6 +33,12 @@ Route::get('/signupBrikoleur_4/{selectedSubPrefessions}','signupbrikoleur2Contro
 //SignUp Brikoleur Step 3 - SaveImage and Resirect to Profile 
 Route::post('/portfolio','signupbrikoleur2Controller@saveimage');
 Route::get('/myportfolio','signupbrikoleur2Controller@myportfolio')->name('myportfolio');
+//Brikoleur Sittings
+Route::get('/brikoleur-settings','signupbrikoleur2Controller@brikoleursettings');
+//Edit Profile
+Route::post('brikoleuredit','signupbrikoleur2Controller@brikoleuredit')->name('brikoleuredit');
+
+
 //Upload Portfolio Images 
 Route::post('/uploadImagesPortfolio','signupbrikoleur2Controller@uploadImagesPortfolio');
 //Delete Images 
@@ -90,3 +96,9 @@ Route::post('checklogin','Auth\LoginController@checklogin')->name('checklogin');
 // });
 //Redirect To a Page if exsits
 //Route::get('/page','ControllerName@method');
+
+
+//Other Html Pages
+Route::get('howTo', function () {
+    return view('howTo');
+});

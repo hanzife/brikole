@@ -50,25 +50,18 @@ class LoginController extends Controller
     }
 
     public function checklogin(Request $request){
-
-
         $validator = Validator::make($request->all(),[
             'email' => 'required|exists:brikoleurs',  
-            'mot_passe' => 'required|exists:brikoleurs|alphaNum|min:6]);'
+            'mot_passe' => 'required|exists:brikoleurs|string|min:6]);'
         ]);
         if($validator->fails())
         {
             $validatorClient = Validator::make($request->all(),[
                 'email' => 'required|exists:clients',  
-                'mot_passe' => 'required|exists:clients|alphaNum|min:6]);'
+                'mot_passe' => 'required|exists:clients|string|min:6',
             ]);
             if($validatorClient->fails()){
-                // json_encode ('<script>alert("No User Found")</script>');
-                // return redirect()->intended(route('login'));
-                // echo '<script>alert("No User Found")</script>';
-                return Redirect::back()->withErrors(['No User Found', 'No User Found']);
-
-
+                return Redirect::back()->withErrors(['Veuillez vérifier que l\'adresse e-mail et le mot de passe correspondent', 'NoFoundError']);
             }
             else{
                 $getIDClient = DB::table('clients') 
@@ -76,34 +69,33 @@ class LoginController extends Controller
                 ->where('clients.mot_passe','=',$request->mot_passe)
                 ->select('id')
                 ->get();
-
-                foreach($getIDClient as $rawClient){
-                    $request->session()->put('id',$rawClient->id);
-                    return redirect()->intended(route('clientdashboard'));
+                if(count($getIDClient)){
+                    foreach($getIDClient as $rawClient){
+                        $request->session()->put('id',$rawClient->id);
+                        return redirect()->intended(route('clientdashboard'));
+                    }
                 }
-                 // if(empty($getIDClient)){
-                //     return Redirect::back()->withErrors(['Email and Password not muching', 'No User Found']);
-                // }
-                
-                
-                
+                else{
+                return Redirect::back()->withErrors(['Le mot de passe Client ne correspond pas à l\'email', 'PasswordError']);
+                }                
             }
-
         }
         else{
             $getIDBrikoleur = DB::table('brikoleurs') 
             ->where('brikoleurs.email','=',$request->email)
+            ->where('brikoleurs.mot_passe','=',$request->mot_passe)
             ->select('id')
             ->get();
-            Auth::loginUsingId($getIDBrikoleur[0]->id);
-            return redirect()->intended(route('myportfolio'));
-        }
-        
-
-
-        
-
-
+            if(count($getIDBrikoleur)){
+                foreach($getIDBrikoleur as $rawBrikoleur){
+                    Auth::loginUsingId($rawBrikoleur->id);
+                    return redirect()->intended(route('myportfolio'));
+                }
+            }
+            else{
+            return Redirect::back()->withErrors(['Le mot de passe Brikoleur ne correspond pas à l\'email', 'PasswrdError']);
+            }
+        }   
     }
 }
 

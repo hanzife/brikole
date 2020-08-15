@@ -111,7 +111,7 @@
             src="images/Uploads/Profile/{{$row->reference}}"
             alt="Image de {{$row->prenom}} {{$row->nom}}"
           />
-          <div class="fs-17 color-black fw-500 fs-17-r">{{$row->prenom}} {{$row->nom}}</div>
+          <a href="/search/{{$row->id}}"><div class="fs-17 color-black fw-500 fs-17-r">{{$row->prenom}} {{$row->nom}}</div></a>
           <div class="fs-17 color-grey-dark fw-500 fs-17-r">{{$row->libelle_P}}</div>
         </div>
         @endforeach
@@ -247,7 +247,7 @@
              src="images/Uploads/Profile/{{$row->reference}}"
             alt="name of bk1"
           />
-          <div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div>
+          <a href="/search/{{$row->id}}"><div class="fs-17 color-black fw-500">{{$row->prenom}} {{$row->nom}}</div></a>
           <div class="fs-17 color-grey-dark fw-500">{{$row->libelle_P}}</div>
         </div>
         @endforeach
@@ -359,7 +359,7 @@
               alt=""
             />
             <div>
-              <div class="fs-14 color-black fw-500">{{$rowHistory->nom}} {{$rowHistory->prenom}}</div>
+            <a href="/search/{{$rowHistory->id}}"><div class="fs-14 color-black fw-500">{{$rowHistory->nom}} {{$rowHistory->prenom}}</div><a>
               <div class="fs-14 color-grey-dark fw-500">{{$rowHistory->libelle_P}}</div>
             </div>
           </div>

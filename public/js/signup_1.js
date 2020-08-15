@@ -495,3 +495,5 @@ $("#sc-signup").click(() => {
 $("#btn_clientsignup").click(() => {
     $("#form_clientsignup").submit();
 });
+
+
