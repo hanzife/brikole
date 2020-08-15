@@ -89,6 +89,12 @@ async function toastConfirmWarning() {
                     appearance: "sec",
                     text: "Refuser",
                     callback: "cancel"
+                },
+                {
+                    type: "button",
+                    appearance: "link",
+                    text: "hmmm",
+                    callback: "cancel"
                 }
             ]
         },
