@@ -42,6 +42,8 @@ class ClientRegisterController extends Controller
         ]);
 
         $request['password'] = Hash::make($request->password);
+        // $request['mot_passe'] = Hash::make($request->password);
+
         Client::create($request->all());
         
         $getID = DB::table('clients') 

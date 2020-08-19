@@ -48,10 +48,12 @@ $(document).ready(function () {
                 if (data.error.length > 0) {
                     console.log(data);
                     alert("notification; console to see what validation says");
+
                 }
                 else {
                     console.log(data);
                     $("#b-m-bot-comments").load(" #b-m-bot-comments");
+                    $(".b-m-bot-comments-add-text").val('');
                 }
             }
 

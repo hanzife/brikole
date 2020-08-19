@@ -14,6 +14,8 @@ Route::get('/Search/{profession}/{ville}','HomeController@Search');
 Route::get('/search/{id_brikoleur}','HomeController@show');
 //Brikoleur's Comments 
 Route::get('/search/{id_brikoleur}/comments','HomeController@showComments')->name('clientComments');
+// Route::get('/search/{id_brikoleur}/comments_sorted','HomeController@showComments_Sort')->name('showComments_Sort');
+
 //Add Comment for Clients
 Route::post('/search/{id_brikoleur}/addComment','ClientController@postComment')->name('addComment');
 // Route::get('/search/{id_brikoleur}/getComment','ClientController@getComment')->name('getComment');

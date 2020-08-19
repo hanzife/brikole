@@ -441,46 +441,91 @@ class HomeController extends Controller
         return view('BrikoleurProfile.v_visiteur.B-P-V-portfolio',compact('DataBrikoleur','DataImages','libelle_SP'));
     }
 
-    public function showComments($id_brikoleur)
+    public function showComments($id_brikoleur,Request $request)
     {
-        // $ShowBrikoleur =Brikoleur::select()->where('id','=',$id_brikoleur)->get();
-        $DataBrikoleur = DB::table('brikoleurs')
-        ->where('id','=',$id_brikoleur)
-        ->join('images','images.Id_brikoleur','=','id')
-        ->where('images.type','=','profile')
-        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
-        ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
-        ->inRandomOrder()
-        ->limit(1)
-        ->get();
-        //SubProfessions
-        $libelle_SP = DB::table('brikoleurs')
-        ->where('id','=',$id_brikoleur)
-        ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
-        ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
-        ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
-        ->select('sous_professions.libelle_SP')
-        ->distinct()
-        ->get();
-        //Comments
-        $DataComments = DB::table('commentaires')
-        ->where('commentaires.id_brikoleur','=',$id_brikoleur)
-        ->join('clients','clients.id','=','commentaires.id_client')
-        ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
-        ->get();
+        
+         //SubProfessions
+         $libelle_SP = DB::table('brikoleurs')
+         ->where('id','=',$id_brikoleur)
+         ->join('professions','professions.id_profession','=','brikoleurs.id_profession') 
+         ->join('sp_brikoluers','sp_brikoluers.id_Brikoleur','=','id')
+         ->join('sous_professions','sous_professions.id_sous_profession','=','sp_brikoluers.id_SPB')
+         ->select('sous_professions.libelle_SP')
+         ->distinct()
+         ->get();
+         
+
+         //if Client Connected
+             $value = session()->get('id');
+             $ClientData = DB::table('clients')
+             ->where('id','=',$value)
+             ->select('nom')
+             ->get();      
+
+   
+     // $ShowBrikoleur =Brikoleur::select()->where('id','=',$id_brikoleur)->get();
+    $DataBrikoleur = DB::table('brikoleurs')
+    ->where('id','=',$id_brikoleur)
+    ->join('images','images.Id_brikoleur','=','id')
+    ->where('images.type','=','profile')
+    ->join('professions','professions.id_profession','=','brikoleurs.id_profession') //professions.idprof = brikoleurs.idprof
+    ->select('brikoleurs.nom','brikoleurs.prenom','brikoleurs.telephone','brikoleurs.description','brikoleurs.adresse','brikoleurs.ville','professions.libelle_P','images.reference','id')
+    ->inRandomOrder()
+    ->limit(1)
+    ->get();
+      
+         // echo $ShowBrikoleur;
+        if($request->sort_by == "Type commantaire"){
+             //Comments
+             $DataComments = DB::table('commentaires')
+             ->where('commentaires.id_brikoleur','=',$id_brikoleur)
+             ->join('clients','clients.id','=','commentaires.id_client')
+             ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
+             ->orderBy('liked', 'desc')
+             ->get();
+            $sort_is = "Type commantaire";
+
+
+        }
+        elseif($request->sort_by == "Ville"){
+            $DataComments = DB::table('commentaires')
+            ->where('commentaires.id_brikoleur','=',$id_brikoleur)
+            ->join('clients','clients.id','=','commentaires.id_client')
+            ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
+            ->orderBy('clients.lieu', 'asc')
+            ->get();
+            $sort_is = "Ville";
+        }
+        elseif($request->sort_by == "Date"){
+            $DataComments = DB::table('commentaires')
+            ->where('commentaires.id_brikoleur','=',$id_brikoleur)
+            ->join('clients','clients.id','=','commentaires.id_client')
+            ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
+            ->orderBy('commentaires.created_at', 'desc')
+            ->get();
+            $sort_is = "Date";
+        }
+        else{
+             //Comments
+            $DataComments = DB::table('commentaires')
+            ->where('commentaires.id_brikoleur','=',$id_brikoleur)
+            ->join('clients','clients.id','=','commentaires.id_client')
+            ->select('commentaires.commentaire','commentaires.created_at','clients.prenom','clients.nom','clients.lieu','liked')
+            ->inRandomOrder()
+            ->get();
+
+            $sort_is = "Date";
+        }
         //Count My Comments
         $CountComents = count($DataComments);
+        return view('BrikoleurProfile.v_visiteur.B-P-V-comments',compact('DataBrikoleur','libelle_SP','DataComments','CountComents','value','sort_is'));
+        }
 
+    // public function showComments_Sort(Request $request){
+    //     if($request->sort_by == ""){
+    //         echo 'Ville';
+    //     }
 
-        //if Client Connected
-            $value = session()->get('id');
-            $ClientData = DB::table('clients')
-            ->where('id','=',$value)
-            ->select('nom')
-            ->get();      
-
-        // echo $ShowBrikoleur;
-        return view('BrikoleurProfile.v_visiteur.B-P-V-comments',compact('DataBrikoleur','libelle_SP','DataComments','CountComents','value'));
-    }
+    // }
     
 }

@@ -130,8 +130,9 @@
                         <span>Commentaires</span>
                     </div>
                     <div class="b-m-bot-comments-info-bar-right">
-                        <form class="b-m-customSelect" action="" method="GET" data-slct="Date" data-mode="desc"
+                        <form class="b-m-customSelect" action="/search/{{$row->id}}/comments" method="GET" data-slct="Date" data-mode="desc"
                             id="b-m-bot-comments_selectSort">
+                             {{ csrf_field() }}    
                             <div class="b-m-customSelect-bar">
                                 <div class="b-m-customSelect-bar-dropDown" id="b-m-bot-comments_selectSort-select">
                                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
@@ -140,7 +141,7 @@
                                             d="M3.99979 0C4.26498 5.66374e-05 4.51929 0.105451 4.70679 0.293L7.70679 3.293C7.88894 3.4816 7.98974 3.7342 7.98746 3.9964C7.98518 4.2586 7.88001 4.50941 7.6946 4.69482C7.5092 4.88023 7.25838 4.9854 6.99619 4.98767C6.73399 4.98995 6.48139 4.88916 6.29279 4.707L3.99979 2.414L1.70679 4.707C1.51818 4.88916 1.26558 4.98995 1.00339 4.98767C0.741188 4.9854 0.490376 4.88023 0.304968 4.69482C0.11956 4.50941 0.0143906 4.2586 0.0121121 3.9964C0.00983372 3.7342 0.110629 3.4816 0.292787 3.293L3.29279 0.293C3.48028 0.105451 3.73459 5.66374e-05 3.99979 0ZM0.292787 9.293C0.480314 9.10553 0.734622 9.00021 0.999786 9.00021C1.26495 9.00021 1.51926 9.10553 1.70679 9.293L3.99979 11.586L6.29279 9.293C6.48139 9.11084 6.73399 9.01005 6.99619 9.01233C7.25838 9.0146 7.5092 9.11977 7.6946 9.30518C7.88001 9.49059 7.98518 9.7414 7.98746 10.0036C7.98974 10.2658 7.88894 10.5184 7.70679 10.707L4.70679 13.707C4.51926 13.8945 4.26495 13.9998 3.99979 13.9998C3.73462 13.9998 3.48031 13.8945 3.29279 13.707L0.292787 10.707C0.105316 10.5195 0 10.2652 0 10C0 9.73484 0.105316 9.48053 0.292787 9.293Z"
                                             fill="#585863" />
                                     </svg>
-                                    <span class="b-m-customSelect-bar-dropDown-text">Date</span>
+                                    <span class="b-m-customSelect-bar-dropDown-text">{{$sort_is}}</span>
                                 </div>
                                 <button class="b-m-customSelect-bar-sort" type="button"
                                     id="b-m-bot-comments_selectSort-sort">
@@ -162,16 +163,17 @@
                             </div>
                             <div class="b-m-customSelect-bar-list hide_me" id="b-m-bot-comments_selectSort-options">
                                 <ul>
-                                    <li class="b-m-customSelect-bar-list-option-selected">Date</li>
+                                    <!-- <li class="b-m-customSelect-bar-list-option-selected">Date</li> -->
+                                    <li>Date</li>
                                     <li>Type commantaire</li>
                                     <li>Ville</li>
                                 </ul>
                             </div>
                             <!-- Form data -->
                             <input type="text" name="sort_by" value="null" id="b-m-bot-comments_selectSort-value"
-                                disabled style="display: none;" />
+                                 style="display: none;" />
                             <input type="text" name="sort_direction" value="desc"
-                                id="b-m-bot-comments_selectSort-direction" disabled style="display: none;" />
+                                id="b-m-bot-comments_selectSort-direction"  style="display: none;" />
                         </form>
                     </div>
                 </div>
