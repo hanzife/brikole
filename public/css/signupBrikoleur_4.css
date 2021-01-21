@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap");
+.container {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Roboto" !important;
+}
+
+.container-custom {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1200px) {
+  .container-custom {
+    width: 1140px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container-custom {
+    width: 960px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container-custom {
+    width: 720px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .container-custom {
+    width: 540px;
+  }
+}
+@media (max-width: 575px) {
+  .container-custom {
+    width: 320px;
+  }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.sb4-blank-20 {
+  height: 20px;
+}
+
+.sb4-section2-text {
+  width: 100%;
+}
+
+.sb4-section2-text1 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  color: #0d0c22;
+}
+
+.sb4-section2-text2 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #585863;
+}
+
+.sb4-mainSection {
+  width: 450px;
+}
+@media (max-width: 575px) {
+  .sb4-mainSection {
+    width: 320px;
+  }
+}
+.sb4-mainSection .sb4-imageUploadSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 575px) {
+  .sb4-mainSection .sb4-imageUploadSection {
+    margin-top: 31px;
+  }
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageProfile {
+  width: 115px;
+  height: 115px;
+  border-radius: 999px;
+  background-image: url("../images/icons/imageUploadDefault.svg");
+  overflow: hidden;
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageProfile img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageUploadButtonSection {
+  width: 224px;
+  height: 41px;
+  padding: 10px 15px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  box-sizing: border-box;
+  border: 1px solid #d2d6db;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #676878;
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageUploadButtonSection input {
+  display: none;
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageUploadButtonSection label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.sb4-mainSection .sb4-imageUploadSection .sb4-imageSize {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  color: #676878;
+}
+.sb4-mainSection .sb4-seperator2 {
+  width: 100%;
+  height: 1px;
+  background-color: #d2d6db;
+  margin-bottom: 40px;
+}
+@media (max-width: 575px) {
+  .sb4-mainSection .sb4-seperator2 {
+    display: none;
+  }
+}
+.sb4-mainSection .sb4-commentArea {
+  width: 450px;
+  padding: 10px;
+  height: 147px;
+  border: 1px solid #d2d6db;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  scrollbar-color: #676878 #ebebec;
+  scrollbar-width: thin;
+}
+@media (max-width: 575px) {
+  .sb4-mainSection .sb4-commentArea {
+    width: 320px;
+    padding: 10px 7px;
+  }
+}
+.sb4-mainSection .sb4-commentArea::placeholder {
+  font-style: italic;
+  color: #676878;
+}
+.sb4-mainSection .sb4-commentArea:focus {
+  outline: none !important;
+  border: 1px solid #676878;
+  box-shadow: 0 0 0 2px #d2d6db;
+}
+.sb4-mainSection .sb4-commentArea::-webkit-scrollbar {
+  width: 6px;
+}
+.sb4-mainSection .sb4-commentArea::-webkit-scrollbar-track {
+  background: #f7f7f8;
+  border-radius: 4px;
+}
+.sb4-mainSection .sb4-commentArea::-webkit-scrollbar-thumb {
+  background: #ebebec;
+  border-radius: 4px;
+}
+.sb4-mainSection .sb4-commentArea::-webkit-scrollbar-thumb:hover {
+  background: #d2d6db;
+}
+
+.errorStyle {
+  color: red !important;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=signupBrikoleur_4.css.map */

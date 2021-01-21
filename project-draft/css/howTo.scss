@@ -1,0 +1,147 @@
+//
+//
+@use 'fonts';
+@use 'colors';
+@use 'common';
+//
+//
+.ht-blank-125 {
+    height: 125px;
+}
+.ht-blank-50 {
+    height: 50px;
+}
+.ht-blank-25 {
+    height: 25px;
+}
+.ht-d-f {
+    display: flex;
+}
+.ht-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ht-left {
+    width: 555px;
+    //MD
+    @media (max-width: 991px) {
+        width: 100%;
+    }
+}
+
+.ht-intro-title {
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px;
+    letter-spacing: 0.02em;
+    color: colors.$black;
+    margin-bottom: 10px;
+    //XS
+    @media (max-width: 575px) {
+        font-size: 30px;
+        line-height: 35px;
+    }
+}
+.ht-titles {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 37px;
+    color: colors.$black;
+    max-width: 285px;
+    //XS
+    @media (max-width: 575px) {
+        font-size: 26px;
+        line-height: 30px;
+    }
+}
+.ht-titles2 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: colors.$black;
+    margin-bottom: 5px;
+    //XS
+    @media (max-width: 575px) {
+        font-size: 14px;
+    }
+}
+.ht-desc {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.02em;
+    color: colors.$grey-500;
+    //XS
+    @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+.ht-desc-nmbr {
+    @extend .ht-desc;
+    font-weight: 500;
+    color: colors.$black;
+    margin-right: 5px;
+}
+.ht-section-nmbr {
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 70%;
+    color: colors.$accent;
+    margin-right: 5px;
+    display: flex;
+    align-items: flex-end;
+    //XS
+    @media (max-width: 575px) {
+        font-size: 26px;
+    }
+    .ht-line {
+        width: 75px;
+        height: 4px;
+        background-color: colors.$accent;
+    }
+}
+.ht-signup {
+    width: 322px;
+    height: 63px;
+    border-radius: 5px;
+    background-color: colors.$accent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    // font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+    color: white;
+    //XS
+    @media (max-width: 575px) {
+        width: 284px;
+        height: 51px;
+        font-size: 18px;
+        line-height: 21px;
+    }
+}
+//
+.ht-right-img {
+    @media (max-width: 991px) {
+        display: none;
+    }
+}
+
+//
+//MD
+@media (max-width: 991px) {
+    .ht-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    div {
+        text-align: center;
+    }
+    .ht-blank-125 {
+        height: 50px;
+    }
+}
